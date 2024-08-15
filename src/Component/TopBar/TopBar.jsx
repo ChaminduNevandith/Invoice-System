@@ -3,7 +3,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import GroupIcon from '@mui/icons-material/Group';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import './NotificationButton.css'; 
 
 function TopBar() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -20,55 +19,56 @@ function TopBar() {
 
   return (
     <div className="top-0 right-0 w-full h-[75px] bg-white shadow-md flex items-center px-4">
-      <div className="relative w-full max-w-[1000px] h-[34px] sm:max-w-[500px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[800px] 2xl:max-w-[1000px]">
+      <div className="relative w-full max-w-[1000px] sm:max-w-[800px] md:max-w-[600px] lg:max-w-[700px] xl:max-w-[800px] 2xl:max-w-[1000px]">
         <input
           type="text"
-          className="w-full h-full border border-gray-300 rounded-[24px] px-3 pl-10"
+          className="w-full h-[34px] border border-gray-300 rounded-[24px] px-3 pl-10 text-sm"
           placeholder="Search..."
         />
         <SearchIcon className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
       </div>
 
-      <div className="ml-2 flex items-center">
-        <div className="w-[100px] h-[50px] sm:w-[80px] sm:h-[40px] md:w-[100px] md:h-[50px] lg:w-[140px] lg:h-[50px] xl:w-[160px] xl:h-[60px] 2xl:w-[170px] 2xl:h-[60px] hover:bg-gray-200 flex items-center justify-center rounded">
-          <div className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-xl 2xl:text-2xl font-semibold">{formattedTime}</div>
+      <div className="ml-2 flex items-center space-x-2 sm:space-x-4">
+        {/* Time Display (Visible on Medium Screens and Larger) */}
+        <div className="hidden md:flex w-[80px] h-[35px] sm:w-[100px] sm:h-[50px] lg:w-[120px] lg:h-[50px] xl:w-[140px] xl:h-[60px] 2xl:w-[160px] 2xl:h-[60px] flex items-center justify-center rounded bg-gray-200">
+          <div className="text-xs sm:text-sm lg:text-base xl:text-lg 2xl:text-xl font-semibold">{formattedTime}</div>
         </div>
-        
-        {/* POS Button */}
-        <div className='ml-4 sm:ml-2'>
+
+        {/* POS Button (Visible on All Screen Sizes) */}
+        <div>
           <button
-            className="w-[60px] h-[35px] sm:w-[50px] sm:h-[30px] md:w-[60px] md:h-[35px] lg:w-[70px] lg:h-[40px] xl:w-[73px] xl:h-[43px] 2xl:w-[73px] 2xl:h-[43px] rounded-[10%] bg-[#AE69F5] text-white flex items-center justify-center hover:bg-[#9732FF]"
+            className="w-[60px] h-[35px] rounded-[10%] bg-[#AE69F5] text-white flex items-center justify-center hover:bg-[#9732FF] text-sm"
           >
             POS
           </button>
         </div>
 
         {/* Request Button */}
-        <div className='ml-4 sm:ml-2'>
+        <div>
           <button
-            className="w-[35px] h-[35px] sm:w-[30px] sm:h-[30px] md:w-[35px] md:h-[35px] lg:w-[40px] lg:h-[40px] xl:w-[43px] xl:h-[43px] 2xl:w-[43px] 2xl:h-[43px] rounded-full bg-[#AE69F5] text-white flex items-center justify-center hover:bg-[#9732FF] animate-pulse"
+            className="w-[35px] h-[35px] rounded-full bg-[#AE69F5] text-white flex items-center justify-center hover:bg-[#9732FF] text-sm"
           >
-            <GroupIcon />
+            <GroupIcon fontSize="small" />
           </button>
         </div>
 
         {/* Notification Button */}
-        <div className='ml-4 sm:ml-2'>
+        <div>
           <button
-            className="w-[35px] h-[35px] sm:w-[30px] sm:h-[30px] md:w-[35px] md:h-[35px] lg:w-[40px] lg:h-[40px] xl:w-[43px] xl:h-[43px] 2xl:w-[43px] 2xl:h-[43px] rounded-full bg-[#AE69F5] text-white flex items-center justify-center hover:bg-[#9732FF] animate-pulse"
+            className="w-[35px] h-[35px] rounded-full bg-[#AE69F5] text-white flex items-center justify-center hover:bg-[#9732FF] text-sm"
           >
-            <NotificationsIcon />
+            <NotificationsIcon fontSize="small" />
           </button>
         </div>
 
         {/* Profile Button */}
-        <div className="ml-2 flex items-center w-[120px] h-[40px] sm:w-[100px] sm:h-[40px] md:w-[120px] md:h-[50px] lg:w-[140px] lg:h-[50px] xl:w-[160px] xl:h-[60px] 2xl:w-[160px] 2xl:h-[60px] hover:bg-gray-200 rounded">
+        <div className="flex items-center space-x-1">
           <button
-            className="w-[35px] h-[35px] sm:w-[30px] sm:h-[30px] md:w-[35px] md:h-[35px] lg:w-[43px] lg:h-[43px] xl:w-[43px] xl:h-[43px] 2xl:w-[43px] 2xl:h-[43px] rounded-full bg-[#AE69F5] text-white flex items-center justify-center hover:bg-[#9732FF]"
+            className="w-[35px] h-[35px] rounded-full bg-[#AE69F5] text-white flex items-center justify-center hover:bg-[#9732FF] text-sm"
           >
-            <AccountCircleIcon />
+            <AccountCircleIcon fontSize="small" />
           </button>
-          <span className='ml-2 text-xs sm:text-xs md:text-sm lg:text-sm xl:text-md 2xl:text-md'>Chamindu</span>
+          <span className="hidden sm:inline text-sm">Chamindu</span>
         </div>
       </div>
     </div>

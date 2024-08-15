@@ -13,7 +13,7 @@ const options = {
   },
   elements: {
     line: {
-      tension: 0.4, 
+      tension: 0.4,
     },
   },
 };
@@ -28,16 +28,24 @@ const data = {
       backgroundColor: 'rgba(59, 130, 246, 0.2)',
       borderWidth: 2,
       fill: true,
-      tension: 0.4,  
+      tension: 0.4,
     },
   ],
 };
 
 function LineChart() {
   return (
-    
-    <div className="relative flex flex-col w-full h-full ">
-      <div className="absolute top-4 right-4 flex gap-2">
+    <div className="w-full 
+      2xl:w-[730px] 2xl:h-[450px]
+      xl:w-[700px] xl:h-[420px]
+      lg:w-[730px] lg:h-[400px]
+      md:w-[700px] md:h-[380px]
+      sm:w-[600px] sm:h-[350px]
+      xs:w-full xs:h-[320px]
+      h-[200px] bg-white text-gray-800 rounded-md shadow-md relative flex flex-col">
+      
+      {/* Icon Buttons with margin adjustments */}
+      <div className="absolute top-4 right-4 flex gap-2 mb-2">
         <IconButton size="small" className="bg-white shadow-sm">
           <ZoomOut />
         </IconButton>
@@ -48,7 +56,13 @@ function LineChart() {
           <Home />
         </IconButton>
       </div>
-      <h2 className="text-xl font-semibold mb-2 ml-4">Daily Income</h2>
+      
+      {/* Title with responsive text sizes */}
+      <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mt-2 mb-6 ml-4">
+        Daily Income
+      </h2>
+      
+      {/* Chart Container */}
       <div className="flex-grow ml-4 mr-4 mb-4">
         <Line data={data} options={options} />
       </div>

@@ -39,8 +39,17 @@ const data = {
 
 function LineChart1() {
   return (
-    <div className="relative justify-center flex flex-col">
-      <div className="absolute top-4 right-4 flex gap-2 mb-4 items-center">
+    <div className="w-full 
+      2xl:w-[730px] 2xl:h-[450px]
+      xl:w-[700px] xl:h-[420px]
+      lg:w-[730px] lg:h-[400px]
+      md:w-[700px] md:h-[380px]
+      sm:w-[600px] sm:h-[350px]
+      xs:w-full xs:h-[320px]
+      h-[200px] bg-white text-gray-800 rounded-md shadow-md relative flex flex-col">
+      
+      {/* Icon Buttons with margin adjustments */}
+      <div className="absolute top-4 right-4 flex gap-2 mb-4 ">
         <IconButton size="small" className="bg-white shadow-sm">
           <ZoomOut />
         </IconButton>
@@ -51,8 +60,14 @@ function LineChart1() {
           <Home />
         </IconButton>
       </div>
-      <h2 className="text-xl font-semibold mb-2 ml-4">Monthly Sales</h2>
-      <div className="flex-grow ml-4 mr-4">
+      
+      {/* Title with responsive text sizes */}
+      <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mt-2 mb-6 ml-4">
+        Monthly Sales
+      </h2>
+      
+      {/* Chart Container */}
+      <div className="flex-grow ml-4 mr-4 mb-4">
         <Line data={data} options={options} />
       </div>
     </div>

@@ -35,9 +35,9 @@ function DashBoard() {
           <div key={index} className='relative w-[280px] h-[120px] sm:w-[320px] sm:h-[140px] md:w-[350px] md:h-[160px] bg-white rounded-md p-4 overflow-hidden shadow-md'>
             <div className='absolute top-[-30px] right-[-30px]'>
               {/* Top circle */}
-              <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full ${circleColors[index]} absolute top-0 right-4 opacity-50`}></div>
+              <div className={`w-20 h-20 sm:w-24 sm:h-24 md:w-24 md:h-24 lg:w-24 lg:h-24 xl:w-24 xl:h-24 2xl:w-24 2xl:h-24 rounded-full ${circleColors[index]} absolute top-0 right-4 opacity-50`}></div>
               {/* Bottom circle */}
-              <div className={`w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[60px] md:h-[60px] rounded-full ${circleColors[index]} absolute top-[60px] right-2 opacity-30`}></div>
+              <div className={`w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] md:w-[60px] md:h-[60px] rounded-full ${circleColors[index]} absolute top-[60px] right-2 opacity-30`}></div>
             </div>
             <div className='text-sm sm:text-base md:text-lg font-semibold mt-4'>{names[index]}</div>
             <div className='text-xl sm:text-2xl md:text-3xl font-bold mt-1'>{counts[index]}</div>
@@ -47,12 +47,9 @@ function DashBoard() {
 
       {/* Line Charts */}
       <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 md:mt-10">
-        <div className='w-full sm:w-[600px] md:w-[700px] lg:w-[730px] h-[300px] sm:h-[350px] md:h-[400px] bg-white text-gray-800 rounded-md shadow-md'>
           <LineChart /> 
-        </div>
-        <div className='w-full sm:w-[600px] md:w-[700px] lg:w-[730px] h-[300px] sm:h-[350px] md:h-[400px] bg-white text-gray-800 rounded-md shadow-md'>
           <MonthlySalesChart />
-        </div>
+        
       </div>
 
       {/* Table */}
