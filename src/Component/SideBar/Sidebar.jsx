@@ -72,10 +72,15 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`${
-        isCollapsed ? 'w-[5.75rem]' : 'w-[17.56rem]'
-      } bg-white h-screen shadow-md flex flex-col transition-all duration-300 ease-in-out`}
-    >
+  className={`${
+    isCollapsed ? '2xl:w-[5.75rem]' : '2xl:w-[17.56rem]'
+  } bg-white h-screen shadow-md flex flex-col transition-all duration-300 ease-in-out
+  sm:${isCollapsed ? 'w-[4rem]' : 'w-[8rem]'}
+  md:${isCollapsed ? 'w-[4.5rem]' : 'w-[10rem]'}
+  lg:${isCollapsed ? 'w-[5rem]' : 'w-[12rem]'}
+  xl:${isCollapsed ? 'w-[5.7.5rem]' : 'w-[17rem]'}
+  2xl:${isCollapsed ? 'w-[5.75rem]' : 'w-[17.56rem]'}`}
+>
       <div className="flex items-center justify-between  p-4">
         <button onClick={toggleSidebar}>
           <Menu fontSize="large" />
