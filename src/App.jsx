@@ -23,8 +23,6 @@ function App() {
             <TopBar />
             <Title />
           </div>
-
-        
           <DashBoard />
         </div>
 
