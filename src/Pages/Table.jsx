@@ -5,14 +5,16 @@ function Table() {
   return (
     <div className="flex flex-wrap justify-center gap-8 mt-8">
       <div className='bg-white text-gray-800 rounded-md shadow-md
-        2xl:w-[1500px] 2xl:h-[800px]
-        xl:w-[1200px] xl:h-[700px]
-        lg:w-[900px] lg:h-[600px]
-        md:w-[600px] md:h-[500px]
-        sm:w-[400px] sm:h-[400px]
-        xs:w-[270px] xs:h-[400px]'> {/* Mobile size adjustment */}
+        w-full 
+      2xl:w-[1500px] 2xl:h-[800px]
+      xl:w-[730px] xl:h-[450px]
+      lg:w-[730px] lg:h-[420px]
+      md:w-[700px] md:h-[400px]
+      sm:w-[600px] sm:h-[350px]
+      xs:w-full xs:h-[350px]
+      h-[500px]'> {/* Mobile size adjustment */}
         
-        <div className='text-xl font-semibold block ml-7 mt-7 text-[#264164]
+        <div className='text-xl font-semibold block ml-7 mt-7 text-[#264164] mb-3
           2xl:text-xl
           xl:text-lg
           lg:text-md
@@ -22,7 +24,8 @@ function Table() {
           Supplier Credit
         </div>
         
-        <div className="relative mx-auto
+        <div className="flex justify-center items-center">
+  <div className="relative mx-auto
           2xl:w-[327px] 2xl:h-[43px]
           xl:w-[250px] xl:h-[38px]
           lg:w-[200px] lg:h-[34px]
@@ -30,21 +33,23 @@ function Table() {
           sm:w-[160px] sm:h-[28px]
           xs:w-[130px] xs:h-[24px]"> {/* Mobile size adjustment */}
           
-          <input
-            type="text"
-            className="h-full border border-gray-300 rounded-[3.9px] px-3 pl-10 bg-white shadow-md
-              2xl:text-base
-              xl:text-sm
-              lg:text-xs
-              md:text-xs
-              sm:text-xs
-              xs:text-[5px]"
-            placeholder="Search..."
-          />
-          <SearchIcon className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-xs" />
-        </div>
+    <input
+      type="text"
+      className="h-full border border-gray-300 rounded-[3.9px] px-3 pl-10 bg-white shadow-md
+        2xl:text-base
+        xl:text-sm
+        lg:text-xs
+        md:text-xs
+        sm:text-xs
+        xs:text-[2px]"
+      placeholder="Search..."
+    />
+    <SearchIcon className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-xs" />
+  </div>
+</div>
+
         
-        <div className="p-6">
+        <div className="p-2">
           <table className="min-w-full bg-white border border-gray-300
             2xl:w-full
             xl:w-full

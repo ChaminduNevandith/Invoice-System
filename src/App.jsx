@@ -4,7 +4,7 @@ import Sidebar from './Component/SideBar/Sidebar.jsx';
 import TopBar from './Component/TopBar/TopBar.jsx';
 import SettingButton from './Component/SettingButton/SettingButton.jsx';
 import RightSideBar from './Component/RightSideBar/RightSideBar.jsx';
-import Title from './Component/title/title.jsx';
+import Title from './Component/Title/Title.jsx';
 import DashBoard from './Pages/DashBoard.jsx';
 
 function App() {

@@ -4,12 +4,14 @@ function Chart() {
   return (
     <div className="flex flex-wrap justify-center gap-4 mt-8 px-4">
       <div className="bg-white text-gray-800 rounded-md shadow-md p-4
-        2xl:w-[1500px] 2xl:h-[800px]
-        xl:w-[1200px] xl:h-[700px]
-        lg:w-[900px] lg:h-[600px]
-        md:w-[600px] md:h-[500px]
-        sm:w-[400px] sm:h-[400px]
-        w-[270px]">
+      w-full 
+      2xl:w-[1500px] 2xl:h-[800px]
+      xl:w-[730px] xl:h-[450px]
+      lg:w-[730px] lg:h-[420px]
+      md:w-[700px] md:h-[400px]
+      sm:w-[600px] sm:h-[350px]
+      xs:w-full xs:h-[350px]
+      h-[500px]">
         
         {/* Title */}
         <h2 className="text-lg font-medium text-center text-[#264164]

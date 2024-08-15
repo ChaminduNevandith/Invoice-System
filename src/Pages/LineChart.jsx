@@ -38,10 +38,10 @@ function LineChart() {
     <div className="w-full 
       2xl:w-[730px] 2xl:h-[450px]
       xl:w-[700px] xl:h-[420px]
-      lg:w-[730px] lg:h-[400px]
-      md:w-[700px] md:h-[380px]
+      lg:w-[730px] lg:h-[420px]
+      md:w-[700px] md:h-[400px]
       sm:w-[600px] sm:h-[350px]
-      xs:w-full xs:h-[320px]
+      xs:w-full xs:h-[350px]
       h-[200px] bg-white text-gray-800 rounded-md shadow-md relative flex flex-col">
       
       {/* Icon Buttons with margin adjustments */}
