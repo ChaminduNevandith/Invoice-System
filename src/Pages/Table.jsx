@@ -12,7 +12,7 @@ function Table() {
         sm:w-[400px] sm:h-[400px]
         xs:w-[270px] xs:h-[400px]'> {/* Mobile size adjustment */}
         
-        <div className='text-xl font-semibold block ml-7 mt-7
+        <div className='text-xl font-semibold block ml-7 mt-7 text-[#264164]
           2xl:text-xl
           xl:text-lg
           lg:text-md
@@ -53,7 +53,7 @@ function Table() {
             sm:w-full
             xs:w-full"> {/* Mobile size adjustment */}
             <thead>
-              <tr className="w-full bg-[#F2F1F1] border-b border-gray-300 text-xs
+              <tr className="w-full bg-[#F2F1F1] border-b border-gray-300 text-xs text-[#264164]
                 2xl:text-base
                 xl:text-sm
                 lg:text-xs

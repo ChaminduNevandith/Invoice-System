@@ -62,7 +62,7 @@ function LineChart1() {
       </div>
       
       {/* Title with responsive text sizes */}
-      <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mt-2 mb-6 ml-4">
+      <h2 className="text-lg text-[#264164] sm:text-xl md:text-2xl font-semibold mt-2 mb-6 ml-4">
         Monthly Sales
       </h2>
       

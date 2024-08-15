@@ -12,7 +12,7 @@ function Chart() {
         w-[270px]">
         
         {/* Title */}
-        <h2 className="text-lg font-medium text-center text-blue-900
+        <h2 className="text-lg font-medium text-center text-[#264164]
           2xl:text-2xl
           xl:text-xl
           lg:text-lg
@@ -30,7 +30,7 @@ function Chart() {
             lg:text-sm
             md:text-xs
             sm:text-xs">
-            <p className="text-gray-500 mb-4
+            <p className="text-[#264164] mb-4
               2xl:text-lg
               xl:text-md
               lg:text-sm
