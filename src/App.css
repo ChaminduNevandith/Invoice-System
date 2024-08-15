@@ -1,0 +1,39 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
+
+.main-content {
+  display: flex;
+  flex: 1; /* Take remaining space */
+  overflow: hidden; /* Hide overflow to control scrolling manually */
+}
+
+.sidebar-container {
+  position: relative;
+  flex-shrink: 0; /* Prevent the sidebar from shrinking */
+}
+
+.content {
+  flex: 1;
+  /* Allow vertical scrolling */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar-title-container {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+  width: 100%;
+}
+
+/* Setting Button */
+.setting-button-container {
+  position: fixed;
+  top: 500px;
+  right: 0;
+}
