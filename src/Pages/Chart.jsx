@@ -6,10 +6,10 @@ function Chart() {
       <div className="bg-white text-gray-800 rounded-md shadow-md p-4
       w-full 
       2xl:w-[1500px] 2xl:h-[800px]
-      xl:w-[730px] xl:h-[450px]
+      xl:w-[1000px] xl:h-[450px]
       lg:w-[730px] lg:h-[420px]
-      md:w-[700px] md:h-[400px]
-      sm:w-[600px] sm:h-[350px]
+      md:w-[640px] md:h-[400px]
+      sm:w-[530px] sm:h-[350px]
       xs:w-full xs:h-[350px]
       h-[500px]">
         

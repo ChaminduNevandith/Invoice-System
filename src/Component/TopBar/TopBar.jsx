@@ -122,11 +122,11 @@ function TopBar() {
           {/* Profile Dropdown */}
 {isProfileOpen && (
   <div className="absolute right-0 top-[50px] w-48 bg-white shadow-lg rounded-md p-2 z-50">
-    <div className="py-2 px-4 text-sm flex items-center space-x-2 hover:bg-gray-100 cursor-pointer">
+    <div className="py-2 px-4 text-sm flex items-center space-x-2 hover:bg-[#AE69F5] hover:text-white cursor-pointer">
       <EditIcon fontSize="small" />
       <span>Edit Profile</span>
     </div>
-    <div className="py-2 px-4 text-sm flex items-center space-x-2 hover:bg-gray-100 cursor-pointer">
+    <div className="py-2 px-4 text-sm flex items-center space-x-2 hover:bg-[#AE69F5] hover:text-white cursor-pointer">
       <PowerSettingsNewIcon fontSize="small" />
       <span>Log Out</span>
     </div>

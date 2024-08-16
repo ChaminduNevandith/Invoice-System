@@ -37,7 +37,7 @@ function LineChart() {
   return (
     <div className="w-full 
       2xl:w-[730px] 2xl:h-[450px]
-      xl:w-[700px] xl:h-[420px]
+      xl:w-[1000px] xl:h-[420px]
       lg:w-[730px] lg:h-[420px]
       md:w-[700px] md:h-[400px]
       sm:w-[600px] sm:h-[350px]
@@ -62,9 +62,13 @@ function LineChart() {
         Daily Income
       </h2>
       
-      {/* Chart Container */}
+      {/* Chart Container with responsive widths */}
       <div className="flex-grow ml-4 mr-4 mb-4">
-        <Line data={data} options={options} />
+        <div className="w-full
+          2xl:w-[90%] xl:w-[85%] lg:w-[80%] md:w-[75%] sm:w-[70%] xs:w-[100%] h-[350px]
+          mx-auto">
+          <Line data={data} options={options} />
+        </div>
       </div>
     </div>
   );

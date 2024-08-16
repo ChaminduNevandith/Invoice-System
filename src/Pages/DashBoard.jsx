@@ -3,6 +3,7 @@ import LineChart from './LineChart';
 import MonthlySalesChart from './MonthlySalesChart';
 import Table from './Table';
 import Chart from './Chart';
+import Container from 'postcss/lib/container';
 
 const circleColors = [
   'bg-purple-500',
@@ -58,17 +59,17 @@ function DashBoard() {
         </div>
       
 
-      {/* Bars */}
-      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 md:mt-10">
-        <div className='w-full sm:w-[600px] md:w-[700px] lg:w-[730px] h-[300px] sm:h-[350px] md:h-[400px] bg-white text-gray-800 rounded-md shadow-md'>
+       {/* Bars */}
+       <div className="flex flex-wrap justify-center gap-3 mt-8">
+        <div className='w-full sm:w-[600px] md:w-[700px] lg:w-[730px] xl:w-[1000px] 2xl:w-[730px] h-[300px] sm:h-[350px] md:h-[400px] bg-white text-gray-800 rounded-md shadow-md'>
           <span className='text-lg sm:text-xl md:text-2xl font-semibold block ml-4 sm:ml-5 md:ml-6 mt-4 sm:mt-5 md:mt-6 text-[#264164]'>Recent Activity</span>
         </div>
-        <div className='w-full sm:w-[600px] md:w-[700px] lg:w-[730px] h-[300px] sm:h-[350px] md:h-[400px] bg-white text-gray-800 rounded-md shadow-md'>
+        <div className='w-full sm:w-[600px] md:w-[700px] lg:w-[730px] xl:w-[1000px] 2xl:w-[730px] h-[300px] sm:h-[350px] md:h-[400px] bg-white text-gray-800 rounded-md shadow-md'>
           <span className='text-lg sm:text-xl md:text-2xl font-semibold block ml-4 sm:ml-5 md:ml-6 mt-4 sm:mt-5 md:mt-6 text-[#264164]'>Near by Cheques</span>
           <div className='text-lg sm:text-xl md:text-2xl font-medium flex items-center justify-center mt-[80px] sm:mt-[100px] md:mt-[120px]'>No data available</div>
         </div>
       </div>
-
+      
       {/* Additional Chart */}
       <div className='flex flex-wrap justify-center gap-3 mt-8 '>
         
