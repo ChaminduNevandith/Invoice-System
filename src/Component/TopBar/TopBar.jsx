@@ -3,11 +3,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import GroupIcon from '@mui/icons-material/Group';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import EditIcon from '@mui/icons-material/Edit';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
 function TopBar() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
-  const [isRequestOpen, setIsRequestOpen] = useState(false); // State for request dropdown
+  const [isRequestOpen, setIsRequestOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false); // State for profile dropdown
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -25,6 +28,10 @@ function TopBar() {
 
   const toggleRequestDropdown = () => {
     setIsRequestOpen((prev) => !prev);
+  };
+
+  const toggleProfileDropdown = () => {
+    setIsProfileOpen((prev) => !prev);
   };
 
   return (
@@ -103,13 +110,29 @@ function TopBar() {
         </div>
 
         {/* Profile Button */}
-        <div className="flex items-center space-x-1">
+        <div className="relative flex items-center space-x-1">
           <button
             className="w-[35px] h-[35px] rounded-full bg-[#AE69F5] text-white flex items-center justify-center hover:bg-[#9732FF] text-sm"
+            onClick={toggleProfileDropdown}
           >
             <AccountCircleIcon fontSize="small" />
           </button>
           <span className="hidden sm:inline text-sm">Chamindu</span>
+
+          {/* Profile Dropdown */}
+{isProfileOpen && (
+  <div className="absolute right-0 top-[50px] w-48 bg-white shadow-lg rounded-md p-2 z-50">
+    <div className="py-2 px-4 text-sm flex items-center space-x-2 hover:bg-gray-100 cursor-pointer">
+      <EditIcon fontSize="small" />
+      <span>Edit Profile</span>
+    </div>
+    <div className="py-2 px-4 text-sm flex items-center space-x-2 hover:bg-gray-100 cursor-pointer">
+      <PowerSettingsNewIcon fontSize="small" />
+      <span>Log Out</span>
+    </div>
+  </div>
+)}
+
         </div>
       </div>
     </div>
