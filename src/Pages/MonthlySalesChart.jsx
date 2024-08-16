@@ -41,8 +41,8 @@ function LineChart1() {
   return (
     <div className="w-full 
       2xl:w-[730px] 2xl:h-[450px]
-      xl:w-[1000px] xl:h-[450px]
-      lg:w-[730px] lg:h-[420px]
+      xl:w-[1500px] xl:h-[450px]
+      lg:w-[1000px] lg:h-[420px]
       md:w-[700px] md:h-[400px]
       sm:w-[600px] sm:h-[350px]
       xs:w-full xs:h-[350px]
@@ -66,10 +66,10 @@ function LineChart1() {
         Monthly Sales
       </h2>
       
-      {/* Chart Container with responsive widths */}
-      <div className="flex-grow ml-4 mr-4 mb-4">
+      {/* Chart Container with increased chart width and centering */}
+      <div className="flex-grow flex justify-center items-center ml-4 mr-4 mb-4">
         <div className="w-full
-          2xl:w-[90%] xl:w-[85%] lg:w-[80%] md:w-[75%] sm:w-[70%] xs:w-[100%] h-[350px]
+          2xl:w-[98%] xl:w-[98%] lg:w-[95%] md:w-[90%] sm:w-[85%] xs:w-[90%] h-[350px]
           mx-auto">
           <Line data={data} options={options} />
         </div>
