@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Sidebar from './Component/SideBar/Sidebar.jsx';
 import TopBar from './Component/TopBar/TopBar.jsx';
@@ -7,34 +8,44 @@ import RightSideBar from './Component/RightSideBar/RightSideBar.jsx';
 import Title from './Component/Title/Title.jsx';
 import DashBoard from './Pages/DashBoard.jsx';
 
+
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className='body'>
-      <div className='main-content'>
-        <div className='sidebar-container'>
-          <Sidebar />
-        </div>
-        
-        {/* Main Content */}
-        <div className='content'>
-          <div className='topbar-title-container'>
-            <TopBar />
-            <Title />
+    <Router>
+      <div className='body'>
+        <div className='main-content'>
+          {/* Sidebar */}
+          <div className='sidebar-container'>
+            <Sidebar />
           </div>
-          <DashBoard />
+          
+          {/* Main Content */}
+          <div className='content'>
+            {/* TopBar and Title */}
+            <div className='topbar-title-container'>
+              <TopBar />
+              <Title />
+            </div>
+            
+            {/* Routes */}
+            <Routes>
+              <Route path="/" element={<DashBoard />} />
+
+            </Routes>
+          </div>
+
+          {/* Right Sidebar */}
+          {isSidebarOpen && <RightSideBar setIsSidebarOpen={setIsSidebarOpen} />}
         </div>
 
-        {/* Right Sidebar */}
-        {isSidebarOpen && <RightSideBar setIsSidebarOpen={setIsSidebarOpen} />}
+        {/* Setting Button */}
+        <div className='setting-button-container'>
+          <SettingButton setIsSidebarOpen={setIsSidebarOpen} />
+        </div>
       </div>
-
-      {/* Setting Button */}
-      <div className='setting-button-container'>
-        <SettingButton setIsSidebarOpen={setIsSidebarOpen} />
-      </div>
-    </div>
+    </Router>
   );
 }
 

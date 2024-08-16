@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   Dashboard,
   People,
   Receipt,
-  LocalAtm,
-  Inventory,
-  AttachMoney,
-  AccountCircle,
-  Assessment,
-  Settings,
-  Apps,
   ReceiptLong,
   ExpandMore,
   ExpandLess,
@@ -19,11 +13,15 @@ import {
   Description,
   Replay,
   QrCode,
+  Inventory,
   Groups,
   Man,
   Person,
   Summarize,
-  Menu,
+  Settings,
+  Apps,
+  TaskAlt,
+  AccountBalanceWallet,
 } from '@mui/icons-material';
 
 const Sidebar = () => {
@@ -35,61 +33,24 @@ const Sidebar = () => {
   const [isUsersDropdownOpen, setIsUsersDropdownOpen] = useState(false);
   const [isReportDropdownOpen, setIsReportDropdownOpen] = useState(false);
   const [isSettingsDropdownOpen, setIsSettingsDropdownOpen] = useState(false);
-  
 
-  
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  const toggleCustomerDropdown = () => {
-    setIsCustomerDropdownOpen(!isCustomerDropdownOpen);
-  };
-
-  const toggleStockDropdown = () => {
-    setIsStockDropdownOpen(!isStockDropdownOpen);
-  };
-
-  const toggleSuppliersDropdown = () => {
-    setIsSuppliersDropdownOpen(!isSuppliersDropdownOpen);
-  };
-
-  const toggleSalesmenDropdown = () => {
-    setIsSalesmenDropdownOpen(!isSalesmenDropdownOpen);
-  };
-
-  const toggleUsersDropdown = () => {
-    setIsUsersDropdownOpen(!isUsersDropdownOpen);
-  };
-
-  const toggleReportDropdown = () => {
-    setIsReportDropdownOpen(!isReportDropdownOpen);
-  };
-
-  const toggleSettingsDropdown = () => {
-    setIsSettingsDropdownOpen(!isSettingsDropdownOpen);
-  };
-
   return (
     <div
-  className={`${
-    isCollapsed ? '2xl:w-[5.75rem]' : '2xl:w-[17.56rem]'
-  } bg-white h-screen shadow-md flex flex-col transition-all duration-300 ease-in-out
-  sm:${isCollapsed ? 'w-[4rem]' : 'w-[8rem]'}
-  md:${isCollapsed ? 'w-[4.5rem]' : 'w-[10rem]'}
-  lg:${isCollapsed ? 'w-[5rem]' : 'w-[12rem]'}
-  xl:${isCollapsed ? 'w-[5.7.5rem]' : 'w-[17rem]'}
-  2xl:${isCollapsed ? 'w-[5.75rem]' : 'w-[17.56rem]'}`}
->
-      <div className="flex items-center justify-between  p-4">
+      className={`${
+        isCollapsed ? '2xl:w-[5.75rem]' : '2xl:w-[17.56rem]'
+      } bg-white h-screen shadow-md flex flex-col transition-all duration-300 ease-in-out`}
+    >
+      <div className="flex items-center justify-between p-4">
         <button onClick={toggleSidebar}>
-          <Menu fontSize="large" />
+          <Apps fontSize="large" />
         </button>
         {!isCollapsed && (
           <button onClick={toggleSidebar}>
-            <span className="material-icons">
-              {isCollapsed ? <ExpandMore /> : <ArrowBack />}
-            </span>
+            {isCollapsed ? <ExpandMore /> : <ArrowBack />}
           </button>
         )}
       </div>
@@ -101,8 +62,10 @@ const Sidebar = () => {
               isCollapsed ? 'justify-center text-center' : ''
             }`}
           >
-            <Dashboard />
-            {!isCollapsed && <span className="ml-4">Dashboard</span>}
+            <NavLink to="/" activeClassName="text-purple-600">
+              <Dashboard />
+              {!isCollapsed && <span className="ml-4">Dashboard</span>}
+            </NavLink>
           </li>
 
           {/* Customers with Dropdown */}
@@ -110,7 +73,7 @@ const Sidebar = () => {
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
               isCollapsed ? 'justify-center text-center' : ''
             }`}
-            onClick={toggleCustomerDropdown}
+            onClick={() => setIsCustomerDropdownOpen(!isCustomerDropdownOpen)}
           >
             <People />
             {!isCollapsed && (
@@ -125,20 +88,28 @@ const Sidebar = () => {
           {isCustomerDropdownOpen && !isCollapsed && (
             <ul className="pl-8 space-y-2">
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <PersonAdd />
-                <span className="ml-4">Add Customers</span>
+                <NavLink to="/add-customer">
+                  <PersonAdd />
+                  <span className="ml-4">Add Customers</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Group />
-                <span className="ml-4">List Customers</span>
+                <NavLink to="/list-customers">
+                  <Group />
+                  <span className="ml-4">List Customers</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Description />
-                <span className="ml-4">Customer Credit Log</span>
+                <NavLink to="/customer-credit-log">
+                  <Description />
+                  <span className="ml-4">Customer Credit Log</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Replay />
-                <span className="ml-4">Customer Return</span>
+                <NavLink to="/customer-return">
+                  <Replay />
+                  <span className="ml-4">Customer Return</span>
+                </NavLink>
               </li>
             </ul>
           )}
@@ -149,8 +120,10 @@ const Sidebar = () => {
               isCollapsed ? 'justify-center text-center' : ''
             }`}
           >
-            <Receipt />
-            {!isCollapsed && <span className="ml-4">Quotation</span>}
+            <NavLink to="/quotation">
+              <Receipt />
+              {!isCollapsed && <span className="ml-4">Quotation</span>}
+            </NavLink>
           </li>
 
           {/* Invoice */}
@@ -159,8 +132,10 @@ const Sidebar = () => {
               isCollapsed ? 'justify-center text-center' : ''
             }`}
           >
-            <ReceiptLong />
-            {!isCollapsed && <span className="ml-4">Invoice</span>}
+            <NavLink to="/invoice">
+              <ReceiptLong />
+              {!isCollapsed && <span className="ml-4">Invoice</span>}
+            </NavLink>
           </li>
 
           {/* Due Payment */}
@@ -169,21 +144,23 @@ const Sidebar = () => {
               isCollapsed ? 'justify-center text-center' : ''
             }`}
           >
-            <LocalAtm />
-            {!isCollapsed && <span className="ml-4">Due Payment</span>}
+            <NavLink to="/due-payment" activeClassName="text-purple-600">
+              <Receipt />
+              {!isCollapsed && <span className="ml-4">Due Payment</span>}
+            </NavLink>
           </li>
 
-          {/* Stocks with Dropdown */}
+          {/* Stock with Dropdown*/}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
               isCollapsed ? 'justify-center text-center' : ''
             }`}
-            onClick={toggleStockDropdown}
+            onClick={() => setIsStockDropdownOpen(!isStockDropdownOpen)}
           >
             <Inventory />
             {!isCollapsed && (
               <>
-                <span className="ml-4">Stocks</span>
+                <span className="ml-4">Stock</span>
                 <span className="ml-auto">
                   {isStockDropdownOpen ? <ExpandLess /> : <ExpandMore />}
                 </span>
@@ -193,24 +170,34 @@ const Sidebar = () => {
           {isStockDropdownOpen && !isCollapsed && (
             <ul className="pl-8 space-y-2">
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Inventory />
-                <span className="ml-4">Add Product</span>
+                <NavLink to="/stock/inventory">
+                  <Inventory />
+                  <span className="ml-4">Add Product</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Description />
-                <span className="ml-4">List Product</span>
+                <NavLink to="/stock/suppliers">
+                  <People />
+                  <span className="ml-4">List Product</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Receipt />
-                <span className="ml-4">GRN</span>
+                <NavLink to="/stock/suppliers">
+                  <People />
+                  <span className="ml-4">GRN</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <QrCode />
-                <span className="ml-4">Barcodes</span>
+                <NavLink to="/stock/suppliers">
+                  <QrCode />
+                  <span className="ml-4">Barcodes</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <ReceiptLong />
-                <span className="ml-4">Damage Notes</span>
+                <NavLink to="/stock/suppliers">
+                  <Receipt />
+                  <span className="ml-4">DamageNotes</span>
+                </NavLink>
               </li>
             </ul>
           )}
@@ -220,7 +207,7 @@ const Sidebar = () => {
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
               isCollapsed ? 'justify-center text-center' : ''
             }`}
-            onClick={toggleSuppliersDropdown}
+            onClick={() => setIsSuppliersDropdownOpen(!isSuppliersDropdownOpen)}
           >
             <Groups />
             {!isCollapsed && (
@@ -235,12 +222,28 @@ const Sidebar = () => {
           {isSuppliersDropdownOpen && !isCollapsed && (
             <ul className="pl-8 space-y-2">
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Groups />
-                <span className="ml-4">Add Supplier</span>
+                <NavLink to="/add-supplier">
+                  <PersonAdd />
+                  <span className="ml-4">Add Supplier</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Groups />
-                <span className="ml-4">List Suppliers</span>
+                <NavLink to="/list-suppliers">
+                  <Group />
+                  <span className="ml-4">List Suppliers</span>
+                </NavLink>
+              </li>
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/list-suppliers">
+                  <Group />
+                  <span className="ml-4">Suppliers Credit Log</span>
+                </NavLink>
+              </li>
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/list-suppliers">
+                  <Group />
+                  <span className="ml-4">Returns</span>
+                </NavLink>
               </li>
             </ul>
           )}
@@ -250,7 +253,7 @@ const Sidebar = () => {
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
               isCollapsed ? 'justify-center text-center' : ''
             }`}
-            onClick={toggleSalesmenDropdown}
+            onClick={() => setIsSalesmenDropdownOpen(!isSalesmenDropdownOpen)}
           >
             <Man />
             {!isCollapsed && (
@@ -265,12 +268,16 @@ const Sidebar = () => {
           {isSalesmenDropdownOpen && !isCollapsed && (
             <ul className="pl-8 space-y-2">
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Man />
-                <span className="ml-4">Add Salesman</span>
+                <NavLink to="/add-salesman">
+                  <PersonAdd />
+                  <span className="ml-4">Add Salesman</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Man />
-                <span className="ml-4">List Salesmen</span>
+                <NavLink to="/list-salesmen">
+                  <Group />
+                  <span className="ml-4">List Salesmen</span>
+                </NavLink>
               </li>
             </ul>
           )}
@@ -281,26 +288,47 @@ const Sidebar = () => {
               isCollapsed ? 'justify-center text-center' : ''
             }`}
           >
-            <AccountCircle />
-            {!isCollapsed && <span className="ml-4">CRM</span>}
+            <NavLink to="/crm" activeClassName="text-purple-600">
+              <People />
+              {!isCollapsed && <span className="ml-4">CRM</span>}
+            </NavLink>
           </li>
 
-          {/* Earning and Expenses */}
+          {/* Task Manager */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
               isCollapsed ? 'justify-center text-center' : ''
             }`}
           >
-            <AttachMoney />
-            {!isCollapsed && <span className="ml-4">Earning and Expenses</span>}
+            <NavLink to="/Task-Manager" activeClassName="text-purple-600">
+              <TaskAlt />
+              {!isCollapsed && <span className="ml-4">Task Manager</span>}
+            </NavLink>
           </li>
+
+          {/* Earning & Expenses  */}
+          <li
+            className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
+              isCollapsed ? 'justify-center text-center' : ''
+            }`}
+          >
+            <NavLink to="/Earning-&-Expenses" activeClassName="text-purple-600">
+              <AccountBalanceWallet />
+              {!isCollapsed && <span className="ml-4">Earning & Expenses </span>}
+            </NavLink>
+          </li>
+
+
+          
+
+
 
           {/* Users with Dropdown */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
               isCollapsed ? 'justify-center text-center' : ''
             }`}
-            onClick={toggleUsersDropdown}
+            onClick={() => setIsUsersDropdownOpen(!isUsersDropdownOpen)}
           >
             <Person />
             {!isCollapsed && (
@@ -315,27 +343,31 @@ const Sidebar = () => {
           {isUsersDropdownOpen && !isCollapsed && (
             <ul className="pl-8 space-y-2">
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Person />
-                <span className="ml-4">Add User</span>
+                <NavLink to="/add-user">
+                  <PersonAdd />
+                  <span className="ml-4">Add User</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Person />
-                <span className="ml-4">List Users</span>
+                <NavLink to="/list-users">
+                  <Group />
+                  <span className="ml-4">List Users</span>
+                </NavLink>
               </li>
             </ul>
           )}
 
-          {/* Report with Dropdown */}
+          {/* Reports with Dropdown */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
               isCollapsed ? 'justify-center text-center' : ''
             }`}
-            onClick={toggleReportDropdown}
+            onClick={() => setIsReportDropdownOpen(!isReportDropdownOpen)}
           >
             <Summarize />
             {!isCollapsed && (
               <>
-                <span className="ml-4">Report</span>
+                <span className="ml-4">Reports</span>
                 <span className="ml-auto">
                   {isReportDropdownOpen ? <ExpandLess /> : <ExpandMore />}
                 </span>
@@ -345,46 +377,62 @@ const Sidebar = () => {
           {isReportDropdownOpen && !isCollapsed && (
             <ul className="pl-8 space-y-2">
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Assessment />
-                <span className="ml-4">Stock Report</span>
+                <NavLink to="/sales-report">
+                  <Description />
+                  <span className="ml-4">Stock Report</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Assessment />
-                <span className="ml-4">Stock Details Report</span>
+                <NavLink to="/profit-report">
+                  <Description />
+                  <span className="ml-4">Stock Details Report</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Assessment />
-                <span className="ml-4">Invoice Details Report</span>
+                <NavLink to="/profit-report">
+                  <Description />
+                  <span className="ml-4">Invoice Details Report</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Assessment />
-                <span className="ml-4">Stock Card</span>
+                <NavLink to="/profit-report">
+                  <Description />
+                  <span className="ml-4">Stock Card</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Assessment />
-                <span className="ml-4">Profit & Lost</span>
+                <NavLink to="/profit-report">
+                  <Description />
+                  <span className="ml-4">Profit & Lost</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Assessment />
-                <span className="ml-4">Supplier Report</span>
+                <NavLink to="/profit-report">
+                  <Description />
+                  <span className="ml-4">Supplier Report</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Assessment />
-                <span className="ml-4">Earning Report</span>
+                <NavLink to="/profit-report">
+                  <Description />
+                  <span className="ml-4">Earning Report</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Assessment />
-                <span className="ml-4">Expenses Report</span>
+                <NavLink to="/profit-report">
+                  <Description />
+                  <span className="ml-4">Expenses Report</span>
+                </NavLink>
               </li>
             </ul>
           )}
 
-          {/* Settings with Dropdown */}
+          {/* Settings */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
               isCollapsed ? 'justify-center text-center' : ''
             }`}
-            onClick={toggleSettingsDropdown}
+            onClick={() => setIsSettingsDropdownOpen(!isSettingsDropdownOpen)}
           >
             <Settings />
             {!isCollapsed && (
@@ -399,35 +447,47 @@ const Sidebar = () => {
           {isSettingsDropdownOpen && !isCollapsed && (
             <ul className="pl-8 space-y-2">
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Settings />
-                <span className="ml-4">Invoice Settings</span>
+                <NavLink to="/app-settings">
+                  <Settings />
+                  <span className="ml-4">Invoice Settings</span>
+                </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <Settings />
-                <span className="ml-4">User Settings</span>
+                <NavLink to="/user-settings">
+                  <Person />
+                  <span className="ml-4">App Settings</span>
+                </NavLink>
               </li>
+
+              
             </ul>
           )}
 
-          {/* Apps */}
-          <li
-            className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
-            }`}
-          >
-            <Apps />
-            {!isCollapsed && <span className="ml-4">Apps</span>}
-          </li>
+<li
+                className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
+                  isCollapsed ? 'justify-center text-center' : ''
+                }`}
+              >
+                <NavLink to="/app">
+                  <Apps />
+                  {!isCollapsed && <span className="ml-4">App</span>}
+                </NavLink>
+              </li>
 
-          {/* Billing */}
-          <li
-            className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
-            }`}
-          >
-            <ReceiptLong />
-            {!isCollapsed && <span className="ml-4">Billing</span>}
-          </li>
+    
+              <li
+                className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
+                  isCollapsed ? 'justify-center text-center' : ''
+                }`}
+              >
+                <NavLink to="/billing">
+                  <ReceiptLong />
+                  {!isCollapsed && <span className="ml-4">Billing</span>}
+                </NavLink>
+              </li>
+
+
+         
         </ul>
       </nav>
     </div>
