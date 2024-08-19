@@ -7,6 +7,7 @@ import SettingButton from './Component/SettingButton/SettingButton.jsx';
 import RightSideBar from './Component/RightSideBar/RightSideBar.jsx';
 import Title from './Component/Title/Title.jsx';
 import DashBoard from './Pages/DashBoard.jsx';
+import CustomersAdd from './Pages/Customers/CustomersAdd.jsx';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             {/* Routes */}
             <Routes>
               <Route path="/" element={<DashBoard />} />
+              <Route path="/add-customer" element={<CustomersAdd/>}/>
 
             </Routes>
           </div>
