@@ -8,6 +8,8 @@ import RightSideBar from './Component/RightSideBar/RightSideBar.jsx';
 import Title from './Component/Title/Title.jsx';
 import DashBoard from './Pages/DashBoard.jsx';
 import CustomersAdd from './Pages/Customers/CustomersAdd.jsx';
+import CustomerList from './Pages/Customers/CustomerList/CustomerList.jsx';
+import CustomerCreditLogs from './Pages/Customers/CustomerCreditLogs/CustomerCreditLogs.jsx';
 
 
 function App() {
@@ -33,7 +35,9 @@ function App() {
             {/* Routes */}
             <Routes>
               <Route path="/" element={<DashBoard />} />
-              <Route path="/add-customer" element={<CustomersAdd/>}/>
+              <Route path="/add-customer" element={<CustomersAdd/>}/> 
+              <Route path="/list-customers" element={<CustomerList/>}/>
+              <Route path="/customer-credit-log" element={<CustomerCreditLogs/>}/>
 
             </Routes>
           </div>
