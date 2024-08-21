@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Search, Edit, Delete, FileCopy, Visibility } from '@mui/icons-material'; // Example of MUI icons
+import { Search } from '@mui/icons-material'; // Example of MUI icons
 import { Pagination } from '@mui/material';
+import "./Table.css";
 
 function CustomerCreditLogs() {
   return (
-    <div className="bg-gray-100 absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn">
+    <div className="bg-gray-100 absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn  pb-[150px]">
       <ListCustomers />
     </div>
   );
@@ -28,61 +29,60 @@ function ListCustomers() {
 
 
   return (
-    <div className="bg-white p-6 rounded-md shadow-md w-full">
-      <h1 className="text-2xl font-semibold text-blue-900 mb-1">Customer Credit Logs</h1>
+    <div className="bg-white p-6 rounded-md shadow-md w-full ">
+      <h1 className=" text-2xl font-semibold text-[#264164] mb-1">List Customers</h1>
       <hr className="bg-black mb-4"></hr>
 
-      <div className="flex flex-col md:flex-row justify-between mb-4">
+      <div className="flex flex-col md:flex-row justify-between mt-[20px] mb-[50px]">
         {/* Search Bar */}
         <div className="relative mb-4 md:mb-0">
-          <input 
-            type="text" 
-            placeholder="Search..." 
-            className="pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
-          />
-          <Search className="absolute top-2 left-2 text-gray-500" />
+        <select className="p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+            <option>Akila 724391</option>
+            <option>Nimal 236123</option>
+            <option>Banu 2242134</option>
+          </select>
         </div>
 
-        {/* Sort Dropdown */}
-        <div className="relative">
-          <select className="p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
-            <option>All</option>
-            <option>Active</option>
-            <option>Inactive</option>
-          </select>
+       {/* Sort Dropdown */}
+       <div className="relative ">
+          <div className='text-lg font-semibold'> Total Credit Balance: LKR 291,000.00</div>
+          <div className='text-sm font-light'>Akilla</div>
+          <div className='text-sm font-light'>724391</div>
         </div>
       </div>
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto bg-white shadow-md rounded-md">
+        <table className="table-auto w-full border-collapse text-xs
+              2xl:text-base
+              xl:text-sm
+              lg:text-xs
+              md:text-xs
+              sm:text-xs
+              xs:text-[10px]">
           <thead>
-            <tr className="bg-[#F2F1F1]">
-              <th className="p-3 text-left">Date</th>
-              <th className="p-3 text-left">Credit Type</th>
-              <th className="p-3 text-left">Credit Amoount</th>
-              <th className="p-3 text-left">Debit Amount</th>
-              <th className="p-3 text-left">Payment Method</th>
-              <th className="p-3 text-left">Cheque type</th>
-              <th className="p-3 text-left">Cheque Date</th>
-              <th className="p-3 text-left">Cheque Name</th>
+            <tr className="text-left text-gray-700 bg-[#F2F1F1]">
+            <th className="py-2 px-4 border-b">Date</th>
+              <th className="py-2 px-4 border-b">Credit Type</th>
+              <th className="py-2 px-4 border-b">Credit Amount</th>
+              <th className="py-2 px-4 border-b">Debit Amount</th>
+              <th className="py-2 px-4 border-b">Payment Method</th>
+              <th className="py-2 px-4 border-b">Cheque type</th>
+              <th className="py-2 px-4 border-b">Cheque Date</th>
+              <th className="py-2 px-4 border-b">Cheque Name</th>
             </tr>
           </thead>
           <tbody>
             {customers.map((customer) => (
-              <tr key={customer.id} className="border-t bg-[#FDFAFE]">
-                <td className="p-3">{customer.date}</td>
-                <td className="p-3">{customer.CreditType}</td>
-                <td className="p-3">{customer.CreditAmount}</td>
-                <td className="p-3">{customer.DebitAmount}</td>
-                <td className="p-3">{customer.PaymentMethod}</td>
-                <td className="p-3">{customer.Chequetype}</td>
-                <td className="p-3">{customer.ChequeDate}</td>
-                <td className="p-3">{customer.ChequeName}</td>
-                <td >
-                  
-                </td>
-                
+              <tr key={customer.id} className="table-row text-gray-700 text-left bg-[#FEF9FF]">
+                <td className="py-2 px-4 border-b" data-label="Date">{customer.date}</td>
+                <td className="py-2 px-4 border-b" data-label="Credit Type">{customer.CreditType}</td>
+                <td className="py-2 px-4 border-b" data-label="Credit Amount">{customer.CreditAmount}</td>
+                <td className="py-2 px-4 border-b" data-label="Debit Amount">{customer.DebitAmount}</td>
+                <td className="py-2 px-4 border-b" data-label="Payment Method">{customer.PaymentMethod}</td>
+                <td className="py-2 px-4 border-b" data-label="Cheque type">{customer.Chequetype}</td>
+                <td className="py-2 px-4 border-b" data-label="Cheque Date">{customer.ChequeDate}</td>
+                <td className="py-2 px-4 border-b" data-label="Cheque Name">{customer.ChequeName}</td>
               </tr>
             ))}
           </tbody>
