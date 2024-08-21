@@ -10,7 +10,7 @@ import DashBoard from './Pages/DashBoard.jsx';
 import CustomersAdd from './Pages/Customers/CustomersAdd.jsx';
 import CustomerList from './Pages/Customers/CustomerList/CustomerList.jsx';
 import CustomerCreditLogs from './Pages/Customers/CustomerCreditLogs/CustomerCreditLogs.jsx';
-
+import CustomersReturn from './Pages/Customers/CustomersReturn/CustomersReturn.jsx';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -38,6 +38,7 @@ function App() {
               <Route path="/add-customer" element={<CustomersAdd/>}/> 
               <Route path="/list-customers" element={<CustomerList/>}/>
               <Route path="/customer-credit-log" element={<CustomerCreditLogs/>}/>
+              <Route path="/customer-return" element={<CustomersReturn/>}/>
 
             </Routes>
           </div>

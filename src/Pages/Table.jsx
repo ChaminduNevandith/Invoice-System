@@ -134,7 +134,7 @@ function Table() {
           sm:w-full
           xs:w-full">
           <thead>
-            <tr className="w-full bg-[#F2F1F1] border-b border-gray-300 text-xs text-[#264164]
+            <tr className="w-full bg-[#F2F1F1] border-b border-gray-300 text-xs bg-[#F2F1F1]
               2xl:text-base
               xl:text-sm
               lg:text-xs
@@ -148,7 +148,7 @@ function Table() {
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-[#F3E5F5] text-xs
+            <tr className='bg-[#FEF9FF] text-xs
               2xl:text-base
               xl:text-sm
               lg:text-xs
@@ -161,7 +161,7 @@ function Table() {
               <td className="py-1 px-2 border-b border-gray-300">123456</td>
             </tr>
 
-            <tr className='bg-[#F3E5F5] text-xs
+            <tr className='bg-[#FEF9FF] text-xs
               2xl:text-base
               xl:text-sm
               lg:text-xs
