@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Search, Edit, Delete, FileCopy, Visibility } from '@mui/icons-material'; // Example of MUI icons
+import { Search, Edit, Delete, FileCopy, Visibility } from '@mui/icons-material'; 
 import { Pagination } from '@mui/material';
+import "./Table.css";
 
 function CustomerList() {
   return (
-    <div className="bg-gray-100 absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn">
+    <div className="bg-gray-100 absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn pb-[150px]">
       <ListCustomers />
     </div>
   );
@@ -16,7 +17,6 @@ function ListCustomers() {
     { id: 1, name: 'Akila Perera', contact: '0712345678', email: 'akila.perera@example.com', invoiceCount: 1, total: '6,500.00', status: 'Active' },
     { id: 2, name: 'Akila Perera', contact: '0712345678', email: 'akila.perera@example.com', invoiceCount: 1, total: '6,500.00', status: 'Active' },
     { id: 3, name: 'Akila Perera', contact: '0712345678', email: 'akila.perera@example.com', invoiceCount: 1, total: '6,500.00', status: 'Inactive' },
-    // Add more customers here...
   ]);
 
   const [page, setPage] = useState(1);
@@ -24,7 +24,6 @@ function ListCustomers() {
   const handleChangePage = (event, value) => {
     setPage(value);
   };
-
 
   const toggleStatus = (id) => {
     setCustomers((prevCustomers) =>
@@ -40,8 +39,8 @@ function ListCustomers() {
   };
 
   return (
-    <div className="bg-white p-6 rounded-md shadow-md w-full">
-      <h1 className="text-2xl font-semibold text-blue-900 mb-1">List Customers</h1>
+    <div className="bg-white p-6 rounded-md shadow-md w-full ">
+      <h1 className="text-2xl  font-semibold text-[#264164] mb-1 ">List Customers</h1>
       <hr className="bg-black mb-4"></hr>
 
       <div className="flex flex-col md:flex-row justify-between mb-4">
@@ -67,27 +66,33 @@ function ListCustomers() {
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto bg-white shadow-md rounded-md">
+        <table className="table-auto w-full border-collapse text-xs
+              2xl:text-base
+              xl:text-sm
+              lg:text-xs
+              md:text-xs
+              sm:text-xs
+              xs:text-[10px]">
           <thead>
-            <tr className="bg-[#F2F1F1]">
-              <th className="p-3 text-left">Name</th>
-              <th className="p-3 text-left">Contact No</th>
-              <th className="p-3 text-left">Email</th>
-              <th className="p-3 text-left">Invoice Count</th>
-              <th className="p-3 text-left">Total (LKR)</th>
-              <th className="p-3 text-left">Status</th>
-              <th className="p-3 text-left">Action</th>
+            <tr className="text-left text-gray-700 bg-[#F2F1F1]">
+              <th className="py-2 px-4 border-b">Name</th>
+              <th className="py-2 px-4 border-b">Contact No</th>
+              <th className="py-2 px-4 border-b">Email</th>
+              <th className="py-2 px-4 border-b">Invoice Count</th>
+              <th className="py-2 px-4 border-b">Total (LKR)</th>
+              <th className="py-2 px-4 border-b">Status</th>
+              <th className="py-2 px-4 border-b">Actions</th>
             </tr>
           </thead>
           <tbody>
             {customers.map((customer) => (
-              <tr key={customer.id} className="border-t bg-[#FDFAFE]">
-                <td className="p-3">{customer.name}</td>
-                <td className="p-3">{customer.contact}</td>
-                <td className="p-3">{customer.email}</td>
-                <td className="p-3">{customer.invoiceCount}</td>
-                <td className="p-3">{customer.total}</td>
-                <td className="p-3">
+              <tr key={customer.id} className="table-row text-gray-700 text-left bg-[#FEF9FF]">
+                <td className="py-2 px-4 border-b" data-label="Name">{customer.name}</td>
+                <td className="py-2 px-4 border-b" data-label="Contact No">{customer.contact}</td>
+                <td className="py-2 px-4 border-b" data-label="Email">{customer.email}</td>
+                <td className="py-2 px-4 border-b" data-label="Invoice Count">{customer.invoiceCount}</td>
+                <td className="py-2 px-4 border-b" data-label="Total (LKR)">{customer.total}</td>
+                <td className="py-2 px-4 border-b" data-label="Status">
                   <button
                     onClick={() => toggleStatus(customer.id)}
                     className={`px-3 py-1 rounded-[3.9px] text-white ${
@@ -97,19 +102,21 @@ function ListCustomers() {
                     {customer.status}
                   </button>
                 </td>
-                <td className="p-3 flex space-x-2">
-                  <button className="text-gray-600 hover:text-gray-900">
-                    <Edit />
-                  </button>
-                  <button className="text-gray-600 hover:text-gray-900">
-                    <FileCopy />
-                  </button>
-                  <button className="text-gray-600 hover:text-gray-900">
-                    <Visibility />
-                  </button>
-                  <button className="text-gray-600 hover:text-gray-900">
-                    <Delete />
-                  </button>
+                <td className="py-2 px-4 border-b" data-label="Actions">
+                  <div className="flex space-x-2 actions">
+                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#F9CD94] text-white hover:bg-[#FFA93A]  ">
+                      <Edit fontSize="small"  />
+                    </button>
+                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7ECB8F] text-white hover:bg-[#2BA946]">
+                      <FileCopy fontSize="small" />
+                    </button>
+                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7FBDFF] text-white hover:bg-[#4BA0FB]">
+                      <Visibility fontSize="small" />
+                    </button>
+                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#CC7FFF] text-white hover:bg-[#AE69F5]">
+                      <Delete fontSize="small" />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
