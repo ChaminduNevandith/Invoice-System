@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Search, CreditCard, Check, Visibility, Add } from '@mui/icons-material'; 
-import { Pagination } from '@mui/material';
+import { Pagination, Tooltip } from '@mui/material';
 import "./Table.css";
 
 function CustomersReturn() {
@@ -40,7 +40,7 @@ function ListCustomers() {
   return (
     <div className="bg-white p-6 rounded-md shadow-md w-full ">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-semibold text-[#264164] mb-1 ">List Customers</h1>
+        <h1 className="text-2xl font-semibold text-[#264164] mb-1 ">Customer Returns</h1>
         <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#F9CD94] text-white hover:bg-[#FFA93A]">
             <Add fontSize="small" />
         </button>
@@ -66,8 +66,6 @@ function ListCustomers() {
           />
           
         </div>
-
-        
 
         {/* Sort Dropdown */}
         <div className="relative">
@@ -121,15 +119,23 @@ function ListCustomers() {
                 </td>
                 <td className="py-2 px-4 border-b" data-label="Actions">
                   <div className="flex space-x-2 actions">
-                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7ECB8F] text-white hover:bg-[#2BA946]">
-                      <Check fontSize="small" />
-                    </button>
-                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7FBDFF] text-white hover:bg-[#4BA0FB]">
-                      <Visibility fontSize="small" />
-                    </button>
-                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#CC7FFF] text-white hover:bg-[#AE69F5]">
-                      <CreditCard fontSize="small" />
-                    </button>
+                  <Tooltip title="View customer Return" placement="top" arrow>
+                      <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7FBDFF] text-white hover:bg-[#4BA0FB]">
+                        <Visibility fontSize="small" />
+                      </button>
+                    </Tooltip>
+
+                    <Tooltip title="Return Prossed" placement="top" arrow>
+                      <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7ECB8F] text-white hover:bg-[#2BA946]">
+                        <Check fontSize="small" />
+                      </button>
+                    </Tooltip>
+                    
+                    <Tooltip title="Add Invoice" placement="top" arrow>
+                      <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#CC7FFF] text-white hover:bg-[#AE69F5]">
+                        <CreditCard fontSize="small" />
+                      </button>
+                    </Tooltip>
                   </div>
                 </td>
               </tr>

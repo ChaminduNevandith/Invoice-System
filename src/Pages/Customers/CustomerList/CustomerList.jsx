@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Edit, Delete, FileCopy, Visibility } from '@mui/icons-material'; 
-import { Pagination } from '@mui/material';
+import { Pagination, Tooltip } from '@mui/material';
 import "./Table.css";
 
 function CustomerList() {
@@ -40,7 +40,7 @@ function ListCustomers() {
 
   return (
     <div className="bg-white p-6 rounded-md shadow-md w-full ">
-      <h1 className="text-2xl  font-semibold text-[#264164] mb-1 ">List Customers</h1>
+      <h1 className="text-2xl font-semibold text-[#264164] mb-1">List Customers</h1>
       <hr className="bg-black mb-4"></hr>
 
       <div className="flex flex-col md:flex-row justify-between mb-4">
@@ -104,18 +104,26 @@ function ListCustomers() {
                 </td>
                 <td className="py-2 px-4 border-b" data-label="Actions">
                   <div className="flex space-x-2 actions">
-                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#F9CD94] text-white hover:bg-[#FFA93A]  ">
-                      <Edit fontSize="small"  />
-                    </button>
-                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7ECB8F] text-white hover:bg-[#2BA946]">
-                      <FileCopy fontSize="small" />
-                    </button>
-                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7FBDFF] text-white hover:bg-[#4BA0FB]">
-                      <Visibility fontSize="small" />
-                    </button>
-                    <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#CC7FFF] text-white hover:bg-[#AE69F5]">
-                      <Delete fontSize="small" />
-                    </button>
+                    <Tooltip title="Edit" placement="top" arrow>
+                      <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#F9CD94] text-white hover:bg-[#FFA93A]">
+                        <Edit fontSize="small" />
+                      </button>
+                    </Tooltip>
+                    <Tooltip title="Copy" placement="top" arrow>
+                      <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7ECB8F] text-white hover:bg-[#2BA946]">
+                        <FileCopy fontSize="small" />
+                      </button>
+                    </Tooltip>
+                    <Tooltip title="View" placement="top" arrow>
+                      <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7FBDFF] text-white hover:bg-[#4BA0FB]">
+                        <Visibility fontSize="small" />
+                      </button>
+                    </Tooltip>
+                    <Tooltip title="Delete" placement="top" arrow>
+                      <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#CC7FFF] text-white hover:bg-[#AE69F5]">
+                        <Delete fontSize="small" />
+                      </button>
+                    </Tooltip>
                   </div>
                 </td>
               </tr>

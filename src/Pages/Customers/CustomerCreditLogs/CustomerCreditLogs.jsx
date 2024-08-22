@@ -30,7 +30,7 @@ function ListCustomers() {
 
   return (
     <div className="bg-white p-6 rounded-md shadow-md w-full ">
-      <h1 className=" text-2xl font-semibold text-[#264164] mb-1">List Customers</h1>
+      <h1 className=" text-2xl font-semibold text-[#264164] mb-1">Customer Credit Logs</h1>
       <hr className="bg-black mb-4"></hr>
 
       <div className="flex flex-col md:flex-row justify-between mt-[20px] mb-[50px]">
