@@ -49,14 +49,14 @@ function ListCustomers() {
           <input 
             type="text" 
             placeholder="Search..." 
-            className="pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+            className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
           />
           <Search className="absolute top-2 left-2 text-gray-500" />
         </div>
 
         {/* Sort Dropdown */}
         <div className="relative">
-          <select className="p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+          <select className="text-[#264164] p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
             <option>All</option>
             <option>Active</option>
             <option>Inactive</option>
@@ -75,24 +75,24 @@ function ListCustomers() {
               xs:text-[10px]">
           <thead>
             <tr className="text-left text-gray-700 bg-[#F2F1F1]">
-              <th className="py-2 px-4 border-b">Name</th>
-              <th className="py-2 px-4 border-b">Contact No</th>
-              <th className="py-2 px-4 border-b">Email</th>
-              <th className="py-2 px-4 border-b">Invoice Count</th>
-              <th className="py-2 px-4 border-b">Total (LKR)</th>
-              <th className="py-2 px-4 border-b">Status</th>
-              <th className="py-2 px-4 border-b">Actions</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Name</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Contact No</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Email</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Invoice Count</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Total (LKR)</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Status</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Actions</th>
             </tr>
           </thead>
           <tbody>
             {customers.map((customer) => (
-              <tr key={customer.id} className="table-row text-gray-700 text-left bg-[#FEF9FF]">
-                <td className="py-2 px-4 border-b" data-label="Name">{customer.name}</td>
-                <td className="py-2 px-4 border-b" data-label="Contact No">{customer.contact}</td>
-                <td className="py-2 px-4 border-b" data-label="Email">{customer.email}</td>
-                <td className="py-2 px-4 border-b" data-label="Invoice Count">{customer.invoiceCount}</td>
-                <td className="py-2 px-4 border-b" data-label="Total (LKR)">{customer.total}</td>
-                <td className="py-2 px-4 border-b" data-label="Status">
+              <tr key={customer.id} className="table-row text-gray-700 text-left bg-[#FEF9FF] ">
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Name">{customer.name}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Contact No">{customer.contact}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Email">{customer.email}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Invoice Count">{customer.invoiceCount}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Total (LKR)">{customer.total}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Status">
                   <button
                     onClick={() => toggleStatus(customer.id)}
                     className={`px-3 py-1 rounded-[3.9px] text-white ${

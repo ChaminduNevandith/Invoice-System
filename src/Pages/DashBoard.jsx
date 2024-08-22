@@ -3,7 +3,7 @@ import LineChart from './LineChart';
 import MonthlySalesChart from './MonthlySalesChart';
 import Table from './Table';
 import Chart from './Chart';
-import Container from 'postcss/lib/container';
+
 
 const circleColors = [
   'bg-purple-500',

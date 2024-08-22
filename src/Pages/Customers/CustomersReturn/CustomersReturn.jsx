@@ -53,7 +53,7 @@ function ListCustomers() {
           <input 
             type="text" 
             placeholder="Search..." 
-            className="pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+            className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
           />
           <Search className="absolute top-2 left-2 text-gray-500" />
         </div>
@@ -62,14 +62,14 @@ function ListCustomers() {
         <div className="relative mb-4 md:mb-0">
           <input 
             type="date" 
-            className="pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+            className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
           />
           
         </div>
 
         {/* Sort Dropdown */}
         <div className="relative">
-          <select className="p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+          <select className="text-[#264164] p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
             <option>All</option>
             <option>Completed</option>
             <option>Pending</option>
@@ -87,27 +87,27 @@ function ListCustomers() {
               sm:text-xs
               xs:text-[10px]">
           <thead>
-            <tr className="text-left text-gray-700 bg-[#F2F1F1]">
-              <th className="py-2 px-4 border-b">Customer Name</th>
-              <th className="py-2 px-4 border-b">Date</th>
-              <th className="py-2 px-4 border-b">Reason</th>
-              <th className="py-2 px-4 border-b">Item count</th>
-              <th className="py-2 px-4 border-b">Total (LKR)</th>
-              <th className="py-2 px-4 border-b">Status</th>
-              <th className="py-2 px-4 border-b">Actions</th>
+            <tr className="text-left text-gray-700 bg-[#F2F1F1] ">
+              <th className="py-2 px-4 border-b text-[#264164]">Customer Name</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Date</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Reason</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Item count</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Total (LKR)</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Status</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Actions</th>
             </tr>
           </thead>
           <tbody>
             {customers.map((customer) => (
-              <tr key={customer.id} className="table-row text-gray-700 text-left bg-[#FEF9FF]">
-                <td className="py-2 px-4 border-b" data-label="Name">{customer.customername}</td>
-                <td className="py-2 px-4 border-b" data-label="Contact No">{customer.date}</td>
-                <td className="py-2 px-4 border-b" data-label="Reason">
+              <tr key={customer.id} className="table-row text-gray-700 text-left  bg-[#FEF9FF]">
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Name">{customer.customername}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Contact No">{customer.date}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Reason">
                   <p className="whitespace-normal break-words">{customer.reason}</p>
                 </td>
-                <td className="py-2 px-4 border-b" data-label="Item count">{customer.itemcount}</td>
-                <td className="py-2 px-4 border-b" data-label="Total (LKR)">{customer.total}</td>
-                <td className="py-2 px-4 border-b" data-label="Status">
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Item count">{customer.itemcount}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Total (LKR)">{customer.total}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Status">
                   <button
                     onClick={() => toggleStatus(customer.id)}
                     className={`px-3 py-1 rounded-[3.9px] text-white ${
@@ -125,7 +125,7 @@ function ListCustomers() {
                       </button>
                     </Tooltip>
 
-                    <Tooltip title="Return Prossed" placement="top" arrow>
+                    <Tooltip title="Return Processed" placement="top" arrow>
                       <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7ECB8F] text-white hover:bg-[#2BA946]">
                         <Check fontSize="small" />
                       </button>

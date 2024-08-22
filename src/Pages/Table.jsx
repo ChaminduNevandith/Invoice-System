@@ -36,7 +36,7 @@ function ListCustomers() {
       <div className="flex flex-col md:flex-row justify-between mt-[20px] mb-[50px]">
         {/* Search Bar */}
         <div className="relative mb-4 md:mb-0">
-        <select className="p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+        <select className=" text-[#264164] p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
             <option>Supplier</option>
             <option>Supplier A</option>
             <option>Supplier B</option>
@@ -48,7 +48,7 @@ function ListCustomers() {
         <div className="relative mb-4 md:mb-0">
           <input 
             type="date" 
-            className="pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+            className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
           />
           
         </div>
@@ -56,7 +56,7 @@ function ListCustomers() {
         {/* Order Id Bar */}
         
         <div className="relative mb-4 md:mb-0">
-        <select className="p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+        <select className="text-[#264164] p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
             <option>Order Id</option>
             <option>#1234</option>
             <option>#2345</option>
@@ -77,19 +77,19 @@ function ListCustomers() {
               xs:text-[10px]">
           <thead>
             <tr className="text-left text-gray-700 bg-[#F2F1F1]">
-            <th className="py-2 px-4 border-b">Order Id</th>
-              <th className="py-2 px-4 border-b">Date</th>
-              <th className="py-2 px-4 border-b">Supplier</th>
-              <th className="py-2 px-4 border-b">Credit</th>
+            <th className="py-2 px-4 border-b text-[#264164]">Order Id</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Date</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Supplier</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Credit</th>
             </tr>
           </thead>
           <tbody>
             {customers.map((customer) => (
               <tr key={customer.id} className="table-row text-gray-700 text-left bg-[#FEF9FF]">
-                <td className="py-2 px-4 border-b" data-label="Order Id">{customer.OrderId}</td>
-                <td className="py-2 px-4 border-b" data-label="Date">{customer.date}</td>
-                <td className="py-2 px-4 border-b" data-label="Supplier">{customer.Supplier}</td>
-                <td className="py-2 px-4 border-b" data-label="Credit">{customer.Credit}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Order Id">{customer.OrderId}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Date">{customer.date}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Supplier">{customer.Supplier}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Credit">{customer.Credit}</td>
 
               </tr>
             ))}

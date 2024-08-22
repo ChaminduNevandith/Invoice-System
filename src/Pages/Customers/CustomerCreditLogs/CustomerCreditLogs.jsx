@@ -45,9 +45,9 @@ function ListCustomers() {
 
        {/* Sort Dropdown */}
        <div className="relative ">
-          <div className='text-lg font-semibold'> Total Credit Balance: LKR 291,000.00</div>
-          <div className='text-sm font-light'>Akilla</div>
-          <div className='text-sm font-light'>724391</div>
+          <div className='text-lg text-[#264164] font-semibold'> Total Credit Balance: LKR 291,000.00</div>
+          <div className='text-sm text-[#264164] font-light'>Akilla</div>
+          <div className='text-sm text-[#264164] font-light'>724391</div>
         </div>
       </div>
 
@@ -62,27 +62,27 @@ function ListCustomers() {
               xs:text-[10px]">
           <thead>
             <tr className="text-left text-gray-700 bg-[#F2F1F1]">
-            <th className="py-2 px-4 border-b">Date</th>
-              <th className="py-2 px-4 border-b">Credit Type</th>
-              <th className="py-2 px-4 border-b">Credit Amount</th>
-              <th className="py-2 px-4 border-b">Debit Amount</th>
-              <th className="py-2 px-4 border-b">Payment Method</th>
-              <th className="py-2 px-4 border-b">Cheque type</th>
-              <th className="py-2 px-4 border-b">Cheque Date</th>
-              <th className="py-2 px-4 border-b">Cheque Name</th>
+            <th className="py-2 px-4 border-b text-[#264164]">Date</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Credit Type</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Credit Amount</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Debit Amount</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Payment Method</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Cheque type</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Cheque Date</th>
+              <th className="py-2 px-4 border-b text-[#264164]">Cheque Name</th>
             </tr>
           </thead>
           <tbody>
             {customers.map((customer) => (
               <tr key={customer.id} className="table-row text-gray-700 text-left bg-[#FEF9FF]">
-                <td className="py-2 px-4 border-b" data-label="Date">{customer.date}</td>
-                <td className="py-2 px-4 border-b" data-label="Credit Type">{customer.CreditType}</td>
-                <td className="py-2 px-4 border-b" data-label="Credit Amount">{customer.CreditAmount}</td>
-                <td className="py-2 px-4 border-b" data-label="Debit Amount">{customer.DebitAmount}</td>
-                <td className="py-2 px-4 border-b" data-label="Payment Method">{customer.PaymentMethod}</td>
-                <td className="py-2 px-4 border-b" data-label="Cheque type">{customer.Chequetype}</td>
-                <td className="py-2 px-4 border-b" data-label="Cheque Date">{customer.ChequeDate}</td>
-                <td className="py-2 px-4 border-b" data-label="Cheque Name">{customer.ChequeName}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Date">{customer.date}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Credit Type">{customer.CreditType}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Credit Amount">{customer.CreditAmount}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Debit Amount">{customer.DebitAmount}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Payment Method">{customer.PaymentMethod}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Cheque type">{customer.Chequetype}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Cheque Date">{customer.ChequeDate}</td>
+                <td className="py-2 px-4 border-b text-[#264164]" data-label="Cheque Name">{customer.ChequeName}</td>
               </tr>
             ))}
           </tbody>
