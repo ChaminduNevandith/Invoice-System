@@ -6,11 +6,13 @@ import TopBar from './Component/TopBar/TopBar.jsx';
 import SettingButton from './Component/SettingButton/SettingButton.jsx';
 import RightSideBar from './Component/RightSideBar/RightSideBar.jsx';
 import Title from './Component/Title/Title.jsx';
-import DashBoard from './Pages/DashBoard.jsx';
-import CustomersAdd from './Pages/Customers/CustomersAdd.jsx';
+import DashBoard from './Pages/Dashboard/DashBoard.jsx';
+import CustomersAdd from './Pages/Customers/CustomerAdd/CustomersAdd.jsx'
 import CustomerList from './Pages/Customers/CustomerList/CustomerList.jsx';
 import CustomerCreditLogs from './Pages/Customers/CustomerCreditLogs/CustomerCreditLogs.jsx';
 import CustomersReturn from './Pages/Customers/CustomersReturn/CustomersReturn.jsx';
+import AddQuotation from './Pages/Quotations/AddQuotation/AddQuotation.jsx';
+import Quotation from './Pages/Quotations/Quotation/Quotation.jsx';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -39,6 +41,8 @@ function App() {
               <Route path="/list-customers" element={<CustomerList/>}/>
               <Route path="/customer-credit-log" element={<CustomerCreditLogs/>}/>
               <Route path="/customer-return" element={<CustomersReturn/>}/>
+              <Route path="/add-quotation" element={<AddQuotation/>}/>
+              <Route path="/quotation" element={<Quotation/>}/>
 
             </Routes>
           </div>
