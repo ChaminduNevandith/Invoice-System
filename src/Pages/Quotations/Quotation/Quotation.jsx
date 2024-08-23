@@ -126,7 +126,7 @@ function ListCustomers() {
                 <td className="py-2 px-4 border-b text-[#264164]" data-label="Status">
                   <button
                     onClick={() => toggleStatus(customer.id)}
-                    className={`px-3 py-1 rounded-[3.9px] text-white ${
+                    className={`px-3 py-1 rounded-[3.9px] text-white w-28 ${
                       customer.status === 'Processed' ? 'bg-green-500' : 'bg-red-500'
                     }`}
                   >
