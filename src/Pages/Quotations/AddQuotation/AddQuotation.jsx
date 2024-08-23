@@ -1,0 +1,172 @@
+import React from 'react'
+import { Add, ArrowBack, Search, Delete } from '@mui/icons-material'; 
+import { Tooltip } from '@mui/material';
+
+function AddQuotation() {
+  return (
+    <div className="bg-gray-100 absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn pb-[150px]">
+      <div className="bg-white p-6 rounded-md shadow-md w-full pb-[150px]">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-2xl font-semibold text-[#264164] mb-1">Add Quotation</h1>
+          <button className="w-[48px] h-[28px] 2xl:w-[80px] 2xl:h-[40px] xl:w-[80px] xl:h-[40px] lg:w-[70px] lg:h-[30px] sm:w-[48px] sm:h-[28px] md:w-[48px] md:h-[28px] rounded-[3.9px] bg-[#CC7FFF] text-white hover:bg-[#AE69F5]">
+            <ArrowBack fontSize="small" />
+          </button>
+        </div>
+        <hr className="bg-black mb-4" />
+        
+        <div className="flex items-end space-x-4 mb-8">
+          <div className="relative">
+            <label className="block text-[#264164] mb-1 text-xs">Search Customer</label>
+            <input 
+              type="text" 
+              placeholder="Search..." 
+              className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+            />
+            <Search className="absolute top-7 left-2 text-gray-500" />
+          </div>
+
+          <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#F9CD94] text-white hover:bg-[#FFA93A] flex items-center justify-center">
+            <Add fontSize="small" />
+          </button>
+        </div>
+        <hr className="bg-black mb-4" />
+
+        <div className="flex flex-col md:flex-row justify-between mb-8 text-[#264164]">
+          <div>
+            <div>11 mail post andamaphuwa junction</div>
+            <div>Buttala, Buttala</div>
+            <div>0774956990</div>
+          </div>
+
+          <div>
+            <div className="text-4xl font-semibold">Quotation</div>
+            <div className="text-xl text-gray-500 text-right">#INV1004</div>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-8">
+          <div>
+            <label className="block text-[#264164] mb-1 text-xs">Date</label>
+            <input 
+              type="date" 
+              className="text-[#264164] pl-10 p-2 border rounded-md w-[230px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50 mb-4"
+            />
+          </div>
+          <div>
+            <label className="block text-[#264164] mb-1 text-xs">Expires</label>
+            <input 
+              type="date" 
+              className="text-[#264164] pl-10 p-2 border rounded-md w-[230px]  border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50 mb-4"
+            />
+          </div>
+        </div>
+
+        {/* Table */}
+        <table className="min-w-full bg-white shadow-md rounded-lg">
+          <thead>
+            <tr className="bg-[#F2F1F1] text-white text-left">
+              <th className="py-2 px-4 text-[#264164]">Item</th>
+              <th className="py-2 px-4 text-[#264164]">Rate (LKR)</th>
+              <th className="py-2 px-4 text-[#264164]">Quantity</th>
+              <th className="py-2 px-4 text-[#264164]">Discount Type</th>
+              <th className="py-2 px-4 text-[#264164]">Discount</th>
+              <th className="py-2 px-4 text-[#264164]">Total (LKR)</th>
+              <th className="py-2 px-4 text-[#264164]">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-t bg-[#FEF9FF] ">
+              <td className="py-2 px-4">
+                <select className="border rounded-md p-2 w-[150px] text-[#264164] hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+                  <option>Select...</option>
+                  <option>Item 1</option>
+                  <option>Item 2</option>
+                </select>
+              </td>
+              <td className="py-2 px-4 text-[#264164]">0</td>
+              <td className="py-2 px-4">
+                <input 
+                  type="number" 
+                  defaultValue="1" 
+                  className="border rounded-md p-2 w-[150px] text-[#264164] hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+                  min="0"
+                />
+              </td>
+              <td className="py-2 px-4">
+                <select className="border rounded-md p-2 w-[150px] text-[#264164] hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+                  <option>%</option>
+                  <option>Amount</option>
+                </select>
+              </td>
+              <td className="py-2 px-4">
+                <input 
+                  type="number" 
+                  defaultValue="0" 
+                  className="border rounded-md p-2 w-[150px] text-[#264164] hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+                  min="0"
+                />
+              </td>
+              <td className="py-2 px-4 text-[#264164]">0.00</td>
+              <td className="py-2 px-4">
+              <Tooltip title="Delete" placement="top" arrow>
+                      <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#CC7FFF] text-white hover:bg-[#AE69F5]">
+                        <Delete fontSize="small" />
+                      </button>
+                    </Tooltip>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className="flex space-x-4 mt-4 mb-6">
+          <button className="border border-gray-300 text-gray-500 p-2 rounded-md hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">+ Add New Product Category</button>
+          <button className="border border-gray-300 text-gray-500 p-2 rounded-md hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">+ Add New Item</button>
+        </div>
+
+        <div>
+        <label className="block text-[#264164] mb-1 text-xs">Note</label>
+        <input 
+            type="text" 
+            placeholder="Enter text..." 
+            className="w-full p-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50 mb-6"
+            />
+        </div>
+
+        <div className="flex justify-end">
+        {/* Right-side Total and Discount Section */}
+        <div className="w-[500px] bg-gray-50 p-6 rounded-md shadow-md space-y-4 ">
+            <div className="flex justify-between">
+            <span className="text-lg text-[#264164]">Subtotal</span>
+            <span className="text-lg text-[#264164]">(LKR) 0.00</span>
+            </div>
+            <div className="flex justify-between">
+            <span className="text-lg text-[#264164]">Discount</span>
+            <div className="flex space-x-2">
+                <input 
+                type="number" 
+                defaultValue="0" 
+                className="border rounded-md p-2 w-[100px] text-[#264164] hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+                min="0"
+                />
+                <select className="border rounded-md p-2 text-[#264164] w-[80px] hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+                <option>%</option>
+                <option>Amount</option>
+                </select>
+            </div>
+            </div>
+            <div className="flex justify-between">
+            <span className="text-lg text-[#264164]">Total</span>
+            <span className="text-lg text-[#264164]">(LKR) 0.00</span>
+            </div>
+
+            <button className="w-full bg-purple-500 text-white p-2 rounded-md hover:bg-purple-600">
+            Save
+            </button>
+        </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default AddQuotation;
