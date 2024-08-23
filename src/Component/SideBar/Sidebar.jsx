@@ -33,6 +33,7 @@ const Sidebar = () => {
   const [isUsersDropdownOpen, setIsUsersDropdownOpen] = useState(false);
   const [isReportDropdownOpen, setIsReportDropdownOpen] = useState(false);
   const [isSettingsDropdownOpen, setIsSettingsDropdownOpen] = useState(false);
+  const [isQuotationDropdownOpen, setIsQuotationDropdownOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -114,17 +115,40 @@ const Sidebar = () => {
             </ul>
           )}
 
-          {/* Quotation */}
-          <li
+
+           {/* Quotation with Dropdown */}
+           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
               isCollapsed ? 'justify-center text-center' : ''
             }`}
+            onClick={() => setIsQuotationDropdownOpen(!isQuotationDropdownOpen)}
           >
-            <NavLink to="/quotation">
-              <Receipt />
-              {!isCollapsed && <span className="ml-4">Quotation</span>}
-            </NavLink>
+            <Receipt />
+            {!isCollapsed && (
+              <>
+                <span className="ml-4">Quotation</span>
+                <span className="ml-auto">
+                  {isQuotationDropdownOpen ? <ExpandLess /> : <ExpandMore />}
+                </span>
+              </>
+            )}
           </li>
+          {isQuotationDropdownOpen && !isCollapsed && (
+            <ul className="pl-8 space-y-2">
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/quotation">
+                  <Receipt />
+                  <span className="ml-4">Quotation</span>
+                </NavLink>
+              </li>
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/add-quotation">
+                  <Receipt />
+                  <span className="ml-4">Add Quotation</span>
+                </NavLink>
+              </li>
+            </ul>
+          )}
 
           {/* Invoice */}
           <li
