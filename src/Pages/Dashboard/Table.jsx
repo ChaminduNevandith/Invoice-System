@@ -5,7 +5,7 @@ import { Pagination } from '@mui/material';
 
 function Table() {
   return (
-    <div className="bg-gray-100 right-0 w-[1550px] h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn  pb-[50px]">
+    <div className="bg-gray-100 right-0 xxl:w-[1550px] 2xl:w-[1190px] xl:w-[1140px] lg:w-[910px] md:w-[640px] sm:w-[530px]  h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn  pb-[50px]">
       <ListCustomers />
     </div>
   );
