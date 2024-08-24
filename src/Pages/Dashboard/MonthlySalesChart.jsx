@@ -40,7 +40,8 @@ const data = {
 function LineChart1() {
   return (
     <div className="w-full 
-      2xl:w-[730px] 2xl:h-[450px]
+      xxl:w-[730px] xxl:h-[450px]
+      2xl:w-[530px] 2xl:h-[350px]
       xl:w-[1500px] xl:h-[450px]
       lg:w-[1000px] lg:h-[420px]
       md:w-[700px] md:h-[400px]

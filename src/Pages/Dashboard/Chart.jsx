@@ -6,7 +6,8 @@ function Chart() {
       <div className="bg-white text-gray-800 rounded-md shadow-md p-4
         w-full 
         max-w-[1500px]
-        2xl:w-[1500px] 2xl:h-[800px]
+        xxl:w-[1500px] xxl:h-[800px]
+        2xl:w-[1070px] 2xl:h-[800px]
         xl:w-[1140px] xl:h-[450px]
         lg:w-[910px] lg:h-[420px]
         md:w-[640px] md:h-[400px]

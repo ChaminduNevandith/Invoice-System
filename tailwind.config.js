@@ -12,6 +12,9 @@ export default {
       animation: {
         'spin-slow': 'spin 4s linear infinite',
       },
+      screens: {
+        'xxl': '1920px', // Custom screen size for 1920px and up
+      },
     },
   },
   plugins: [],
