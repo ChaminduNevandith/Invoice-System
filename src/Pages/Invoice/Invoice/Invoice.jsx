@@ -39,7 +39,7 @@ function ListCustomers() {
   };
 
   return (
-    <div className="bg-white p-6 rounded-md shadow-md w-full ">
+    <div className="bg-white p-6 rounded-md shadow-md w-full pb-10 ">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-semibold text-[#264164] mb-1 ">Invoice</h1>
         <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#F9CD94] text-white hover:bg-[#FFA93A]">
@@ -94,7 +94,7 @@ function ListCustomers() {
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse text-xs
               xxl:text-sm
-              2xl:text-base
+              2xl:text-sm
               xl:text-sm
               lg:text-xs
               md:text-xs
