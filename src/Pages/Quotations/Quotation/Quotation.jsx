@@ -92,6 +92,7 @@ function ListCustomers() {
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse text-xs
+              xxl:text-sm
               2xl:text-base
               xl:text-sm
               lg:text-xs

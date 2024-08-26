@@ -103,7 +103,7 @@ function AddQuotation() {
                   0.00
                 </td>
                 <td className="py-2 px-4 block md:table-cell">
-                <div className="md:hidden text-[#264164] font-semibold text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">Action</div>
+                <div className="md:hidden text-[#264164] font-semibold text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg"></div>
                   <Tooltip title="Delete" placement="top" arrow>
                     <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#CC7FFF] text-white hover:bg-[#AE69F5]">
                       <Delete fontSize="small" />
