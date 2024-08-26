@@ -13,6 +13,8 @@ import CustomerCreditLogs from './Pages/Customers/CustomerCreditLogs/CustomerCre
 import CustomersReturn from './Pages/Customers/CustomersReturn/CustomersReturn.jsx';
 import AddQuotation from './Pages/Quotations/AddQuotation/AddQuotation.jsx';
 import Quotation from './Pages/Quotations/Quotation/Quotation.jsx';
+import AddInvoice from './Pages/Invoice/AddInvoice/AddInvoice.jsx';
+import Invoice from './Pages/Invoice/Invoice/Invoice.jsx';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -43,6 +45,9 @@ function App() {
               <Route path="/customer-return" element={<CustomersReturn/>}/>
               <Route path="/add-quotation" element={<AddQuotation/>}/>
               <Route path="/quotation" element={<Quotation/>}/>
+              <Route path="/add-invoice" element={<AddInvoice/>}/>
+              <Route path="/invoice" element={<Invoice/>}/>
+
 
             </Routes>
           </div>
