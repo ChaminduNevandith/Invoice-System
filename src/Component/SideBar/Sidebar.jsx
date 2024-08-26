@@ -34,6 +34,7 @@ const Sidebar = () => {
   const [isReportDropdownOpen, setIsReportDropdownOpen] = useState(false);
   const [isSettingsDropdownOpen, setIsSettingsDropdownOpen] = useState(false);
   const [isQuotationDropdownOpen, setIsQuotationDropdownOpen] = useState(false);
+  const [isInvoiceDropdownOpen, setIsInvoiceDropdownOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -150,17 +151,42 @@ const Sidebar = () => {
             </ul>
           )}
 
-          {/* Invoice */}
+
+          {/* Invoice with Dropdown */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
               isCollapsed ? 'justify-center text-center' : ''
             }`}
+            onClick={() => setIsInvoiceDropdownOpen(!isInvoiceDropdownOpen)}
           >
-            <NavLink to="/invoice">
+            <NavLink to="/Invoice">
               <ReceiptLong />
-              {!isCollapsed && <span className="ml-4">Invoice</span>}
             </NavLink>
+            {!isCollapsed && (
+              <>
+                <span className="ml-4">Invoice</span>
+                <span className="ml-auto">
+                  {isInvoiceDropdownOpen ? <ExpandLess /> : <ExpandMore />}
+                </span>
+              </>
+            )}
           </li>
+          {isInvoiceDropdownOpen && !isCollapsed && (
+            <ul className="pl-8 space-y-2">
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/Invoice">
+                  <ReceiptLong />
+                  <span className="ml-4">Invoice</span>
+                </NavLink>
+              </li>
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/add-invoice">
+                  <ReceiptLong />
+                  <span className="ml-4">Add Invoice</span>
+                </NavLink>
+              </li>
+            </ul>
+          )}
 
           {/* Due Payment */}
           <li
