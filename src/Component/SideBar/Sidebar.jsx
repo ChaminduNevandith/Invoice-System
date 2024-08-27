@@ -220,21 +220,27 @@ const Sidebar = () => {
           {isStockDropdownOpen && !isCollapsed && (
             <ul className="pl-8 space-y-2">
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/stock/inventory">
+                <NavLink to="/add-product">
                   <Inventory />
                   <span className="ml-4">Add Product</span>
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/stock/suppliers">
+                <NavLink to="/list-product">
                   <People />
                   <span className="ml-4">List Product</span>
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/stock/suppliers">
+                <NavLink to="/grn">
                   <People />
                   <span className="ml-4">GRN</span>
+                </NavLink>
+              </li>
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/add-grn">
+                  <People />
+                  <span className="ml-4">Add GRN</span>
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">

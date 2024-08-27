@@ -15,6 +15,9 @@ import AddQuotation from './Pages/Quotations/AddQuotation/AddQuotation.jsx';
 import Quotation from './Pages/Quotations/Quotation/Quotation.jsx';
 import AddInvoice from './Pages/Invoice/AddInvoice/AddInvoice.jsx';
 import Invoice from './Pages/Invoice/Invoice/Invoice.jsx';
+import AddProduct from './Pages/Stocks/AddProduct/AddProduct.jsx';
+import ListProduct from './Pages/Stocks/ListProduct/ListProduct.jsx';
+import GRN from './Pages/Stocks/GRN/GRN.jsx';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -47,6 +50,9 @@ function App() {
               <Route path="/quotation" element={<Quotation/>}/>
               <Route path="/add-invoice" element={<AddInvoice/>}/>
               <Route path="/invoice" element={<Invoice/>}/>
+              <Route path="/add-product" element={<AddProduct/>}/>
+              <Route path="/list-product" element={<ListProduct/>}/>
+              <Route path="/grn" element={<GRN/>}/>
 
 
             </Routes>
