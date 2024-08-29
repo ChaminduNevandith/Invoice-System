@@ -296,15 +296,21 @@ const Sidebar = () => {
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/list-suppliers">
+                <NavLink to="/Suppliers-Credit-Log">
                   <Group />
                   <span className="ml-4">Suppliers Credit Log</span>
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/list-suppliers">
+                <NavLink to="/PurchaseReturns">
                   <Group />
-                  <span className="ml-4">Returns</span>
+                  <span className="ml-4">Purchase Returns</span>
+                </NavLink>
+              </li>
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/NewPurchaseReturn">
+                  <Group />
+                  <span className="ml-4"> New Purchase Return</span>
                 </NavLink>
               </li>
             </ul>

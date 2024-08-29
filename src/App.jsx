@@ -22,6 +22,11 @@ import AddGRN from './Pages/Stocks/AddGRN/AddGRN.jsx';
 import Barcode from './Pages/Stocks/Barcode/Barcode.jsx';
 import AddDamageNotes from './Pages/Stocks/AddDamageNotes/AddDamageNotes.jsx';
 import DamageNote from './Pages/Stocks/DamageNote/DamageNote.jsx';
+import AddSuppliers from './Pages/Suppliers/AddSuppliers/AddSuppliers.jsx';
+import SupplierList from './Pages/Suppliers/SupplierList/SupplierList.jsx';
+import PurchaseReturns from './Pages/Suppliers/PurchaseReturns/PurchaseReturns.jsx';
+import SupplierCreditLogs from './Pages/Suppliers/Supplier Credit Logs/SupplierCreditLogs.jsx';
+import NewPurchaseReturns from './Pages/Suppliers/NewPurchaseReturns/NewPurchaseReturns.jsx';
 import { Add } from '@mui/icons-material';
 
 function App() {
@@ -62,6 +67,11 @@ function App() {
               <Route path="/Barcodes" element={<Barcode/>}/>
               <Route path="/add-damagenotes" element={<AddDamageNotes/>}/>
               <Route path="/damagenotes" element={<DamageNote/>}/>
+              <Route path="/add-supplier" element={<AddSuppliers/>}/>
+              <Route path="/list-suppliers" element={<SupplierList/>}/>
+              <Route path="/PurchaseReturns" element={<PurchaseReturns/>}/>
+              <Route path="/Suppliers-Credit-Log" element={<SupplierCreditLogs/>}/>
+              <Route path="/NewPurchaseReturn" element={<NewPurchaseReturns/>}/>
 
 
 
