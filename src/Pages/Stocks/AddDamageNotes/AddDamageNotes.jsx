@@ -104,6 +104,15 @@ function ListGRN() {
           <button className="border border-gray-300 text-gray-500 p-2 rounded-md hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">+ Add New Item</button>
         </div>
 
+        <div>
+          <label className="block text-[#264164] mb-1 text-xs">Reason</label>
+          <input
+            type="text"
+            placeholder="Enter Reason..."
+            className="w-full p-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50 mb-6"
+          />
+        </div>
+
         {/* Save Button */}
         <div className="flex justify-end mt-4 animate-slideInUp">
           <button className="px-6 py-2 bg-purple-500 text-white rounded-md shadow hover:bg-purple-600 transition-all duration-200">+ Add Damage Note</button>
