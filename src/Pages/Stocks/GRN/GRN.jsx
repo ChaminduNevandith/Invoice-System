@@ -47,7 +47,7 @@ function ListGRN() {
       </div>
       <hr className="bg-black mb-4"></hr>
 
-      <div className="flex flex-col md:flex-row justify-between mb-8">
+      <div className="flex flex-col md:flex-row  space-x-2 mb-8">
         {/* Search Bar */}
             <div className="relative mb-4 md:mb-0">
             <label className="block text-[#264164] mb-1 text-xs">Search By Supplier</label>
