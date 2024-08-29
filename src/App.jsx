@@ -18,6 +18,11 @@ import Invoice from './Pages/Invoice/Invoice/Invoice.jsx';
 import AddProduct from './Pages/Stocks/AddProduct/AddProduct.jsx';
 import ListProduct from './Pages/Stocks/ListProduct/ListProduct.jsx';
 import GRN from './Pages/Stocks/GRN/GRN.jsx';
+import AddGRN from './Pages/Stocks/AddGRN/AddGRN.jsx';
+import Barcode from './Pages/Stocks/Barcode/Barcode.jsx';
+import AddDamageNotes from './Pages/Stocks/AddDamageNotes/AddDamageNotes.jsx';
+import DamageNote from './Pages/Stocks/DamageNote/DamageNote.jsx';
+import { Add } from '@mui/icons-material';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -53,6 +58,11 @@ function App() {
               <Route path="/add-product" element={<AddProduct/>}/>
               <Route path="/list-product" element={<ListProduct/>}/>
               <Route path="/grn" element={<GRN/>}/>
+              <Route path="/add-grn" element={<AddGRN/>}/>
+              <Route path="/Barcodes" element={<Barcode/>}/>
+              <Route path="/add-damagenotes" element={<AddDamageNotes/>}/>
+              <Route path="/damagenotes" element={<DamageNote/>}/>
+
 
 
             </Routes>
