@@ -101,7 +101,7 @@ function AddSuppliers() {
 
         {/* Save Button */}
         <div className="flex justify-end mt-4 animate-slideInUp">
-          <button className="px-6 py-2 bg-purple-500 text-white rounded-md shadow hover:bg-purple-600 transition-all duration-200">+ Add Supplier</button>
+          <button className="px-6 py-2 bg-purple-500 text-white rounded-md shadow hover:bg-purple-600 transition-all duration-200 ">+ Add Supplier</button>
         </div>
 
       </div>
