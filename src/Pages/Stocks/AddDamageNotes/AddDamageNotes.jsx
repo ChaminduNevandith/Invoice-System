@@ -75,13 +75,13 @@ function ListGRN() {
                 <td className="py-2 px-10 border-b text-[#264164]" data-label="Total">{customer.Total}</td>
                 <td className="py-2 px-10 border-b" data-label="Actions">
                   <div className="flex space-x-2 actions">
-                  <Tooltip title="Edit GRN" placement="top" arrow>
+                  <Tooltip title="Edit DamageNote" placement="top" arrow>
                       <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#F9CD94] text-white hover:bg-[#FFA93A]">
                         <Edit fontSize="small" />
                       </button>
                     </Tooltip>
 
-                    <Tooltip title="view GRN" placement="top" arrow>
+                    <Tooltip title="view DamageNote" placement="top" arrow>
                       <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#7ECB8F] text-white hover:bg-[#2BA946]">
                         <Visibility fontSize="small" />
                       </button>
