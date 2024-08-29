@@ -244,15 +244,21 @@ const Sidebar = () => {
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/stock/suppliers">
+                <NavLink to="/barcodes">
                   <QrCode />
                   <span className="ml-4">Barcodes</span>
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/stock/suppliers">
+                <NavLink to="/damagenotes">
                   <Receipt />
-                  <span className="ml-4">DamageNotes</span>
+                  <span className="ml-4">Damage Notes</span>
+                </NavLink>
+              </li>
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/add-damagenotes">
+                  <Receipt />
+                  <span className="ml-4">Add Damage Notes</span>
                 </NavLink>
               </li>
             </ul>
