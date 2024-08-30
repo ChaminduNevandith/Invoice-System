@@ -29,6 +29,9 @@ import SupplierCreditLogs from './Pages/Suppliers/Supplier Credit Logs/SupplierC
 import NewPurchaseReturns from './Pages/Suppliers/NewPurchaseReturns/NewPurchaseReturns.jsx';
 import Addsalesman from './Pages/Salesman/Addsalesman/Addsalesman.jsx';
 import ListSalesmans from './Pages/Salesman/ListSalesmans/ListSalesmans.jsx';
+import EarningsandExpenses from './Pages/Earnings-and-Expenses/Earnings-and-Expenses.jsx';
+import AddUser from './Pages/AddUser/AddUser.jsx';
+import ListUser from './Pages/User/ListUser/ListUser.jsx';
 
 import { Add } from '@mui/icons-material';
 
@@ -77,6 +80,10 @@ function App() {
               <Route path="/NewPurchaseReturn" element={<NewPurchaseReturns/>}/>
               <Route path="/add-salesman" element={<Addsalesman/>}/>
               <Route path="/list-salesmen" element={<ListSalesmans/>}/>
+              <Route path="/Earning-&-Expenses" element={<EarningsandExpenses/>}/>
+              <Route path="/add-user" element={<AddUser/>}/>
+              <Route path="/list-users" element={<ListUser/>}/>
+
 
 
 
