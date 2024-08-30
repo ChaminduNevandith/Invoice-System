@@ -27,6 +27,9 @@ import SupplierList from './Pages/Suppliers/SupplierList/SupplierList.jsx';
 import PurchaseReturns from './Pages/Suppliers/PurchaseReturns/PurchaseReturns.jsx';
 import SupplierCreditLogs from './Pages/Suppliers/Supplier Credit Logs/SupplierCreditLogs.jsx';
 import NewPurchaseReturns from './Pages/Suppliers/NewPurchaseReturns/NewPurchaseReturns.jsx';
+import Addsalesman from './Pages/Salesman/Addsalesman/Addsalesman.jsx';
+import ListSalesmans from './Pages/Salesman/ListSalesmans/ListSalesmans.jsx';
+
 import { Add } from '@mui/icons-material';
 
 function App() {
@@ -72,6 +75,8 @@ function App() {
               <Route path="/PurchaseReturns" element={<PurchaseReturns/>}/>
               <Route path="/Suppliers-Credit-Log" element={<SupplierCreditLogs/>}/>
               <Route path="/NewPurchaseReturn" element={<NewPurchaseReturns/>}/>
+              <Route path="/add-salesman" element={<Addsalesman/>}/>
+              <Route path="/list-salesmen" element={<ListSalesmans/>}/>
 
 
 
