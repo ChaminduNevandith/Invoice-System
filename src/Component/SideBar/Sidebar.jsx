@@ -457,37 +457,37 @@ const Sidebar = () => {
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/profit-report">
+                <NavLink to="/invoice-report">
                   <Description />
                   <span className="ml-4">Invoice Details Report</span>
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/profit-report">
+                <NavLink to="/stock-report">
                   <Description />
                   <span className="ml-4">Stock Card</span>
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/profit-report">
+                <NavLink to="/profit-Lost-report">
                   <Description />
                   <span className="ml-4">Profit & Lost</span>
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/profit-report">
+                <NavLink to="/Supplier-report">
                   <Description />
                   <span className="ml-4">Supplier Report</span>
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/profit-report">
+                <NavLink to="/Earning-report">
                   <Description />
                   <span className="ml-4">Earning Report</span>
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
-                <NavLink to="/profit-report">
+                <NavLink to="/Expenses-report">
                   <Description />
                   <span className="ml-4">Expenses Report</span>
                 </NavLink>
