@@ -32,8 +32,15 @@ import ListSalesmans from './Pages/Salesman/ListSalesmans/ListSalesmans.jsx';
 import EarningsandExpenses from './Pages/Earnings-and-Expenses/Earnings-and-Expenses.jsx';
 import AddUser from './Pages/AddUser/AddUser.jsx';
 import ListUser from './Pages/User/ListUser/ListUser.jsx';
+import StockReport from './Pages/Reports/StockReport/StockReport.jsx';
+import StockDetailReport from './Pages/Reports/StockDetailReport/StockDetailReport.jsx';
+import InvoiceDetailReport from './Pages/Reports/InvoiceDetailReport/InvoiceDetailReport.jsx';
+import Stockcard from './Pages/Reports/StockCard/stockCard.jsx';
+import SupplierReport from './Pages/Reports/SupplierReport/SupplierReport.jsx';
+import EarningReport from './Pages/Reports/EarningReport/EarningReport.jsx';
+import ExpensesReport from './Pages/Reports/ExpensesReport/ExpensesReport.jsx';
 
-import { Add } from '@mui/icons-material';
+
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -83,6 +90,14 @@ function App() {
               <Route path="/Earning-&-Expenses" element={<EarningsandExpenses/>}/>
               <Route path="/add-user" element={<AddUser/>}/>
               <Route path="/list-users" element={<ListUser/>}/>
+              <Route path="/sales-report" element={<StockReport/>}/>
+              <Route path="/profit-report" element={<StockDetailReport/>}/>
+              <Route path="/invoice-report" element={<InvoiceDetailReport/>}/>
+              <Route path="/stock-report" element={<Stockcard/>}/>
+              <Route path="/Supplier-report" element={<SupplierReport/>}/>
+              <Route path="/Earning-report" element={<EarningReport/>}/>
+              <Route path="/Expenses-report" element={<ExpensesReport/>}/>
+              
 
 
 
