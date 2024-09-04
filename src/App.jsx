@@ -39,6 +39,7 @@ import Stockcard from './Pages/Reports/StockCard/stockCard.jsx';
 import SupplierReport from './Pages/Reports/SupplierReport/SupplierReport.jsx';
 import EarningReport from './Pages/Reports/EarningReport/EarningReport.jsx';
 import ExpensesReport from './Pages/Reports/ExpensesReport/ExpensesReport.jsx';
+import PLReport from './Pages/Reports/PLReport/PLReport.jsx';
 
 
 
@@ -97,6 +98,7 @@ function App() {
               <Route path="/Supplier-report" element={<SupplierReport/>}/>
               <Route path="/Earning-report" element={<EarningReport/>}/>
               <Route path="/Expenses-report" element={<ExpensesReport/>}/>
+              <Route path="/profit-Lost-report" element={<PLReport/>}/>
               
 
 
