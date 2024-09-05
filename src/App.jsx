@@ -40,6 +40,8 @@ import SupplierReport from './Pages/Reports/SupplierReport/SupplierReport.jsx';
 import EarningReport from './Pages/Reports/EarningReport/EarningReport.jsx';
 import ExpensesReport from './Pages/Reports/ExpensesReport/ExpensesReport.jsx';
 import PLReport from './Pages/Reports/PLReport/PLReport.jsx';
+import InvoiceSettings from './Pages/Settings/Invoice-Settings/InvoiceSettings.jsx';
+import SystemSettings from './Pages/Settings/System-Settings/SystemSettings.jsx';
 
 
 
@@ -99,6 +101,8 @@ function App() {
               <Route path="/Earning-report" element={<EarningReport/>}/>
               <Route path="/Expenses-report" element={<ExpensesReport/>}/>
               <Route path="/profit-Lost-report" element={<PLReport/>}/>
+              <Route path="/app-settings" element={<InvoiceSettings/>}/>
+              <Route path="/user-settings" element={<SystemSettings/>}/>
               
 
 
