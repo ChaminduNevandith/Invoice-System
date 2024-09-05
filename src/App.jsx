@@ -42,6 +42,7 @@ import ExpensesReport from './Pages/Reports/ExpensesReport/ExpensesReport.jsx';
 import PLReport from './Pages/Reports/PLReport/PLReport.jsx';
 import InvoiceSettings from './Pages/Settings/Invoice-Settings/InvoiceSettings.jsx';
 import SystemSettings from './Pages/Settings/System-Settings/SystemSettings.jsx';
+import Apps from './Pages/App/Apps.jsx';
 
 
 
@@ -103,6 +104,7 @@ function App() {
               <Route path="/profit-Lost-report" element={<PLReport/>}/>
               <Route path="/app-settings" element={<InvoiceSettings/>}/>
               <Route path="/user-settings" element={<SystemSettings/>}/>
+              <Route path="/app" element={<Apps/>}/>
               
 
 
