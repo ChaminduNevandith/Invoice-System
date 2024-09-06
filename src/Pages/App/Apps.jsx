@@ -19,9 +19,9 @@ function ListApps() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {/* SMS Apps Card */}
-        <div className="p-6 bg-white h-[400px] rounded-lg shadow-md text-center">
+        <div className="p-6 bg-gradient-to-b from-purple-50 to-white h-[400px] rounded-lg shadow-lg text-center border-t-8 border-purple-500 hover:scale-105 transform transition duration-300 ease-in-out">
           <div className="mb-4">
-            <SmsIcon style={{ fontSize: 48, color: '#264164' }} />
+            <SmsIcon style={{ fontSize: 48, color: '#8b5cf6' }} />
           </div>
           <h2 className="text-lg font-semibold mb-2">SMS Apps</h2>
           <p className="mb-4">Because it's about motivating the doers. Because I'm here to follow my dreams and inspire others.</p>
@@ -29,9 +29,9 @@ function ListApps() {
         </div>
 
         {/* Customer Relationship Management Card */}
-        <div className="p-6 bg-white rounded-lg shadow-md text-center">
+        <div className="p-6 bg-gradient-to-b from-purple-50 to-white h-[400px] rounded-lg shadow-lg text-center border-t-8 border-purple-500 hover:scale-105 transform transition duration-300 ease-in-out">
           <div className="mb-4">
-            <ContactMailIcon style={{ fontSize: 48, color: '#264164' }} />
+            <ContactMailIcon style={{ fontSize: 48, color: '#8b5cf6' }} />
           </div>
           <h2 className="text-lg font-semibold mb-2">Customer Relationship Management</h2>
           <p className="mb-4">Because it's about motivating the doers. Because I'm here to follow my dreams and inspire others.</p>
@@ -39,9 +39,9 @@ function ListApps() {
         </div>
 
         {/* Task Management Card */}
-        <div className="p-6 bg-white rounded-lg shadow-md text-center">
+        <div className="p-6 bg-gradient-to-b from-purple-50 to-white h-[400px] rounded-lg shadow-lg text-center border-t-8 border-purple-500 hover:scale-105 transform transition duration-300 ease-in-out">
           <div className="mb-4">
-            <TaskIcon style={{ fontSize: 48, color: '#264164' }} />
+            <TaskIcon style={{ fontSize: 48, color: '#8b5cf6' }} />
           </div>
           <h2 className="text-lg font-semibold mb-2">Task Management</h2>
           <p className="mb-4">Because it's about motivating the doers. Because I'm here to follow my dreams and inspire others.</p>

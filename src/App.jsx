@@ -43,6 +43,8 @@ import PLReport from './Pages/Reports/PLReport/PLReport.jsx';
 import InvoiceSettings from './Pages/Settings/Invoice-Settings/InvoiceSettings.jsx';
 import SystemSettings from './Pages/Settings/System-Settings/SystemSettings.jsx';
 import Apps from './Pages/App/Apps.jsx';
+import Billing from './Pages/Billing/Billing.jsx';
+import DuePatment from './Pages/DuePayment/DuePatment.jsx';
 
 
 
@@ -77,6 +79,7 @@ function App() {
               <Route path="/quotation" element={<Quotation/>}/>
               <Route path="/add-invoice" element={<AddInvoice/>}/>
               <Route path="/invoice" element={<Invoice/>}/>
+              <Route path="/due-payment" element={<DuePatment/>}/>
               <Route path="/add-product" element={<AddProduct/>}/>
               <Route path="/list-product" element={<ListProduct/>}/>
               <Route path="/grn" element={<GRN/>}/>
@@ -105,6 +108,7 @@ function App() {
               <Route path="/app-settings" element={<InvoiceSettings/>}/>
               <Route path="/user-settings" element={<SystemSettings/>}/>
               <Route path="/app" element={<Apps/>}/>
+              <Route path="/billing" element={<Billing/>}/>
               
 
 
