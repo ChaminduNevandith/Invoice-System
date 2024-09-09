@@ -45,6 +45,7 @@ import SystemSettings from './Pages/Settings/System-Settings/SystemSettings.jsx'
 import Apps from './Pages/App/Apps.jsx';
 import Billing from './Pages/Billing/Billing.jsx';
 import DuePatment from './Pages/DuePayment/DuePatment.jsx';
+import NewCustomerReturns from './Pages/Customers/NewCustomerReturns/NewCustomerReturns.jsx';
 
 
 
@@ -75,6 +76,7 @@ function App() {
               <Route path="/list-customers" element={<CustomerList/>}/>
               <Route path="/customer-credit-log" element={<CustomerCreditLogs/>}/>
               <Route path="/customer-return" element={<CustomersReturn/>}/>
+              <Route path="/new-customer-return" element={<NewCustomerReturns/>}/>
               <Route path="/add-quotation" element={<AddQuotation/>}/>
               <Route path="/quotation" element={<Quotation/>}/>
               <Route path="/add-invoice" element={<AddInvoice/>}/>
