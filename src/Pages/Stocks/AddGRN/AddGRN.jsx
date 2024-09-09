@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Edit, Check, Visibility, ArrowBack , Delete , Print} from '@mui/icons-material'; 
 import { Pagination, Tooltip } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 
 function AddGRN() {
@@ -30,9 +31,12 @@ function ListGRN() {
     <div className="bg-white p-6 rounded-md shadow-md w-full ">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-semibold text-[#264164] mb-1">Add GRN</h1>
+        
+        <NavLink to="/grn">
         <button className="w-[48px] h-[28px] 2xl:w-[80px] 2xl:h-[40px] xl:w-[80px] xl:h-[40px] lg:w-[70px] lg:h-[30px] sm:w-[48px] sm:h-[28px] md:w-[48px] md:h-[28px] rounded-[3.9px] bg-[#CC7FFF] text-white hover:bg-[#AE69F5]">
             <ArrowBack fontSize="small" />
         </button>
+        </NavLink>
         </div>
 
       <hr className="bg-black mb-4"></hr>

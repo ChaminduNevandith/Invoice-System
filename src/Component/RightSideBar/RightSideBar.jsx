@@ -26,7 +26,7 @@ function RightSideBar({ setIsSidebarOpen }) {
   return (
     <div className="fixed top-0 right-0 h-screen w-[310px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[360px] 2xl:w-[381px] bg-white shadow-md px-4 py-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-[#264164] text-lg font-medium text-[#1A3353]">Theme Config</h2>
+        <h2 className="text-[#264164] text-lg font-medium ">Theme Config</h2>
         <IconButton 
           onClick={handleCloseSidebar} 
           size="small"

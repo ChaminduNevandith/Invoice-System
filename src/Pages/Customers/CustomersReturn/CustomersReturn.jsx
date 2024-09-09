@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, CreditCard, Check, Visibility, Add } from '@mui/icons-material'; 
 import { Pagination, Tooltip } from '@mui/material';
 import "./Table.css";
+import { NavLink } from 'react-router-dom';
 
 function CustomersReturn() {
   return (
@@ -41,9 +42,13 @@ function ListCustomers() {
     <div className="bg-white p-6 rounded-md shadow-md w-full ">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-semibold text-[#264164] mb-1 ">Customer Returns</h1>
+
+        <NavLink to="/new-customer-return">
         <button className="w-[28px] h-[28px] 2xl:w-[40px] 2xl:h-[40px] xl:w-[40px] xl:h-[40px] lg:w-[30px] lg:h-[30px] sm:w-[28px] sm:h-[28px] md:w-[28px] md:h-[28px] rounded-full bg-[#F9CD94] text-white hover:bg-[#FFA93A]">
             <Add fontSize="small" />
         </button>
+        </NavLink>
+
       </div>
       <hr className="bg-black mb-4"></hr>
 

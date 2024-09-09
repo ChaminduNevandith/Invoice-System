@@ -113,6 +113,13 @@ const Sidebar = () => {
                   <span className="ml-4">Customer Return</span>
                 </NavLink>
               </li>
+
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/new-customer-return">
+                  <Replay />
+                  <span className="ml-4">Add Customer Return</span>
+                </NavLink>
+              </li>
             </ul>
           )}
 
