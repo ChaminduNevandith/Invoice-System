@@ -33,10 +33,10 @@ function ListCustomers() {
       <h1 className=" text-2xl font-semibold text-[#264164] mb-1">Customer Credit Logs</h1>
       <hr className="bg-black mb-4"></hr>
 
-      <div className="flex flex-col md:flex-row justify-between mt-[20px] mb-[50px]">
+      <div className="flex flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row xxl:flex-row justify-between mt-[20px] mb-[50px]">
         {/* Search Bar */}
-        <div className="relative mb-4 md:mb-0">
-        <select className=" text-[#264164] p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+        <div className="relative mb-4 md:mb-0 pb-2">
+        <select className=" text-[#264164] p-2 border rounded-md w-full sm:w-full md:w-full lg:w-[150px] xl:w-[200px] 2xl:w-[200px] xxl:w-[200px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200  focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
             <option>Supplier</option>
             <option>Supplier A</option>
             <option>Supplier B</option>
@@ -45,18 +45,18 @@ function ListCustomers() {
         </div>
 
         {/* Date Bar */}
-        <div className="relative mb-4 md:mb-0">
+        <div className="relative mb-4 md:mb-0 pb-2">
           <input 
             type="date" 
-            className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+            className="text-[#264164] p-2 border rounded-md w-full sm:w-full md:w-full lg:w-[150px] xl:w-[200px] 2xl:w-[200px] xxl:w-[200px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200  focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
           />
           
         </div>
 
         {/* Order Id Bar */}
         
-        <div className="relative mb-4 md:mb-0">
-        <select className="text-[#264164] p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+        <div className="relative mb-4 md:mb-0 pb-2">
+        <select className="text-[#264164] p-2 border rounded-md w-full sm:w-full md:w-full lg:w-[150px] xl:w-[200px] 2xl:w-[200px] xxl:w-[200px]  border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200  focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
             <option>Order Id</option>
             <option>#1234</option>
             <option>#2345</option>

@@ -52,33 +52,33 @@ function ListGRN() {
       </div>
       <hr className="bg-black mb-4"></hr>
 
-      <div className="flex flex-col md:flex-row  space-x-2 mb-8">
+      <div className="flex flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row xxl:flex-row  space-x-0 md:space-x-0  lg:space-x-2 xl:space-x-2 2xl:space-x-2 xxl:space-x-2 mb-8">
         {/* Search Bar */}
-            <div className="relative mb-4 md:mb-0">
+            <div className="relative mb-4 md:mb-0 pb-2">
             <label className="block text-[#264164] mb-1 text-xs">Search By Supplier</label>
             <input 
                 type="text" 
                 placeholder="Search..." 
-                className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+                className="text-[#264164] pl-10 p-2 border rounded-md w-full sm:w-full md:w-full lg:w-[150px] xl:w-[200px] 2xl:w-[200px] xxl:w-[200px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
             />
             <Search className="absolute top-7 left-2 text-gray-500" />
             </div>
 
             {/* Date Bar 1 */}
-            <div className="relative mb-4 md:mb-0">
+            <div className="relative mb-4 md:mb-0 pb-2">
             <label className="block text-[#264164] mb-1 text-xs">From</label>
             <input 
                 type="date" 
-                className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+                className="text-[#264164] pl-10 p-2 border rounded-md w-full sm:w-full md:w-full lg:w-[150px] xl:w-[200px] 2xl:w-[200px] xxl:w-[200px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
             />
             </div>
 
             {/* Date Bar 2 */}
-            <div className="relative mb-4 md:mb-0">
+            <div className="relative mb-4 md:mb-0 pb-2">
             <label className="block text-[#264164] mb-1 text-xs">To</label>
             <input 
                 type="date" 
-                className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+                className="text-[#264164] pl-10 p-2 border rounded-md w-full sm:w-full md:w-full lg:w-[150px] xl:w-[200px] 2xl:w-[200px] xxl:w-[200px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
             />
             </div>
 

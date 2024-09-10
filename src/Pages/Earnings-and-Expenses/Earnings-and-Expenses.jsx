@@ -46,9 +46,9 @@ function ListExpenses() {
 
       <div className="flex flex-col md:flex-row justify-between items-start mb-8">
             {/* Left Section: Search Bars */}
-            <div className="flex flex-col md:flex-row space-x-2 mb-4 md:mb-0">
+            <div className="flex flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row xxl:flex-row space-x-0 md:space-x-0  lg:space-x-2 xl:space-x-2 2xl:space-x-2 xxl:space-x-2 mb-4 md:mb-0">
                 {/* Search by Type */}
-                <div className="relative mb-4 md:mb-0">
+                <div className="relative mb-4 md:mb-0 pb-2">
                 <label className="block text-[#264164] mb-1 text-xs">Search by Type</label>
                 <input 
                     type="text" 
@@ -59,7 +59,7 @@ function ListExpenses() {
                 </div>
 
                 {/* Search by Category */}
-                <div className="relative mb-4 md:mb-0">
+                <div className="relative mb-4 md:mb-0 pb-2">
                 <label className="block text-[#264164] mb-1 text-xs">Search by Category</label>
                 <input 
                     type="text" 
@@ -70,7 +70,7 @@ function ListExpenses() {
                 </div>
 
                 {/* Search by Date */}
-                <div className="relative mb-4 md:mb-0">
+                <div className="relative mb-4 md:mb-0 pb-2">
                 <label className="block text-[#264164] mb-1 text-xs">Search by Date</label>
                 <input 
                     type="date" 

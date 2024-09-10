@@ -59,7 +59,7 @@ function AddQuotation() {
 
           <hr className="bg-black mb-4" />
 
-          <div className="flex flex-col md:flex-row justify-between mb-8 text-[#264164] text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+          <div className="flex flex-col md:flex-row justify-between mb-8 text-[#264164]  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
             <div>
               <div>11 mail post andamaphuwa junction</div>
               <div>Buttala, Buttala</div>
@@ -88,7 +88,7 @@ function AddQuotation() {
               <tbody>
                 <tr className="border-t bg-[#FEF9FF] block md:table-row mb-4 md:mb-0">
                   <td className="py-2 px-4 block md:table-cell">
-                    <div className="md:hidden text-[#264164] font-semibold text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+                    <div className="md:hidden text-[#264164] font-semibold  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
                       Item
                     </div>
                     <select className="border rounded-md p-2 w-full text-[#264164] hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
@@ -98,13 +98,13 @@ function AddQuotation() {
                     </select>
                   </td>
                   <td className="py-2 px-4 block md:table-cell">
-                    <div className="md:hidden text-[#264164] font-semibold text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+                    <div className="md:hidden text-[#264164] font-semibold  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
                       Rate (LKR)
                     </div>
                     0
                   </td>
                   <td className="py-2 px-4 block md:table-cell">
-                    <div className="md:hidden text-[#264164] font-semibold text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+                    <div className="md:hidden text-[#264164] font-semibold  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
                       Quantity
                     </div>
                     <input
@@ -115,7 +115,7 @@ function AddQuotation() {
                     />
                   </td>
                   <td className="py-2 px-4 block md:table-cell">
-                    <div className="md:hidden text-[#264164] font-semibold text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+                    <div className="md:hidden text-[#264164] font-semibold  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
                       Discount Type
                     </div>
                     <select className="border rounded-md p-2 w-full text-[#264164] hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
@@ -124,7 +124,7 @@ function AddQuotation() {
                     </select>
                   </td>
                   <td className="py-2 px-4 block md:table-cell">
-                    <div className="md:hidden text-[#264164] font-semibold text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+                    <div className="md:hidden text-[#264164] font-semibold text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
                       Discount
                     </div>
                     <input
@@ -135,7 +135,7 @@ function AddQuotation() {
                     />
                   </td>
                   <td className="py-2 px-4 block md:table-cell">
-                    <div className="md:hidden text-[#264164] font-semibold text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+                    <div className="md:hidden text-[#264164] font-semibold  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
                       Total (LKR)
                     </div>
                     0.00
@@ -153,10 +153,10 @@ function AddQuotation() {
           </div>
 
           <div className="flex space-x-4 mt-4 mb-6">
-            <button className="border border-gray-300 text-gray-500 p-2 rounded-md hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+            <button className="border border-gray-300 text-gray-500 p-2 rounded-md hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
               + Add New Product Category
             </button>
-            <button className="border border-gray-300 text-gray-500 p-2 rounded-md hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+            <button className="border border-gray-300 text-gray-500 p-2 rounded-md hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
               + Add New Item
             </button>
           </div>
@@ -174,15 +174,15 @@ function AddQuotation() {
             {/* Right-side Total and Discount Section */}
             <div className="w-full md:w-[500px] bg-gray-50 p-4 md:p-6 rounded-md shadow-md space-y-4">
               <div className="flex justify-between">
-                <span className="text-base md:text-lg text-[#264164] text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+                <span className=" text-[#264164]  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
                   Subtotal
                 </span>
-                <span className="text-base md:text-lg text-[#264164] text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg">
+                <span className=" text-[#264164]  text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm">
                   (LKR) 0.00
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-base md:text-lg text-[#264164] text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-lg p-1">
+                <span className=" text-[#264164]   text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-sm xxl:text-sm p-1">
                   Discount
                 </span>
                 <div className="flex space-x-2">

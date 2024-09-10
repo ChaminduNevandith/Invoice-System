@@ -3,13 +3,13 @@ import React from 'react'
 function AddSuppliers() {
   return (
     
-    <div className="bg-white absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn">
+    <div className="bg-white absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn ">
       <h1 className="text-2xl font-semibold text-[#264164] mb-1">Add Suppliers</h1>
       <hr className="bg-black mb-4"></hr>
       
-      <div className="space-y-8 overflow-auto pb-[150px]">
+      <div className="space-y-8 overflow-auto pb-[150px] ">
         {/* General Section */}
-        <div className="bg-purple-50 p-6 rounded-md shadow-sm animate-slideInUp">
+        <div className="bg-purple-50 p-6 rounded-md shadow-sm animate-slideInUp ">
           <h2 className="text-lg font-medium text-[#264164] mb-4">General</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>

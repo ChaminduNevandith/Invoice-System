@@ -33,9 +33,9 @@ function ListCustomers() {
       <h1 className=" text-2xl font-semibold text-[#264164] mb-1">Customer Credit Logs</h1>
       <hr className="bg-black mb-4"></hr>
 
-      <div className="flex flex-col md:flex-row justify-between mt-[20px] mb-[50px]">
+      <div className="flex flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row xxl:flex-row justify-between mt-[20px] mb-[50px]">
         {/* Search Bar */}
-        <div className="relative mb-4 md:mb-0">
+        <div className="relative mb-4 md:mb-0 pb-2">
         <select className="p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
             <option>Akila 724391</option>
             <option>Nimal 236123</option>
