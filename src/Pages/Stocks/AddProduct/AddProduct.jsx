@@ -11,7 +11,7 @@ import { Pagination } from "@mui/material";
 import ProductTable from "./ProductTable";
 import ServiceTable from "./ServiceTable";
 import ZoneManager from "../../../Component/ZoneManagerform/ZoneManager";
-import AddSuppliersform from "../../../Component/AddSuppliersform/AddSuppliersform";
+import AddNewProductform from "../../../Component/AddNewProductform/AddNewProductform";
 
 const Modal = ({ title, onClose, children }) => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
@@ -166,7 +166,7 @@ function AddProduct() {
       )}
       {modalType === "add" && (
         <Modal title="New Product" onClose={closeModal}>
-          <AddSuppliersform />
+          <AddNewProductform />
         </Modal>
       )}
     </div>

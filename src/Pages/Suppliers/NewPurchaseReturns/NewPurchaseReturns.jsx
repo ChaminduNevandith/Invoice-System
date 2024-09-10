@@ -77,7 +77,7 @@ function ListGRN() {
           <label className="block text-[#264164] mb-1 text-xs">
             Select Supplier
           </label>
-          <select className="p-2 border rounded-md w-full md:w-[250px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200  focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
+          <select className="p-2 border rounded-md w-full sm:w-full md:w-full lg:w-[150px] xl:w-[200px] 2xl:w-[200px] xxl:w-[200px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200  focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50">
             <option>Akila 724391</option>
             <option>Nimal 236123</option>
             <option>Banu 2242134</option>
@@ -97,7 +97,7 @@ function ListGRN() {
         <input
           type="date"
           placeholder="Search..."
-          className="text-[#264164] text-sm p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 *:qqqqqfocus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+          className="text-[#264164] text-sm p-2 border rounded-md w-full sm:w-full md:w-full lg:w-[150px] xl:w-[200px] 2xl:w-[200px] xxl:w-[200px] border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 *:qqqqqfocus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
         />
       </div>
 
