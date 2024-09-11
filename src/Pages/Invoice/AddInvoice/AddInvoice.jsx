@@ -45,7 +45,7 @@ function AddInvoice() {
             <input
               type="text"
               placeholder="Search..."
-              className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+              className="text-[#264164] pl-10 p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200  focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
             />
             <Search className="absolute top-7 left-2 text-gray-500" />
           </div>
@@ -80,7 +80,7 @@ function AddInvoice() {
           <input
             type="text"
             placeholder="Add invoice number"
-            className="text-[#264164] text-sm p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+            className="text-[#264164] text-sm p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 f focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
           />
         </div>
 
@@ -89,7 +89,7 @@ function AddInvoice() {
           <input
             type="date"
             placeholder="Search..."
-            className="text-[#264164] text-sm p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-purple-500 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
+            className="text-[#264164] text-sm p-2 border rounded-md w-full border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-200 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-300 hover:ring-opacity-50"
           />
         </div>
 
