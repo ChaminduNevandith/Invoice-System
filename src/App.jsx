@@ -46,7 +46,7 @@ import Apps from './Pages/App/Apps.jsx';
 import Billing from './Pages/Billing/Billing.jsx';
 import DuePatment from './Pages/DuePayment/DuePatment.jsx';
 import NewCustomerReturns from './Pages/Customers/NewCustomerReturns/NewCustomerReturns.jsx';
-import CRM from './Pages/CRM/crm.jsx';
+import Project from './Pages/TaskManager/Project/Project.jsx';
 
 
 
@@ -113,7 +113,7 @@ function App() {
               <Route path="/user-settings" element={<SystemSettings/>}/>
               <Route path="/app" element={<Apps/>}/>
               <Route path="/billing" element={<Billing/>}/>
-              <Route path="/crm" element={<CRM/>}/>
+              <Route path="/Task-Manager" element={<Project/>}/>
               
               
 
