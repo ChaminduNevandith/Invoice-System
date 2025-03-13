@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
   Dashboard,
   People,
@@ -22,7 +22,7 @@ import {
   Apps,
   TaskAlt,
   AccountBalanceWallet,
-} from '@mui/icons-material';
+} from "@mui/icons-material";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -43,7 +43,7 @@ const Sidebar = () => {
   return (
     <div
       className={`${
-        isCollapsed ? '2xl:w-[5.75rem]' : '2xl:w-[17.56rem]'
+        isCollapsed ? "2xl:w-[5.75rem]" : "2xl:w-[17.56rem]"
       } bg-white h-screen shadow-md flex flex-col transition-all duration-300 ease-in-out`}
     >
       <div className="flex items-center justify-between p-4">
@@ -61,7 +61,7 @@ const Sidebar = () => {
           {/* Dashboard */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
           >
             <NavLink to="/" activeClassName="text-purple-600">
@@ -73,7 +73,7 @@ const Sidebar = () => {
           {/* Customers with Dropdown */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
             onClick={() => setIsCustomerDropdownOpen(!isCustomerDropdownOpen)}
           >
@@ -123,11 +123,10 @@ const Sidebar = () => {
             </ul>
           )}
 
-
-           {/* Quotation with Dropdown */}
-           <li
+          {/* Quotation with Dropdown */}
+          <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
             onClick={() => setIsQuotationDropdownOpen(!isQuotationDropdownOpen)}
           >
@@ -158,11 +157,10 @@ const Sidebar = () => {
             </ul>
           )}
 
-
           {/* Invoice with Dropdown */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
             onClick={() => setIsInvoiceDropdownOpen(!isInvoiceDropdownOpen)}
           >
@@ -198,7 +196,7 @@ const Sidebar = () => {
           {/* Due Payment */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
           >
             <NavLink to="/due-payment" activeClassName="text-purple-600">
@@ -210,7 +208,7 @@ const Sidebar = () => {
           {/* Stock with Dropdown*/}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
             onClick={() => setIsStockDropdownOpen(!isStockDropdownOpen)}
           >
@@ -274,7 +272,7 @@ const Sidebar = () => {
           {/* Suppliers with Dropdown */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
             onClick={() => setIsSuppliersDropdownOpen(!isSuppliersDropdownOpen)}
           >
@@ -326,7 +324,7 @@ const Sidebar = () => {
           {/* Salesmen with Dropdown */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
             onClick={() => setIsSalesmenDropdownOpen(!isSalesmenDropdownOpen)}
           >
@@ -360,7 +358,7 @@ const Sidebar = () => {
           {/* CRM */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
           >
             <NavLink to="/crm" activeClassName="text-purple-600">
@@ -372,7 +370,7 @@ const Sidebar = () => {
           {/* Task Manager */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
           >
             <NavLink to="/Task-Manager" activeClassName="text-purple-600">
@@ -384,24 +382,21 @@ const Sidebar = () => {
           {/* Earning & Expenses  */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
           >
             <NavLink to="/Earning-&-Expenses" activeClassName="text-purple-600">
               <AccountBalanceWallet />
-              {!isCollapsed && <span className="ml-4">Earning & Expenses </span>}
+              {!isCollapsed && (
+                <span className="ml-4">Earning & Expenses </span>
+              )}
             </NavLink>
           </li>
-
-
-          
-
-
 
           {/* Users with Dropdown */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
             onClick={() => setIsUsersDropdownOpen(!isUsersDropdownOpen)}
           >
@@ -435,7 +430,7 @@ const Sidebar = () => {
           {/* Reports with Dropdown */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
             onClick={() => setIsReportDropdownOpen(!isReportDropdownOpen)}
           >
@@ -505,7 +500,7 @@ const Sidebar = () => {
           {/* Settings */}
           <li
             className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-              isCollapsed ? 'justify-center text-center' : ''
+              isCollapsed ? "justify-center text-center" : ""
             }`}
             onClick={() => setIsSettingsDropdownOpen(!isSettingsDropdownOpen)}
           >
@@ -528,41 +523,41 @@ const Sidebar = () => {
                 </NavLink>
               </li>
               <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
+                <NavLink to="/app-settings-forms">
+                  <Settings />
+                  <span className="ml-4">Invoice Settings 2</span>
+                </NavLink>
+              </li>
+              <li className="flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer">
                 <NavLink to="/user-settings">
                   <Person />
                   <span className="ml-4">App Settings</span>
                 </NavLink>
               </li>
-
-              
             </ul>
           )}
 
-<li
-                className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-                  isCollapsed ? 'justify-center text-center' : ''
-                }`}
-              >
-                <NavLink to="/app">
-                  <Apps />
-                  {!isCollapsed && <span className="ml-4">App</span>}
-                </NavLink>
-              </li>
+          <li
+            className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
+              isCollapsed ? "justify-center text-center" : ""
+            }`}
+          >
+            <NavLink to="/app">
+              <Apps />
+              {!isCollapsed && <span className="ml-4">App</span>}
+            </NavLink>
+          </li>
 
-    
-              <li
-                className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
-                  isCollapsed ? 'justify-center text-center' : ''
-                }`}
-              >
-                <NavLink to="/billing">
-                  <ReceiptLong />
-                  {!isCollapsed && <span className="ml-4">Billing</span>}
-                </NavLink>
-              </li>
-
-
-         
+          <li
+            className={`flex items-center p-2 text-[#ADB5BD] hover:bg-purple-300 hover:text-white rounded-md cursor-pointer ${
+              isCollapsed ? "justify-center text-center" : ""
+            }`}
+          >
+            <NavLink to="/billing">
+              <ReceiptLong />
+              {!isCollapsed && <span className="ml-4">Billing</span>}
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </div>

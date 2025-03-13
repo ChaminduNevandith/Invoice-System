@@ -47,6 +47,8 @@ import Billing from './Pages/Billing/Billing.jsx';
 import DuePatment from './Pages/DuePayment/DuePatment.jsx';
 import NewCustomerReturns from './Pages/Customers/NewCustomerReturns/NewCustomerReturns.jsx';
 import Project from './Pages/TaskManager/Project/Project.jsx';
+import InvoiceFormstyle from './Pages/Settings/Invoice-Settings-2/InvoiceFormstyle.jsx';
+import EditInvoice from './Pages/Settings/Invoice-Settings-2/EditInvoice.jsx';
 
 
 
@@ -110,16 +112,13 @@ function App() {
               <Route path="/Expenses-report" element={<ExpensesReport/>}/>
               <Route path="/profit-Lost-report" element={<PLReport/>}/>
               <Route path="/app-settings" element={<InvoiceSettings/>}/>
+              <Route path="/app-settings-forms" element={<InvoiceFormstyle/>}/>
               <Route path="/user-settings" element={<SystemSettings/>}/>
               <Route path="/app" element={<Apps/>}/>
               <Route path="/billing" element={<Billing/>}/>
               <Route path="/Task-Manager" element={<Project/>}/>
+              <Route path="/EditInvoice" element={<EditInvoice/>}/>
               
-              
-
-
-
-
             </Routes>
           </div>
 
