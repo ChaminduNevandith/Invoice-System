@@ -10,8 +10,8 @@ export default function ContentSettings3() {
   };
 
   return (
-    <div className="w-[400px] shadow-lg rounded-lg border  jus">
-      <InvoiceNav/>
+    <div className="w-[400px] shadow-lg rounded-lg border p-2">
+      <InvoiceNav />
       <Card className="mt-4">
         <CardContent className="p-4">
           <h2 className="font-bold text-lg flex items-center gap-2">Footer</h2>

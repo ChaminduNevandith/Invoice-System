@@ -1,58 +1,81 @@
-import React from 'react'
+import React from "react";
 
-function InvoiceHeader() {
+function InvoiceHeader({ headerData }) {
   return (
     <div className="p-6 border-b border-gray-300">
-      {/* Top Section */}
       <div className="flex justify-between items-start">
         <div>
-          <p className="text-sm font-semibold">charmindu</p>
-          <p className="text-sm text-gray-500">+0725422146</p>
-          <p className="text-sm text-gray-500">cnewa@gmail.com</p>
-          <p className="text-sm text-gray-500">www.asipiya.lk</p>
+          {headerData.showFields.businessName && (
+            <p className="text-sm font-semibold">{headerData.businessName}</p>
+          )}
+          {headerData.showFields.phone && (
+            <p className="text-sm text-gray-500">{headerData.phone}</p>
+          )}
+          {headerData.showFields.email && (
+            <p className="text-sm text-gray-500">{headerData.email}</p>
+          )}
+          {headerData.showFields.address && (
+            <p className="text-sm text-gray-500">{headerData.address}</p>
+          )}
+          {headerData.showFields.companyReg && (
+            <p className="text-sm text-gray-500">
+              Reg: {headerData.companyReg}
+            </p>
+          )}
+          {headerData.showFields.website && (
+            <p className="text-sm text-gray-500">{headerData.website}</p>
+          )}
         </div>
         <div className="text-right">
           <h2 className="text-xl font-semibold">Asipiya</h2>
           <p className="text-sm text-gray-500">SOFT SOLUTIONS</p>
         </div>
       </div>
-
       {/* Invoice Details */}
       <div className="flex justify-between items-start mt-6">
         <div>
           <h1 className="text-2xl font-bold">INVOICE</h1>
-          <p className="text-sm text-gray-500 mt-2">
-            <span className="font-semibold">BILL TO</span><br />
-            Smith Co. 123 Main<br />
-            Street City, CA 12345
-          </p>
+          {headerData.showFields.billingAddress && (
+            <p className="text-sm text-gray-500 mt-2 w-[150px]">
+              <span className="font-semibold">BILL TO</span>
+              <br />
+              {headerData.billTo}
+            </p>
+          )}
         </div>
         <div>
-          <p className="text-sm text-gray-500">
-            <span className="font-semibold">SHIP TO</span><br />
-            John Smith 20637 Palm<br />
-            Drive City, CA 12345
-          </p>
+          {headerData.showFields.shipping && (
+            <p className="text-sm text-gray-500 p-2 w-[150px]">
+              <span className="font-semibold">SHIP TO</span>
+              <br />
+              {headerData.shipTo}
+            </p>
+          )}
         </div>
         <div>
-          <p className="text-sm text-gray-500">
-            <span className="font-semibold">SHIP DATE</span>: 01/03/2018<br />
-            <span className="font-semibold">SHIP VIA</span>: FedEx<br />
-            <span className="font-semibold">TRACKING</span>: #12345678
-          </p>
+          {headerData.showFields.terms && (
+            <p className="text-sm text-gray-500 p-2 w-[150px]">
+              <span className="font-semibold">TERMS</span>: {headerData.terms}
+            </p>
+          )}
         </div>
         <div className="text-right">
-          <p className="text-sm text-gray-500">
-            <span className="font-semibold">INVOICE</span>: 12345<br />
-            <span className="font-semibold">DATE</span>: 01/03/2018<br />
-            <span className="font-semibold">TERMS</span>: Net 30<br />
-            <span className="font-semibold">DUE DATE</span>: 02/03/2018
-          </p>
-          <p className="text-sm font-semibold mt-2">CHEQUE</p>
+          {headerData.showFields.dueDate && (
+            <p className="text-sm text-gray-500 p-2 w-[150px]">
+              <span className="font-semibold">DUE DATE</span>:{" "}
+              {headerData.dueDate}
+            </p>
+          )}
+
+          {headerData.showFields.paymentMethod && (
+            <p className="text-sm font-semibold mt-2 p-2 w-[150px]">
+              <span className="font-semibold">Payment</span>:{" "} {headerData.paymentMethod}
+            </p>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default InvoiceHeader
+export default InvoiceHeader;

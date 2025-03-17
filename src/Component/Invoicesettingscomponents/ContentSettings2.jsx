@@ -10,7 +10,7 @@ export default function ContentSettings2() {
   };
 
   return (
-    <div className="w-[400px] shadow-lg rounded-lg border">
+    <div className="w-[400px] shadow-lg rounded-lg border p-2">
      <InvoiceNav/>
 
       <Card className="mt-4">
