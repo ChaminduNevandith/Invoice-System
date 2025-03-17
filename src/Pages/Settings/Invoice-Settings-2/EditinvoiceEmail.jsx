@@ -8,20 +8,19 @@ import ContentSettings2 from "../../../Component/Invoicesettingscomponents/Conte
 import ContentSettings3 from "../../../Component/Invoicesettingscomponents/ContentSettings3";
 import InvoiceNav from "../../../Component/Invoicesettingscomponents/InvoiceNav";
 import DisplayInvoiceEmail from "../../../Component/Invoicesettingscomponents/DisplayInvoiceEmail/DisplayInvoiceEmail";
+import InvoiceEmail from "../../../Component/Invoicesettingscomponents/InvoiceEmail";
 
-function EditInvoice() {
+function EditinvoiceEmail() {
   return (
     <div className="bg-gray-100 absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn pb-[150px]">
       <div className="bg-white p-6 rounded-md shadow-md w-full flex flex-row justify-between ">
-        <Menuitems/>
+        <InvoiceEmail/>
         <div className="w-[900px]">
-        <Invoicehader/>
-        <Invoicearticle/>
-        <InvoiceFooter/>
+        <DisplayInvoiceEmail/>
         </div>
       </div>
     </div>
   );
 }
 
-export default EditInvoice;
+export default EditinvoiceEmail;

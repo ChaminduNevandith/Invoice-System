@@ -49,7 +49,8 @@ import NewCustomerReturns from './Pages/Customers/NewCustomerReturns/NewCustomer
 import Project from './Pages/TaskManager/Project/Project.jsx';
 import InvoiceFormstyle from './Pages/Settings/Invoice-Settings-2/InvoiceFormstyle.jsx';
 import EditInvoice from './Pages/Settings/Invoice-Settings-2/EditInvoice.jsx';
-
+import EditinvoiceEmail from './Pages/Settings/Invoice-Settings-2/EditinvoiceEmail.jsx';
+import Editinvoicecontent from './Pages/Settings/Invoice-Settings-2/Editinvoicecontent.jsx';
 
 
 
@@ -118,6 +119,8 @@ function App() {
               <Route path="/billing" element={<Billing/>}/>
               <Route path="/Task-Manager" element={<Project/>}/>
               <Route path="/EditInvoice" element={<EditInvoice/>}/>
+              <Route path="/Editinvoicecontent" element={<Editinvoicecontent/>}/>
+              <Route path="/EditinvoiceEmail" element={<EditinvoiceEmail/>}/>
               
             </Routes>
           </div>
