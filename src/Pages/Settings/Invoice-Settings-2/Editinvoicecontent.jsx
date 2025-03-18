@@ -20,6 +20,10 @@ function EditInvoice() {
     billTo: "Smith Co. 123 Main Street City, CA 12345",
     shipTo: " John Smith 20637 Palm Drive City, CA 12345",
     terms: " John Smith 20637 Palm Drive City, CA 12345",
+    paymentMethod : "Cash",
+    InvoiceId : "12341",
+    dueDate : "2025/09/10",
+    
     
     showFields: {
       businessName: true,
