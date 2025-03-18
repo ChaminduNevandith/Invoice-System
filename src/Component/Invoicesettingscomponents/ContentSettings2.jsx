@@ -1,17 +1,30 @@
 import { useState } from "react";
-import { Card, CardContent, Button, Checkbox } from "@mui/material";
+import { Card, CardContent, Checkbox } from "@mui/material";
 import InvoiceNav from "./InvoiceNav";
 
-export default function ContentSettings2() {
-  const [selected, setSelected] = useState({});
+export default function ContentSettings2({ articleData, updateArticleData }) {
+  const [selected, setSelected] = useState({
+    showInvoice: true,
+    Date: true,
+    "Product/Services": true,
+    Description: true,
+    Quantity: true,
+    Rate: true,
+    Amount: true,
+    SKU: true,
+  });
 
   const toggleSelection = (key) => {
-    setSelected((prev) => ({ ...prev, [key]: !prev[key] }));
+    setSelected((prev) => {
+      const newState = { ...prev, [key]: !prev[key] };
+      updateArticleData("selectedColumns", newState); // Update parent state
+      return newState;
+    });
   };
 
   return (
     <div className="w-[400px] shadow-lg rounded-lg border p-2">
-     <InvoiceNav/>
+      <InvoiceNav />
 
       <Card className="mt-4">
         <CardContent className="p-4">
@@ -23,27 +36,31 @@ export default function ContentSettings2() {
             Charges, Total Amount Due.
           </p>
           <div className="flex items-center gap-2 mb-2">
-            <Checkbox onChange={() => toggleSelection("showInvoice")} />
+            <Checkbox checked={selected.showInvoice} onChange={() => toggleSelection("showInvoice")} />
             <label>Show on invoice</label>
           </div>
 
-          <h3 className="font-semibold text-md mt-4">Activity table</h3>
-          <p className="text-gray-500 text-sm">COLUMNS</p>
+          {selected.showInvoice && (
+            <>
+              <h3 className="font-semibold text-md mt-4">Activity table</h3>
+              <p className="text-gray-500 text-sm">COLUMNS</p>
 
-          {[
-            "Date",
-            "Product/Services",
-            "Description",
-            "Quantity",
-            "Rate",
-            "Amount",
-            "SKU",
-          ].map((item) => (
-            <div key={item} className="flex items-center gap-2 my-2">
-              <Checkbox onChange={() => toggleSelection(item)} />
-              <label>{item}</label>
-            </div>
-          ))}
+              {[
+                "Date",
+                "Product/Services",
+                "Description",
+                "Quantity",
+                "Rate",
+                "Amount",
+                "SKU",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-2 my-2">
+                  <Checkbox checked={selected[item]} onChange={() => toggleSelection(item)} />
+                  <label>{item}</label>
+                </div>
+              ))}
+            </>
+          )}
         </CardContent>
       </Card>
     </div>
