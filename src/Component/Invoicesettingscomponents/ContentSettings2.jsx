@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, Checkbox } from "@mui/material";
 import InvoiceNav from "./InvoiceNav";
 
@@ -13,6 +13,15 @@ export default function ContentSettings2({ articleData, updateArticleData }) {
     Amount: true,
     SKU: true,
   });
+
+  // Sync state with articleData.selectedColumns on mount
+  useEffect(() => {
+    if (articleData?.selectedColumns) {
+      setSelected(articleData.selectedColumns);
+    } else {
+      updateArticleData("selectedColumns", selected);
+    }
+  }, [articleData, updateArticleData]);
 
   const toggleSelection = (key) => {
     setSelected((prev) => {
@@ -45,15 +54,7 @@ export default function ContentSettings2({ articleData, updateArticleData }) {
               <h3 className="font-semibold text-md mt-4">Activity table</h3>
               <p className="text-gray-500 text-sm">COLUMNS</p>
 
-              {[
-                "Date",
-                "Product/Services",
-                "Description",
-                "Quantity",
-                "Rate",
-                "Amount",
-                "SKU",
-              ].map((item) => (
+              {["Date", "Product/Services", "Description", "Quantity", "Rate", "Amount", "SKU"].map((item) => (
                 <div key={item} className="flex items-center gap-2 my-2">
                   <Checkbox checked={selected[item]} onChange={() => toggleSelection(item)} />
                   <label>{item}</label>

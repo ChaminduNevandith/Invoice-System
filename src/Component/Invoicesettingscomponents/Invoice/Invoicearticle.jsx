@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Delete } from "@mui/icons-material";
 
 function InvoiceArticle({ articleData }) {
@@ -18,11 +18,20 @@ function InvoiceArticle({ articleData }) {
     setInvoiceItems(invoiceItems.filter((item) => item.id !== id));
   };
 
-  // Columns to be displayed based on user selection
-  const selectedColumns = articleData?.selectedColumns || {};
+  // Ensure selectedColumns has a default value
+  const selectedColumns = articleData?.selectedColumns ?? {
+    showInvoice: true,
+    Date: true,
+    "Product/Services": true,
+    Description: true,
+    Quantity: true,
+    Rate: true,
+    Amount: true,
+    SKU: true,
+  };
 
   return (
-    <div className="p-4 border border-gray-300 rounded-md bg-white">
+    <div className="p-4 border border-gray-300 rounded-md bg-white mt-6">
       {selectedColumns.showInvoice && (
         <>
           <table className="w-full border-collapse">
@@ -49,10 +58,7 @@ function InvoiceArticle({ articleData }) {
                   {selectedColumns.Amount && <td className="p-2">{item.total}</td>}
                   {selectedColumns.SKU && <td className="p-2">12345-XYZ</td>}
                   <td className="p-2 text-center">
-                    <button
-                      className="text-red-500 hover:text-red-700"
-                      onClick={() => handleDelete(item.id)}
-                    >
+                    <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
                       <Delete />
                     </button>
                   </td>
