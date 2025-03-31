@@ -1,11 +1,10 @@
 import React from "react";
 
-function InvoiceFooter({ footerData }) {
-  // Using optional chaining and fallback values
+function InvoiceFooter({ footerData, selectedColor }) {
   const notes = footerData?.notes || 'No notes available';
   const paymentDetails = footerData?.paymentDetails || 'No payment details available';
   const footerText = footerData?.footerText || 'No footer text available';
-  const showFields = footerData?.showFields || {}; // Default to empty object if undefined
+  const showFields = footerData?.showFields || {};
   const invoiceId = footerData?.invoiceId || 'No Invoice ID';
 
   return (
@@ -63,8 +62,8 @@ function InvoiceFooter({ footerData }) {
         </div>
       </div>
 
-      <div className="mt-6">
-        <div className="bg-gray-300 p-2 text-gray-700 font-semibold">
+      <div className="mt-6" style={{ backgroundColor: selectedColor }}>
+        <div className="p-2 text-gray-700 font-semibold">
           {paymentDetails}
         </div>
         <div className="text-gray-500 text-sm mt-6">{footerText}</div>

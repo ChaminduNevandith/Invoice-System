@@ -3,14 +3,11 @@ import Invoicehader from "../../../Component/Invoicesettingscomponents/Invoice/I
 import Invoicearticle from "../../../Component/Invoicesettingscomponents/Invoice/Invoicearticle";
 import InvoiceFooter from "../../../Component/Invoicesettingscomponents/Invoice/InvoiceFooter";
 import Menuitems from "../../../Component/Invoicesettingscomponents/MenuItems";
-import Contentsettings from "../../../Component/Invoicesettingscomponents/Contentsettings";
-import ContentSettings2 from "../../../Component/Invoicesettingscomponents/ContentSettings2";
-import ContentSettings3 from "../../../Component/Invoicesettingscomponents/ContentSettings3";
 import InvoiceNav from "../../../Component/Invoicesettingscomponents/InvoiceNav";
-import DisplayInvoiceEmail from "../../../Component/Invoicesettingscomponents/DisplayInvoiceEmail/DisplayInvoiceEmail";
 
 function EditInvoice() {
-  // State for Invoice Header, Article, and Footer
+  const [selectedColor, setSelectedColor] = useState("#D3D3D3");
+
   const [headerData, setHeaderData] = useState({
     businessName: "Charmindu",
     phone: "+0725422146",
@@ -55,7 +52,6 @@ function EditInvoice() {
     },
   });
 
-  // Update functions for header, article, and footer data
   const updateHeaderData = (field, value) => {
     setHeaderData((prev) => ({ ...prev, [field]: value }));
   };
@@ -71,16 +67,11 @@ function EditInvoice() {
   return (
     <div className="bg-gray-100 absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn pb-[150px]">
       <div className="bg-white p-6 rounded-md shadow-md w-full flex flex-row justify-between ">
-        <Menuitems />
+        <Menuitems selectedColor={selectedColor} setSelectedColor={setSelectedColor} />
         <div className="w-[900px]">
-          {/* Pass headerData as a prop to Invoicehader */}
-          <Invoicehader headerData={headerData} />
-
-          {/* Pass articleData as a prop to Invoicearticle */}
-          <Invoicearticle articleData={articleData} />
-
-          {/* Pass footerData as a prop to InvoiceFooter */}
-          <InvoiceFooter footerData={footerData} />
+          <Invoicehader headerData={headerData} selectedColor={selectedColor} />
+          <Invoicearticle articleData={articleData} selectedColor={selectedColor} />
+          <InvoiceFooter footerData={footerData} selectedColor={selectedColor} />
         </div>
       </div>
     </div>

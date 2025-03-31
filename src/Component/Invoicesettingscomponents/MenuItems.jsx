@@ -9,31 +9,29 @@ const menuItems = [
   { title: "Edit Print Settings", icon: "🖨️" },
 ];
 
-export default function DesignNav() {
+export default function DesignNav({ selectedColor, setSelectedColor }) {
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [selectedColor, setSelectedColor] = useState("#264164"); // Default color
-  const [logos, setLogos] = useState([]); // Store multiple uploaded logos
-  const colors = ["#264164", "#FF5733", "#33FF57", "#5733FF", "#FFC300"];
+  const [logos, setLogos] = useState([]);
+  const colors = ["#A7C7E7", "#FFB3A1", "#B5EAD7", "#C7CEEA", "#FFEBA9"];
 
   const handleThemeColorChange = (color) => setSelectedColor(color);
 
   const handleLogoUpload = (event) => {
     const files = Array.from(event.target.files);
     const newLogos = files.map((file) => ({
-      id: URL.createObjectURL(file), // Unique URL for preview
+      id: URL.createObjectURL(file),
       file: file,
     }));
-
-    setLogos((prevLogos) => [...prevLogos, ...newLogos]); // Add new logos
+    setLogos((prevLogos) => [...prevLogos, ...newLogos]);
   };
 
   const handleLogoRemove = (id) => {
-    setLogos((prevLogos) => prevLogos.filter((logo) => logo.id !== id)); // Remove logo by id
+    setLogos((prevLogos) => prevLogos.filter((logo) => logo.id !== id));
   };
 
   return (
     <div className="w-[400px] shadow-lg rounded-lg border p-2">
-      <InvoiceNav />
+      <InvoiceNav selectedColor={selectedColor} />
       <div className="p-4">
         {menuItems.map((item, index) => (
           <div key={index} className="mb-2">
@@ -54,7 +52,6 @@ export default function DesignNav() {
 
             {openDropdown === index && (
               <div className="mt-2 p-2 bg-gray-100 rounded-md text-sm">
-                {/* Change Template Section */}
                 {item.title === "Change Up the Template" && (
                   <div>
                     <p className="mb-2">Select a template:</p>
@@ -75,10 +72,8 @@ export default function DesignNav() {
                   </div>
                 )}
 
-                {/* Make Logo Edits Section (Supports Multiple Images) */}
                 {item.title === "Make Logo Edits" && (
                   <div className="flex flex-col items-center">
-                    {/* Image Upload Input */}
                     <input
                       type="file"
                       accept="image/*"
@@ -86,8 +81,6 @@ export default function DesignNav() {
                       onChange={handleLogoUpload}
                       className="mb-2"
                     />
-
-                    {/* Display Uploaded Images */}
                     <div className="grid grid-cols-3 gap-2">
                       {logos.map((logo) => (
                         <div key={logo.id} className="relative">
@@ -108,7 +101,6 @@ export default function DesignNav() {
                   </div>
                 )}
 
-                {/* Try Another Colours Section */}
                 {item.title === "Try Another Colours" && (
                   <div className="flex flex-col md:flex-row items-center md:space-x-4 w-full">
                     <div className="flex flex-col items-center">
@@ -123,37 +115,31 @@ export default function DesignNav() {
 
                     <div className="grid grid-cols-5 gap-2 mt-4 md:mt-0">
                       {colors.map((color) => (
-                        <div
+                        <button
                           key={color}
-                          className="relative"
                           onClick={() => handleThemeColorChange(color)}
+                          className={`w-8 h-8 rounded-full cursor-pointer relative ${
+                            selectedColor === color
+                              ? "ring-4 ring-[#264164]"
+                              : "ring-2 ring-gray-300"
+                          }`}
+                          style={{ backgroundColor: color }}
                         >
-                          <div
-                            className={`w-8 h-8 rounded-full cursor-pointer ${
-                              selectedColor === color
-                                ? "ring-4 ring-[#264164]"
-                                : "ring-2 ring-gray-300"
-                            }`}
-                            style={{ backgroundColor: color }}
-                          />
                           {selectedColor === color && (
                             <div className="absolute inset-0 w-full h-full rounded-full border-2 border-white" />
                           )}
-                        </div>
+                        </button>
                       ))}
                     </div>
                   </div>
                 )}
 
-                {/* Edit Print Settings Section */}
                 {item.title === "Edit Print Settings" && (
                   <div className="p-3 bg-white rounded-lg shadow-md border">
                     <h3 className="text-sm font-semibold text-gray-700 mb-2">
                       Page Margins (in mm)
                     </h3>
-
                     <div className="grid grid-cols-2 gap-3">
-                      {/* Top Margin */}
                       <div className="flex flex-col">
                         <label className="text-xs text-gray-600">Top</label>
                         <input
@@ -162,8 +148,6 @@ export default function DesignNav() {
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
-
-                      {/* Bottom Margin */}
                       <div className="flex flex-col">
                         <label className="text-xs text-gray-600">Bottom</label>
                         <input
@@ -172,8 +156,6 @@ export default function DesignNav() {
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
-
-                      {/* Left Margin */}
                       <div className="flex flex-col">
                         <label className="text-xs text-gray-600">Left</label>
                         <input
@@ -182,8 +164,6 @@ export default function DesignNav() {
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
-
-                      {/* Right Margin */}
                       <div className="flex flex-col">
                         <label className="text-xs text-gray-600">Right</label>
                         <input

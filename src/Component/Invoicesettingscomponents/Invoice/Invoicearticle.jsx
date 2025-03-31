@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Delete } from "@mui/icons-material";
 
-function InvoiceArticle({ articleData }) {
+function InvoiceArticle({ articleData , selectedColor  }) {
   const [invoiceItems, setInvoiceItems] = useState([
     {
       id: 1,
@@ -36,7 +36,7 @@ function InvoiceArticle({ articleData }) {
         <>
           <table className="w-full border-collapse">
             <thead>
-              <tr className="bg-gray-300 text-gray-700 text-left">
+              <tr className="bg-gray-300 text-gray-700 text-left" style={{ backgroundColor: selectedColor }}>
                 {selectedColumns.Date && <th className="p-2">Date</th>}
                 {selectedColumns["Product/Services"] && <th className="p-2">Product/Services</th>}
                 {selectedColumns.Description && <th className="p-2">Description</th>}
