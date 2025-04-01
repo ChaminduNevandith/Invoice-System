@@ -1,12 +1,21 @@
 import React, { useState } from "react";
-import Invoicehader from "../../../Component/Invoicesettingscomponents/Invoice/Invoicehader";
-import Invoicearticle from "../../../Component/Invoicesettingscomponents/Invoice/Invoicearticle";
-import InvoiceFooter from "../../../Component/Invoicesettingscomponents/Invoice/InvoiceFooter";
+import Invoicehader from "../../../Component/Invoicesettingscomponents/Invoice/ClassicInvoice/Invoicehader";
+import Invoicearticle from "../../../Component/Invoicesettingscomponents/Invoice/ClassicInvoice/Invoicearticle";
+import InvoiceFooter from "../../../Component/Invoicesettingscomponents/Invoice/ClassicInvoice/InvoiceFooter";
+import MordenInvoiceHeader from "../../../Component/Invoicesettingscomponents/Invoice/MordenInvoice/Invoicehader";
+import MordenInvoiceArticle from "../../../Component/Invoicesettingscomponents/Invoice/MordenInvoice/Invoicearticle";
+import MordenInvoiceFooter from "../../../Component/Invoicesettingscomponents/Invoice/MordenInvoice/InvoiceFooter";
+import MinimalInvoiceArticle from "../../../Component/Invoicesettingscomponents/Invoice/MinimalInvoice/MinimalInvoicearticle";
+import MinimalInvoiceFooter from "../../../Component/Invoicesettingscomponents/Invoice/MinimalInvoice/MinimalInvoiceFooter";
+import MinimalInvoiceHeader from "../../../Component/Invoicesettingscomponents/Invoice/MinimalInvoice/MinimalInvoicehader";
+import ProfessionalInvoiceFooter from "../../../Component/Invoicesettingscomponents/Invoice/professionalInvoice/professionalInvoiceFooter";
+import ProfessionalInvoicearticle from "../../../Component/Invoicesettingscomponents/Invoice/professionalInvoice/professionalInvoicearticle";
+import ProfessionalInvoicehader from "../../../Component/Invoicesettingscomponents/Invoice/professionalInvoice/professionalInvoicehader";
 import Menuitems from "../../../Component/Invoicesettingscomponents/MenuItems";
-import InvoiceNav from "../../../Component/Invoicesettingscomponents/InvoiceNav";
 
 function EditInvoice() {
   const [selectedColor, setSelectedColor] = useState("#D3D3D3");
+  const [selectedTemplate, setSelectedTemplate] = useState("Classic"); // Default template is Classic
 
   const [headerData, setHeaderData] = useState({
     businessName: "Charmindu",
@@ -65,13 +74,44 @@ function EditInvoice() {
   };
 
   return (
-    <div className="bg-gray-100 absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn pb-[150px]">
-      <div className="bg-white p-6 rounded-md shadow-md w-full flex flex-row justify-between ">
-        <Menuitems selectedColor={selectedColor} setSelectedColor={setSelectedColor} />
-        <div className="w-[900px]">
-          <Invoicehader headerData={headerData} selectedColor={selectedColor} />
-          <Invoicearticle articleData={articleData} selectedColor={selectedColor} />
-          <InvoiceFooter footerData={footerData} selectedColor={selectedColor} />
+    <div className="bg-gray-100 absolute top-[115px] right-0 w-full h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10 animate-fadeIn">
+      <div className="bg-white p-6 rounded-md shadow-md w-full flex flex-row justify-between">
+        {/* Pass setSelectedTemplate to DesignNav */}
+        <Menuitems
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+          setSelectedTemplate={setSelectedTemplate}
+        />
+        <div className="w-[900px] pb-10 border border-gray-300 rounded-lg p-6">
+          {/* Conditionally Render Templates */}
+          {selectedTemplate === "Classic" && (
+            <>
+              <Invoicehader headerData={headerData} selectedColor={selectedColor} />
+              <Invoicearticle articleData={articleData} selectedColor={selectedColor} />
+              <InvoiceFooter footerData={footerData} selectedColor={selectedColor} />
+            </>
+          )}
+          {selectedTemplate === "Modern" && (
+            <>
+              <MordenInvoiceHeader headerData={headerData} selectedColor={selectedColor} />
+              <MordenInvoiceArticle articleData={articleData} selectedColor={selectedColor} />
+              <MordenInvoiceFooter footerData={footerData} selectedColor={selectedColor} />
+            </>
+          )}
+          {selectedTemplate === "Minimal" && (
+            <>
+              <MinimalInvoiceHeader headerData={headerData} selectedColor={selectedColor} />
+              <MinimalInvoiceArticle articleData={articleData} selectedColor={selectedColor} />
+              <MinimalInvoiceFooter footerData={footerData} selectedColor={selectedColor} />
+            </>
+          )}
+          {selectedTemplate === "Professional" && (
+            <>
+              <ProfessionalInvoicehader headerData={headerData} selectedColor={selectedColor} />
+              <ProfessionalInvoicearticle articleData={articleData} selectedColor={selectedColor} />
+              <ProfessionalInvoiceFooter footerData={footerData} selectedColor={selectedColor} />
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ const menuItems = [
   { title: "Edit Print Settings", icon: "🖨️" },
 ];
 
-export default function DesignNav({ selectedColor, setSelectedColor }) {
+export default function DesignNav({ selectedColor, setSelectedColor, setSelectedTemplate }) {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [logos, setLogos] = useState([]);
   const colors = ["#A7C7E7", "#FFB3A1", "#B5EAD7", "#C7CEEA", "#FFEBA9"];
@@ -27,6 +27,10 @@ export default function DesignNav({ selectedColor, setSelectedColor }) {
 
   const handleLogoRemove = (id) => {
     setLogos((prevLogos) => prevLogos.filter((logo) => logo.id !== id));
+  };
+
+  const handleTemplateChange = (template) => {
+    setSelectedTemplate(template); // Update selected template
   };
 
   return (
@@ -56,16 +60,28 @@ export default function DesignNav({ selectedColor, setSelectedColor }) {
                   <div>
                     <p className="mb-2">Select a template:</p>
                     <div className="grid grid-cols-2 gap-2">
-                      <button className="p-2 border rounded hover:bg-gray-200">
+                      <button
+                        className="p-2 border rounded hover:bg-gray-200"
+                        onClick={() => handleTemplateChange("Classic")} // Set template to Classic
+                      >
                         Classic
                       </button>
-                      <button className="p-2 border rounded hover:bg-gray-200">
+                      <button
+                        className="p-2 border rounded hover:bg-gray-200"
+                        onClick={() => handleTemplateChange("Modern")} // Set template to Modern
+                      >
                         Modern
                       </button>
-                      <button className="p-2 border rounded hover:bg-gray-200">
+                      <button
+                        className="p-2 border rounded hover:bg-gray-200"
+                        onClick={() => handleTemplateChange("Minimal")} // Set template to Minimal
+                      >
                         Minimal
                       </button>
-                      <button className="p-2 border rounded hover:bg-gray-200">
+                      <button
+                        className="p-2 border rounded hover:bg-gray-200"
+                        onClick={() => handleTemplateChange("Professional")} // Set template to Professional
+                      >
                         Professional
                       </button>
                     </div>
