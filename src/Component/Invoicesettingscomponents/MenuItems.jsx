@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ExpandMore } from "@mui/icons-material";
 import InvoiceNav from "./InvoiceNav";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const menuItems = [
   { title: "Change Up the Template", icon: "📜" },
@@ -9,10 +11,17 @@ const menuItems = [
   { title: "Edit Print Settings", icon: "🖨️" },
 ];
 
-export default function DesignNav({ selectedColor, setSelectedColor, setSelectedTemplate }) {
+export default function DesignNav({ selectedColor, setSelectedColor, setSelectedTemplate, selectedTemplate }) {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [logos, setLogos] = useState([]);
+  const [printSettings, setPrintSettings] = useState({
+    top: 10,
+    bottom: 10,
+    left: 10,
+    right: 10
+  });
   const colors = ["#A7C7E7", "#FFB3A1", "#B5EAD7", "#C7CEEA", "#FFEBA9"];
+  const invoiceRef = useRef();
 
   const handleThemeColorChange = (color) => setSelectedColor(color);
 
@@ -30,7 +39,62 @@ export default function DesignNav({ selectedColor, setSelectedColor, setSelected
   };
 
   const handleTemplateChange = (template) => {
-    setSelectedTemplate(template); // Update selected template
+    setSelectedTemplate(template);
+  };
+
+  const handlePrintSettingsChange = (field, value) => {
+    setPrintSettings(prev => ({
+      ...prev,
+      [field]: parseInt(value) || 0
+    }));
+  };
+
+  const handlePrint = () => {
+    const invoiceElement = document.getElementById('invoice-preview');
+    
+    if (!invoiceElement) {
+      console.error("Invoice element not found");
+      return;
+    }
+
+    html2canvas(invoiceElement, {
+      scale: 2, // Higher quality
+      logging: false,
+      useCORS: true,
+      allowTaint: true,
+      scrollX: 0,
+      scrollY: 0,
+      windowWidth: invoiceElement.scrollWidth,
+      windowHeight: invoiceElement.scrollHeight
+    }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm'
+      });
+
+      // Calculate dimensions with margins
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      
+      const imgWidth = pageWidth - printSettings.left - printSettings.right;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      let heightLeft = imgHeight;
+      let position = printSettings.top;
+      
+      pdf.addImage(imgData, 'PNG', printSettings.left, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+      
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, 'PNG', printSettings.left, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+      
+      pdf.save(`${selectedTemplate}-invoice.pdf`);
+    });
   };
 
   return (
@@ -62,25 +126,25 @@ export default function DesignNav({ selectedColor, setSelectedColor, setSelected
                     <div className="grid grid-cols-2 gap-2">
                       <button
                         className="p-2 border rounded hover:bg-gray-200"
-                        onClick={() => handleTemplateChange("Classic")} // Set template to Classic
+                        onClick={() => handleTemplateChange("Classic")}
                       >
                         Classic
                       </button>
                       <button
                         className="p-2 border rounded hover:bg-gray-200"
-                        onClick={() => handleTemplateChange("Modern")} // Set template to Modern
+                        onClick={() => handleTemplateChange("Modern")}
                       >
                         Modern
                       </button>
                       <button
                         className="p-2 border rounded hover:bg-gray-200"
-                        onClick={() => handleTemplateChange("Minimal")} // Set template to Minimal
+                        onClick={() => handleTemplateChange("Minimal")}
                       >
                         Minimal
                       </button>
                       <button
                         className="p-2 border rounded hover:bg-gray-200"
-                        onClick={() => handleTemplateChange("Professional")} // Set template to Professional
+                        onClick={() => handleTemplateChange("Professional")}
                       >
                         Professional
                       </button>
@@ -160,7 +224,8 @@ export default function DesignNav({ selectedColor, setSelectedColor, setSelected
                         <label className="text-xs text-gray-600">Top</label>
                         <input
                           type="number"
-                          placeholder="Enter mm"
+                          value={printSettings.top}
+                          onChange={(e) => handlePrintSettingsChange('top', e.target.value)}
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
@@ -168,7 +233,8 @@ export default function DesignNav({ selectedColor, setSelectedColor, setSelected
                         <label className="text-xs text-gray-600">Bottom</label>
                         <input
                           type="number"
-                          placeholder="Enter mm"
+                          value={printSettings.bottom}
+                          onChange={(e) => handlePrintSettingsChange('bottom', e.target.value)}
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
@@ -176,7 +242,8 @@ export default function DesignNav({ selectedColor, setSelectedColor, setSelected
                         <label className="text-xs text-gray-600">Left</label>
                         <input
                           type="number"
-                          placeholder="Enter mm"
+                          value={printSettings.left}
+                          onChange={(e) => handlePrintSettingsChange('left', e.target.value)}
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
@@ -184,11 +251,18 @@ export default function DesignNav({ selectedColor, setSelectedColor, setSelected
                         <label className="text-xs text-gray-600">Right</label>
                         <input
                           type="number"
-                          placeholder="Enter mm"
+                          value={printSettings.right}
+                          onChange={(e) => handlePrintSettingsChange('right', e.target.value)}
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
                     </div>
+                    <button 
+                      className="mt-4 w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                      onClick={handlePrint}
+                    >
+                      Generate PDF
+                    </button>
                   </div>
                 )}
               </div>
