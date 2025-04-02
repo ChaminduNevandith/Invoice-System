@@ -23,8 +23,12 @@ export default function DesignNav({ selectedColor, setSelectedColor, setSelected
   const colors = ["#A7C7E7", "#FFB3A1", "#B5EAD7", "#C7CEEA", "#FFEBA9"];
   const invoiceRef = useRef();
 
-  const handleThemeColorChange = (color) => setSelectedColor(color);
-
+  // In DesignNav component
+  const handleThemeColorChange = (color) => {
+    setSelectedColor(color);
+    localStorage.setItem('invoiceColor', color);
+  };
+  
   const handleLogoUpload = (event) => {
     const files = Array.from(event.target.files);
     const newLogos = files.map((file) => ({
@@ -38,9 +42,12 @@ export default function DesignNav({ selectedColor, setSelectedColor, setSelected
     setLogos((prevLogos) => prevLogos.filter((logo) => logo.id !== id));
   };
 
-  const handleTemplateChange = (template) => {
-    setSelectedTemplate(template);
-  };
+
+
+const handleTemplateChange = (template) => {
+  setSelectedTemplate(template);
+  localStorage.setItem('invoiceTemplate', template);
+};
 
   const handlePrintSettingsChange = (field, value) => {
     setPrintSettings(prev => ({

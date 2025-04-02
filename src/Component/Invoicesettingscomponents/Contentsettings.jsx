@@ -70,22 +70,24 @@ export default function Contentsettings({
 
         {/* Display Section */}
         <h2 className="mt-4 text-lg font-bold">Display</h2>
-        <div className="space-y-2">
+        <div className="mt-4">
+          <h2 className="text-lg font-bold">Invoice Details</h2>
           {[
-            { key: "billingAddress", label: "Billing Address" },
-            { key: "shipping", label: "Shipping" },
-            { key: "terms", label: "Terms" },
-            { key: "dueDate", label: "Due Date or Expiration Date" },
-            { key: "paymentMethod", label: "Payment Method" },
-          ].map(({ key, label }) => (
-            <div key={key} className="flex items-center space-x-2">
+            { key: "billTo", label: "Bill To", type: "text" },
+            { key: "shipTo", label: "Ship To", type: "text" },
+            { key: "terms", label: "Terms", type: "text" },
+            { key: "dueDate", label: "Date", type: "date" },
+            { key: "paymentMethod", label: "Payment Method", type: "text" },
+          ].map(({ key, label, type }) => (
+            <div key={key} className="mt-2">
+              <label className="text-sm font-medium">{label}</label>
               <input
-                type="checkbox"
-                className="h-4 w-4"
-                checked={headerData.showFields[key]}
-                onChange={() => toggleFieldVisibility(key)}
+                type={type}
+                className="w-full mt-1 p-2 border rounded"
+                placeholder={label}
+                value={headerData[key]}
+                onChange={(e) => updateHeaderData(key, e.target.value)}
               />
-              <span className="text-sm">{label}</span>
             </div>
           ))}
         </div>
