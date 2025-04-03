@@ -1,21 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Delete, Add } from "@mui/icons-material";
 
 function ProfessionalInvoicearticle({ articleData, selectedColor }) {
-  const [invoiceItems, setInvoiceItems] = useState([
-    {
-      id: 1,
-      date: "2024-01-01",
-      item: "Cap",
-      description: "High-quality cap",
-      quantity: 2,
-      rate: 280,
-      amount: 560,
-      sku: "12345-XYZ",
-    },
-  ]);
+  const [invoiceItems, setInvoiceItems] = useState(() => {
+    const savedItems = localStorage.getItem("professionalInvoiceItems");
+    return savedItems ? JSON.parse(savedItems) : [
+      {
+        id: 1,
+        date: "2024-01-01",
+        item: "Cap",
+        description: "High-quality cap",
+        quantity: 2,
+        rate: 280,
+        amount: 560,
+        sku: "12345-XYZ",
+      },
+    ];
+  });
+
   const [editing, setEditing] = useState(null);
   const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("professionalInvoiceItems", JSON.stringify(invoiceItems));
+  }, [invoiceItems]);
 
   const columns = [
     { key: "date", label: "Date", editable: true },
@@ -42,7 +50,7 @@ function ProfessionalInvoicearticle({ articleData, selectedColor }) {
   };
 
   const handleDelete = (id) => {
-    setInvoiceItems(invoiceItems.filter((item) => item.id !== id));
+    setInvoiceItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
   const handleEdit = (id, field) => {
@@ -60,11 +68,10 @@ function ProfessionalInvoicearticle({ articleData, selectedColor }) {
   };
 
   const addRow = () => {
-    const newId = invoiceItems.length + 1;
     setInvoiceItems([
       ...invoiceItems,
       {
-        id: newId,
+        id: Date.now(),
         date: "2024-01-01",
         item: "",
         description: "",

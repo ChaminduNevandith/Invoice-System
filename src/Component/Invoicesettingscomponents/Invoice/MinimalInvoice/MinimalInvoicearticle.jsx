@@ -1,22 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Delete, Add } from "@mui/icons-material";
 
 function MinimalInvoiceArticle({ articleData, selectedColor }) {
-  const [invoiceItems, setInvoiceItems] = useState([
-    {
-      id: 1,
-      date: "2024-01-01",
-      item: "Cap",
-      description: "High-quality cap",
-      quantity: 2,
-      rate: 280,
-      amount: 560,
-      sku: "12345-XYZ",
-    },
-  ]);
+  const [invoiceItems, setInvoiceItems] = useState(() => {
+    const savedItems = localStorage.getItem("invoiceItems");
+    return savedItems ? JSON.parse(savedItems) : [
+      {
+        id: 1,
+        date: "2024-01-01",
+        item: "Cap",
+        description: "High-quality cap",
+        quantity: 2,
+        rate: 280,
+        amount: 560,
+        sku: "12345-XYZ",
+      },
+    ];
+  });
 
   const [editing, setEditing] = useState(null);
   const [hovered, setHovered] = useState(false);
+
+  // Save to Local Storage when invoiceItems change
+  useEffect(() => {
+    localStorage.setItem("invoiceItems", JSON.stringify(invoiceItems));
+  }, [invoiceItems]);
 
   const handleInputChange = (id, field, value) => {
     setInvoiceItems((prevItems) =>
@@ -33,7 +41,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
   };
 
   const handleDelete = (id) => {
-    setInvoiceItems(invoiceItems.filter((item) => item.id !== id));
+    setInvoiceItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
   const addRow = () => {
