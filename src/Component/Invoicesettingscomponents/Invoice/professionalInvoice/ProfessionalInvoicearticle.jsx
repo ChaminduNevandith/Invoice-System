@@ -1,82 +1,139 @@
-import { useState, useEffect } from "react";
-import { Delete } from "@mui/icons-material";
+import { useState } from "react";
+import { Delete, Add } from "@mui/icons-material";
 
-function ProfessionalInvoicearticle({ articleData , selectedColor  }) {
+function ProfessionalInvoicearticle({ articleData, selectedColor }) {
   const [invoiceItems, setInvoiceItems] = useState([
     {
       id: 1,
+      date: "2024-01-01",
       item: "Cap",
-      rate: 280,
+      description: "High-quality cap",
       quantity: 2,
-      discountType: "%",
-      discount: 1,
-      total: "6,500.00",
+      rate: 280,
+      amount: 560,
+      sku: "12345-XYZ",
     },
   ]);
+  const [editing, setEditing] = useState(null);
+  const [hovered, setHovered] = useState(false);
+
+  const columns = [
+    { key: "date", label: "Date", editable: true },
+    { key: "item", label: "Product/Services", editable: true },
+    { key: "description", label: "Description", editable: true },
+    { key: "quantity", label: "Quantity", editable: true },
+    { key: "rate", label: "Rate", editable: true },
+    { key: "amount", label: "Amount", editable: false },
+    { key: "sku", label: "SKU", editable: true },
+  ];
+
+  const handleInputChange = (id, field, value) => {
+    setInvoiceItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              [field]: value,
+              amount: field === "rate" || field === "quantity" ? item.quantity * item.rate : item.amount,
+            }
+          : item
+      )
+    );
+  };
 
   const handleDelete = (id) => {
     setInvoiceItems(invoiceItems.filter((item) => item.id !== id));
   };
 
-  // Ensure selectedColumns has a default value
-  const selectedColumns = articleData?.selectedColumns ?? {
-    showInvoice: true,
-    Date: true,
-    "Product/Services": true,
-    Description: true,
-    Quantity: true,
-    Rate: true,
-    Amount: true,
-    SKU: true,
+  const handleEdit = (id, field) => {
+    setEditing({ id, field });
+  };
+
+  const handleBlur = () => {
+    setEditing(null);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setEditing(null);
+    }
+  };
+
+  const addRow = () => {
+    const newId = invoiceItems.length + 1;
+    setInvoiceItems([
+      ...invoiceItems,
+      {
+        id: newId,
+        date: "2024-01-01",
+        item: "",
+        description: "",
+        quantity: 1,
+        rate: 0,
+        amount: 0,
+        sku: "",
+      },
+    ]);
   };
 
   return (
-    <div className="p-4 border border-gray-300 rounded-md bg-white mt-6">
-      {selectedColumns.showInvoice && (
-        <>
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-300 text-gray-700 text-left" style={{ backgroundColor: selectedColor }}>
-                {selectedColumns.Date && <th className="p-2">Date</th>}
-                {selectedColumns["Product/Services"] && <th className="p-2">Product/Services</th>}
-                {selectedColumns.Description && <th className="p-2">Description</th>}
-                {selectedColumns.Quantity && <th className="p-2">Quantity</th>}
-                {selectedColumns.Rate && <th className="p-2">Rate</th>}
-                {selectedColumns.Amount && <th className="p-2">Amount</th>}
-                {selectedColumns.SKU && <th className="p-2">SKU</th>}
-                <th className="p-2 text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {invoiceItems.map((item) => (
-                <tr key={item.id} className="border-t bg-[#F8F8F8] border-gray-300">
-                  {selectedColumns.Date && <td className="p-2">01/01/2024</td>}
-                  {selectedColumns["Product/Services"] && <td className="p-2">{item.item}</td>}
-                  {selectedColumns.Description && <td className="p-2">High-quality cap</td>}
-                  {selectedColumns.Quantity && <td className="p-2">{item.quantity}</td>}
-                  {selectedColumns.Rate && <td className="p-2">{item.rate}</td>}
-                  {selectedColumns.Amount && <td className="p-2">{item.total}</td>}
-                  {selectedColumns.SKU && <td className="p-2">12345-XYZ</td>}
-                  <td className="p-2 text-center">
-                    <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
-                      <Delete />
-                    </button>
-                  </td>
-                </tr>
+    <div
+      className="p-6 border border-gray-300 rounded-lg bg-gray-50 shadow-md mt-6 relative"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <table className="w-full border-collapse rounded-lg overflow-hidden">
+        <thead>
+          <tr className="text-left text-gray-800" style={{ backgroundColor: selectedColor }}>
+            {columns.map((col) => (
+              <th key={col.key} className="p-3">{col.label}</th>
+            ))}
+            <th className="p-3 text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {invoiceItems.map((item) => (
+            <tr key={item.id} className="border-t bg-white hover:bg-gray-100">
+              {columns.map((col) => (
+                <td key={col.key} className="p-3">
+                  {editing?.id === item.id && editing.field === col.key ? (
+                    <input
+                      type={col.key === "quantity" || col.key === "rate" ? "number" : "text"}
+                      className="w-full p-1 border rounded"
+                      value={item[col.key] || ""}
+                      onChange={(e) =>
+                        handleInputChange(item.id, col.key, col.key === "quantity" || col.key === "rate" ? Number(e.target.value) : e.target.value)
+                      }
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => col.editable && handleEdit(item.id, col.key)}>
+                      {item[col.key] || "Click to enter"}
+                    </span>
+                  )}
+                </td>
               ))}
-            </tbody>
-          </table>
+              <td className="p-3 text-center">
+                <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
+                  <Delete />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-          {/* Buttons */}
-          <div className="flex gap-4 mt-4">
-            <button className="border border-gray-400 px-4 py-2 rounded text-gray-600 hover:bg-gray-200">
-              + Add New Product Category
-            </button>
-            <button className="border border-gray-400 px-4 py-2 rounded text-gray-600 hover:bg-gray-200">
-              + Add New Item
-            </button>
-          </div>
-        </>
+      {hovered && (
+        <div className="flex justify-center mt-2">
+          <button
+            onClick={addRow}
+            className="p-2 bg-blue-500 text-white rounded flex items-center gap-1"
+          >
+            <Add /> Add Row
+          </button>
+        </div>
       )}
     </div>
   );
