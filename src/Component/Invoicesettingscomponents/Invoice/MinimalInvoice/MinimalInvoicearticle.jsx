@@ -21,7 +21,6 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
   const [editing, setEditing] = useState(null);
   const [hovered, setHovered] = useState(false);
 
-  // Save to Local Storage when invoiceItems change
   useEffect(() => {
     localStorage.setItem("invoiceItems", JSON.stringify(invoiceItems));
   }, [invoiceItems]);
@@ -74,7 +73,8 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
     }
   };
 
-  const selectedColumns = articleData?.selectedColumns ?? {
+  // Use selectedColumns from articleData or default values
+  const selectedColumns = articleData?.selectedColumns || {
     showInvoice: true,
     Date: true,
     "Product/Services": true,
@@ -85,93 +85,173 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
     SKU: true,
   };
 
+  if (!selectedColumns.showInvoice) {
+    return null;
+  }
+
   return (
     <div
       className="p-6 border border-gray-200 rounded-lg bg-white shadow-sm mt-6 relative"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {selectedColumns.showInvoice && (
-        <>
-          <table className="w-full border-collapse text-sm">
-            <thead>
-              <tr className="text-left text-gray-700 border-b border-gray-300" style={{ backgroundColor: selectedColor }}>
-                {selectedColumns.Date && <th className="p-3">Date</th>}
-                {selectedColumns["Product/Services"] && <th className="p-3">Product/Services</th>}
-                {selectedColumns.Description && <th className="p-3">Description</th>}
-                {selectedColumns.Quantity && <th className="p-3">Qty</th>}
-                {selectedColumns.Rate && <th className="p-3">Rate</th>}
-                {selectedColumns.Amount && <th className="p-3">Amount</th>}
-                {selectedColumns.SKU && <th className="p-3">SKU</th>}
-                <th className="p-3 text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {invoiceItems.map((item) => (
-                <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-50">
-                  {selectedColumns.Date && (
-                    <td className="p-3">
-                      {editing?.id === item.id && editing.field === "date" ? (
-                        <input
-                          type="date"
-                          className="w-full p-1 border rounded"
-                          value={item.date}
-                          onChange={(e) => handleInputChange(item.id, "date", e.target.value)}
-                          onBlur={handleBlur}
-                          onKeyPress={handleKeyPress}
-                          autoFocus
-                        />
-                      ) : (
-                        <span onClick={() => handleEdit(item.id, "date")}>{item.date || "Click to enter"}</span>
-                      )}
-                    </td>
+      <table className="w-full border-collapse text-sm">
+        <thead>
+          <tr className="text-left text-gray-700 border-b border-gray-300" style={{ backgroundColor: selectedColor }}>
+            {selectedColumns.Date && <th className="p-3">Date</th>}
+            {selectedColumns["Product/Services"] && <th className="p-3">Product/Services</th>}
+            {selectedColumns.Description && <th className="p-3">Description</th>}
+            {selectedColumns.Quantity && <th className="p-3">Qty</th>}
+            {selectedColumns.Rate && <th className="p-3">Rate</th>}
+            {selectedColumns.Amount && <th className="p-3">Amount</th>}
+            {selectedColumns.SKU && <th className="p-3">SKU</th>}
+            <th className="p-3 text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {invoiceItems.map((item) => (
+            <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-50">
+              {selectedColumns.Date && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "date" ? (
+                    <input
+                      type="date"
+                      className="w-full p-1 border rounded"
+                      value={item.date}
+                      onChange={(e) => handleInputChange(item.id, "date", e.target.value)}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "date")}>{item.date || "Click to enter"}</span>
                   )}
+                </td>
+              )}
 
-                  {["item", "description", "quantity", "rate", "sku"].map((field) => (
-                    <td className="p-3" key={field}>
-                      {editing?.id === item.id && editing.field === field ? (
-                        <input
-                          type={field === "quantity" || field === "rate" ? "number" : "text"}
-                          className="w-full p-1 border rounded"
-                          value={item[field]}
-                          onChange={(e) =>
-                            handleInputChange(item.id, field, field === "quantity" || field === "rate" ? Number(e.target.value) : e.target.value)
-                          }
-                          onBlur={handleBlur}
-                          onKeyPress={handleKeyPress}
-                          autoFocus
-                        />
-                      ) : (
-                        <span onClick={() => handleEdit(item.id, field)}>
-                          {item[field] || "Click to enter"}
-                        </span>
-                      )}
-                    </td>
-                  ))}
+              {selectedColumns["Product/Services"] && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "item" ? (
+                    <input
+                      type="text"
+                      className="w-full p-1 border rounded"
+                      value={item.item}
+                      onChange={(e) => handleInputChange(item.id, "item", e.target.value)}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "item")}>
+                      {item.item || "Click to enter"}
+                    </span>
+                  )}
+                </td>
+              )}
 
-                  <td className="p-3">{item.amount}</td>
+              {selectedColumns.Description && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "description" ? (
+                    <input
+                      type="text"
+                      className="w-full p-1 border rounded"
+                      value={item.description}
+                      onChange={(e) => handleInputChange(item.id, "description", e.target.value)}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "description")}>
+                      {item.description || "Click to enter"}
+                    </span>
+                  )}
+                </td>
+              )}
 
-                  <td className="p-3 text-center">
-                    <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
-                      <Delete />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              {selectedColumns.Quantity && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "quantity" ? (
+                    <input
+                      type="number"
+                      className="w-full p-1 border rounded"
+                      value={item.quantity}
+                      onChange={(e) => handleInputChange(item.id, "quantity", Number(e.target.value))}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "quantity")}>
+                      {item.quantity || "Click to enter"}
+                    </span>
+                  )}
+                </td>
+              )}
 
-          {hovered && (
-            <div className="flex justify-center mt-2">
-              <button
-                onClick={addRow}
-                className="p-2 bg-blue-500 text-white rounded flex items-center gap-1"
-              >
-                <Add /> Add Row
-              </button>
-            </div>
-          )}
-        </>
+              {selectedColumns.Rate && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "rate" ? (
+                    <input
+                      type="number"
+                      className="w-full p-1 border rounded"
+                      value={item.rate}
+                      onChange={(e) => handleInputChange(item.id, "rate", Number(e.target.value))}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "rate")}>
+                      {item.rate || "Click to enter"}
+                    </span>
+                  )}
+                </td>
+              )}
+
+              {selectedColumns.Amount && (
+                <td className="p-3">{item.amount}</td>
+              )}
+
+              {selectedColumns.SKU && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "sku" ? (
+                    <input
+                      type="text"
+                      className="w-full p-1 border rounded"
+                      value={item.sku}
+                      onChange={(e) => handleInputChange(item.id, "sku", e.target.value)}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "sku")}>
+                      {item.sku || "Click to enter"}
+                    </span>
+                  )}
+                </td>
+              )}
+
+              <td className="p-3 text-center">
+                <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
+                  <Delete />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {hovered && (
+        <div className="flex justify-center mt-2">
+          <button
+            onClick={addRow}
+            className="p-2 bg-blue-500 text-white rounded flex items-center gap-1"
+          >
+            <Add /> Add Row
+          </button>
+        </div>
       )}
     </div>
   );

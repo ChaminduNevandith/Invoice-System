@@ -20,15 +20,29 @@ function InvoiceArticle({ articleData, selectedColor }) {
 
   const [editing, setEditing] = useState(null);
   const [hovered, setHovered] = useState(false);
-  const [columns] = useState([
-    { key: "date", label: "Date", editable: true },
-    { key: "item", label: "Product/Services", editable: true },
-    { key: "description", label: "Description", editable: true },
-    { key: "quantity", label: "Quantity", editable: true },
-    { key: "rate", label: "Rate", editable: true },
-    { key: "amount", label: "Amount", editable: false },
-    { key: "sku", label: "SKU", editable: true },
-  ]);
+
+  // Define columns with their corresponding keys from selectedColumns
+  const columns = [
+    { key: "date", label: "Date", editable: true, settingKey: "Date" },
+    { key: "item", label: "Product/Services", editable: true, settingKey: "Product/Services" },
+    { key: "description", label: "Description", editable: true, settingKey: "Description" },
+    { key: "quantity", label: "Quantity", editable: true, settingKey: "Quantity" },
+    { key: "rate", label: "Rate", editable: true, settingKey: "Rate" },
+    { key: "amount", label: "Amount", editable: false, settingKey: "Amount" },
+    { key: "sku", label: "SKU", editable: true, settingKey: "SKU" },
+  ];
+
+  // Get selectedColumns from articleData or use defaults
+  const selectedColumns = articleData?.selectedColumns || {
+    showInvoice: true,
+    Date: true,
+    "Product/Services": true,
+    Description: true,
+    Quantity: true,
+    Rate: true,
+    Amount: true,
+    SKU: true,
+  };
 
   // Save invoice items to local storage whenever they change
   useEffect(() => {
@@ -84,6 +98,11 @@ function InvoiceArticle({ articleData, selectedColor }) {
     ]);
   };
 
+  // Don't render if showInvoice is false
+  if (!selectedColumns.showInvoice) {
+    return null;
+  }
+
   return (
     <div
       className="p-6 border border-gray-300 rounded-lg bg-gray-50 shadow-md mt-6 relative"
@@ -94,7 +113,9 @@ function InvoiceArticle({ articleData, selectedColor }) {
         <thead>
           <tr className="text-left text-gray-800" style={{ backgroundColor: selectedColor }}>
             {columns.map((col) => (
-              <th key={col.key} className="p-3">{col.label}</th>
+              selectedColumns[col.settingKey] && (
+                <th key={col.key} className="p-3">{col.label}</th>
+              )
             ))}
             <th className="p-3 text-center">Action</th>
           </tr>
@@ -103,25 +124,31 @@ function InvoiceArticle({ articleData, selectedColor }) {
           {invoiceItems.map((item) => (
             <tr key={item.id} className="border-t bg-white hover:bg-gray-100">
               {columns.map((col) => (
-                <td key={col.key} className="p-3">
-                  {editing?.id === item.id && editing.field === col.key ? (
-                    <input
-                      type={col.key === "quantity" || col.key === "rate" ? "number" : "text"}
-                      className="w-full p-1 border rounded"
-                      value={item[col.key] || ""}
-                      onChange={(e) =>
-                        handleInputChange(item.id, col.key, col.key === "quantity" || col.key === "rate" ? Number(e.target.value) : e.target.value)
-                      }
-                      onBlur={handleBlur}
-                      onKeyPress={handleKeyPress}
-                      autoFocus
-                    />
-                  ) : (
-                    <span onClick={() => col.editable && handleEdit(item.id, col.key)}>
-                      {item[col.key] || "Click to enter"}
-                    </span>
-                  )}
-                </td>
+                selectedColumns[col.settingKey] && (
+                  <td key={col.key} className="p-3">
+                    {editing?.id === item.id && editing.field === col.key ? (
+                      <input
+                        type={col.key === "quantity" || col.key === "rate" ? "number" : "text"}
+                        className="w-full p-1 border rounded"
+                        value={item[col.key] || ""}
+                        onChange={(e) =>
+                          handleInputChange(
+                            item.id,
+                            col.key,
+                            col.key === "quantity" || col.key === "rate" ? Number(e.target.value) : e.target.value
+                          )
+                        }
+                        onBlur={handleBlur}
+                        onKeyPress={handleKeyPress}
+                        autoFocus
+                      />
+                    ) : (
+                      <span onClick={() => col.editable && handleEdit(item.id, col.key)}>
+                        {item[col.key] || "Click to enter"}
+                      </span>
+                    )}
+                  </td>
+                )
               ))}
               <td className="p-3 text-center">
                 <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
