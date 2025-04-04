@@ -89,16 +89,16 @@ function InvoiceArticle({ articleData, selectedColor }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <table className="w-full border-collapse">
+      <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="bg-gray-300 text-gray-700" style={{ backgroundColor: selectedColor }}>
-            {articleData.selectedColumns.Date && <th className="p-2">Date</th>}
-            {articleData.selectedColumns["Product/Services"] && <th className="p-2">Product/Services</th>}
-            {articleData.selectedColumns.Description && <th className="p-2">Description</th>}
-            {articleData.selectedColumns.Quantity && <th className="p-2">Quantity</th>}
-            {articleData.selectedColumns.Rate && <th className="p-2">Rate</th>}
-            {articleData.selectedColumns.Amount && <th className="p-2">Amount</th>}
-            {articleData.selectedColumns.SKU && <th className="p-2">SKU</th>}
+          <tr className="text-left text-gray-700 border-b border-gray-300" style={{ backgroundColor: selectedColor }}>
+            {articleData.selectedColumns.Date && <th className="p-3">Date</th>}
+            {articleData.selectedColumns["Product/Services"] && <th className="p-3">Product/Services</th>}
+            {articleData.selectedColumns.Description && <th className="p-3">Description</th>}
+            {articleData.selectedColumns.Quantity && <th className="p-3">Quantity</th>}
+            {articleData.selectedColumns.Rate && <th className="p-3">Rate</th>}
+            {articleData.selectedColumns.Amount && <th className="p-3">Amount</th>}
+            {articleData.selectedColumns.SKU && <th className="p-3">SKU</th>}
             <th className="p-2 text-center">Action</th>
           </tr>
         </thead>
@@ -106,7 +106,7 @@ function InvoiceArticle({ articleData, selectedColor }) {
           {invoiceItems.map((item) => (
             <tr key={item.id} className="border-t bg-[#F8F8F8] border-gray-300">
               {articleData.selectedColumns.Date && (
-                <td className="p-2">
+                <td className="p-3">
                   {editing?.id === item.id && editing.field === "date" ? (
                     <input
                       type="date"
@@ -124,7 +124,7 @@ function InvoiceArticle({ articleData, selectedColor }) {
               )}
 
               {articleData.selectedColumns["Product/Services"] && (
-                <td className="p-2">
+                <td className="p-3">
                   {editing?.id === item.id && editing.field === "item" ? (
                     <input
                       type="text"
@@ -144,7 +144,7 @@ function InvoiceArticle({ articleData, selectedColor }) {
               )}
 
               {articleData.selectedColumns.Description && (
-                <td className="p-2">
+                <td className="p-3">
                   {editing?.id === item.id && editing.field === "description" ? (
                     <input
                       type="text"
@@ -164,7 +164,7 @@ function InvoiceArticle({ articleData, selectedColor }) {
               )}
 
               {articleData.selectedColumns.Quantity && (
-                <td className="p-2">
+                <td className="p-3">
                   {editing?.id === item.id && editing.field === "quantity" ? (
                     <input
                       type="number"
@@ -184,7 +184,7 @@ function InvoiceArticle({ articleData, selectedColor }) {
               )}
 
               {articleData.selectedColumns.Rate && (
-                <td className="p-2">
+                <td className="p-3">
                   {editing?.id === item.id && editing.field === "rate" ? (
                     <input
                       type="number"
@@ -204,11 +204,11 @@ function InvoiceArticle({ articleData, selectedColor }) {
               )}
 
               {articleData.selectedColumns.Amount && (
-                <td className="p-2">{item.amount}</td>
+                <td className="p-3">{item.amount}</td>
               )}
 
               {articleData.selectedColumns.SKU && (
-                <td className="p-2">
+                <td className="p-3">
                   {editing?.id === item.id && editing.field === "sku" ? (
                     <input
                       type="text"
@@ -227,7 +227,7 @@ function InvoiceArticle({ articleData, selectedColor }) {
                 </td>
               )}
 
-              <td className="p-2 text-center">
+              <td className="p-3 text-center">
                 <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
                   <Delete />
                 </button>

@@ -3,7 +3,7 @@ import { Delete, Add } from "@mui/icons-material";
 
 function ProfessionalInvoicearticle({ articleData, selectedColor }) {
   const [invoiceItems, setInvoiceItems] = useState(() => {
-    const savedItems = localStorage.getItem("professionalInvoiceItems");
+    const savedItems = localStorage.getItem("invoiceItems");
     return savedItems ? JSON.parse(savedItems) : [
       {
         id: 1,
@@ -20,10 +20,6 @@ function ProfessionalInvoicearticle({ articleData, selectedColor }) {
 
   const [editing, setEditing] = useState(null);
   const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    localStorage.setItem("professionalInvoiceItems", JSON.stringify(invoiceItems));
-  }, [invoiceItems]);
 
   // Define columns with their corresponding keys from selectedColumns
   const columns = [
@@ -47,6 +43,11 @@ function ProfessionalInvoicearticle({ articleData, selectedColor }) {
     Amount: true,
     SKU: true,
   };
+
+  // Save invoice items to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem("invoiceItems", JSON.stringify(invoiceItems));
+  }, [invoiceItems]);
 
   const handleInputChange = (id, field, value) => {
     setInvoiceItems((prevItems) =>
@@ -88,10 +89,11 @@ function ProfessionalInvoicearticle({ articleData, selectedColor }) {
   };
 
   const addRow = () => {
+    const newId = Date.now();
     setInvoiceItems([
       ...invoiceItems,
       {
-        id: Date.now(),
+        id: newId,
         date: "2024-01-01",
         item: "",
         description: "",
@@ -110,11 +112,11 @@ function ProfessionalInvoicearticle({ articleData, selectedColor }) {
 
   return (
     <div
-      className="p-6 border border-gray-300 rounded-lg bg-gray-50 shadow-md mt-6 relative"
+      className="p-6 border border-gray-300 rounded-lg bg-gray-50 mt-6 relative"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <table className="w-full border-collapse rounded-lg overflow-hidden">
+      <table className="w-full border-collapse rounded-lg overflow-hidden text-sm">
         <thead>
           <tr className="text-left text-gray-800" style={{ backgroundColor: selectedColor }}>
             {columns.map((col) => (

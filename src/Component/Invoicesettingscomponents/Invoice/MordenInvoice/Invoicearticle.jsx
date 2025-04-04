@@ -112,11 +112,11 @@ function InvoiceArticle({ articleData, selectedColor }) {
 
   return (
     <div
-      className="p-6 border border-gray-300 rounded-lg bg-gray-50 shadow-md mt-6 relative"
+      className="p-6 border border-gray-300 rounded-lg bg-gray-50 mt-6 relative"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <table className="w-full border-collapse rounded-lg overflow-hidden">
+      <table className="w-full border-collapse rounded-lg overflow-hidden text-sm">
         <thead>
           <tr className="text-left text-gray-800" style={{ backgroundColor: selectedColor }}>
             {columns.map((col) => (

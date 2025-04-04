@@ -4,7 +4,7 @@ function InvoiceHeader({ headerData = { showFields: {} } }) {
   if (!headerData) return <p>Error: No header data provided.</p>;
 
   return (
-    <div className="p-8 border-b border-gray-300 bg-gray-50 rounded-lg shadow-md">
+    <div className="p-8 border-b border-gray-300 bg-gray-50 rounded-lg ">
       {/* Business Info */}
       <div className="flex justify-between items-center">
         <div>
