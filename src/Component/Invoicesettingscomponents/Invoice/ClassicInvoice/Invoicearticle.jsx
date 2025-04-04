@@ -23,6 +23,8 @@ function Invoicearticle({ articleData, selectedColor }) {
 
   useEffect(() => {
     localStorage.setItem("invoiceItems", JSON.stringify(invoiceItems));
+    // Notify parent component of changes
+    window.dispatchEvent(new Event('storage'));
   }, [invoiceItems]);
 
   const handleInputChange = (id, field, value) => {
@@ -44,7 +46,6 @@ function Invoicearticle({ articleData, selectedColor }) {
       })
     );
   };
-  
 
   const handleDelete = (id) => {
     setInvoiceItems((prevItems) => prevItems.filter((item) => item.id !== id));
@@ -80,7 +81,6 @@ function Invoicearticle({ articleData, selectedColor }) {
     }
   };
 
-  // Use selectedColumns from articleData or default values
   const selectedColumns = articleData?.selectedColumns || {
     showInvoice: true,
     Date: true,

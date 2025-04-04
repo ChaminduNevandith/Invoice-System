@@ -19,6 +19,34 @@ function Editinvoicecontent() {
   const [selectedSection, setSelectedSection] = useState("header");
   const [selectedColor, setSelectedColor] = useState(localStorage.getItem('invoiceColor') || "#D3D3D3");
   const [selectedTemplate, setSelectedTemplate] = useState(localStorage.getItem('invoiceTemplate') || "Classic");
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  // Calculate total amount from invoice items
+  const calculateTotalAmount = () => {
+    const savedItems = localStorage.getItem("invoiceItems");
+    if (!savedItems) return 0;
+    
+    const invoiceItems = JSON.parse(savedItems);
+    return invoiceItems.reduce((total, item) => total + (item.amount || 0), 0);
+  };
+
+  // Update total amount when component mounts and when storage changes
+  useEffect(() => {
+    const updateTotal = () => {
+      setTotalAmount(calculateTotalAmount());
+    };
+
+    // Initial calculation
+    updateTotal();
+
+    // Listen for changes in localStorage
+    const handleStorageChange = () => {
+      updateTotal();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   // Retrieve data from localStorage or use default values
   const getStoredData = (key, defaultValue) => {
@@ -172,7 +200,11 @@ function Editinvoicecontent() {
                 <Invoicearticle articleData={articleData} selectedColor={selectedColor} />
               </div>
               <div onClick={() => setSelectedSection("footer")}>
-                <InvoiceFooter footerData={footerData} selectedColor={selectedColor} />
+                <InvoiceFooter 
+                  footerData={footerData} 
+                  selectedColor={selectedColor} 
+                  totalAmount={totalAmount} 
+                />
               </div>
             </>
           )}
@@ -185,7 +217,11 @@ function Editinvoicecontent() {
                 <MordenInvoiceArticle articleData={articleData} selectedColor={selectedColor} />
               </div>
               <div onClick={() => setSelectedSection("footer")}>
-                <MordenInvoiceFooter footerData={footerData} selectedColor={selectedColor} />
+                <MordenInvoiceFooter 
+                  footerData={footerData} 
+                  selectedColor={selectedColor} 
+                  totalAmount={totalAmount} 
+                />
               </div>
             </>
           )}
@@ -198,7 +234,11 @@ function Editinvoicecontent() {
                 <MinimalInvoiceArticle articleData={articleData} selectedColor={selectedColor} />
               </div>
               <div onClick={() => setSelectedSection("footer")}>
-                <MinimalInvoiceFooter footerData={footerData} selectedColor={selectedColor} />
+                <MinimalInvoiceFooter 
+                  footerData={footerData} 
+                  selectedColor={selectedColor} 
+                  totalAmount={totalAmount} 
+                />
               </div>
             </>
           )}
@@ -211,7 +251,11 @@ function Editinvoicecontent() {
                 <ProfessionalInvoicearticle articleData={articleData} selectedColor={selectedColor} />
               </div>
               <div onClick={() => setSelectedSection("footer")}>
-                <ProfessionalInvoiceFooter footerData={footerData} selectedColor={selectedColor} />
+                <ProfessionalInvoiceFooter 
+                  footerData={footerData} 
+                  selectedColor={selectedColor} 
+                  totalAmount={totalAmount} 
+                />
               </div>
             </>
           )}
