@@ -1,13 +1,20 @@
 import React from "react";
 import { Card, CardContent, Checkbox, TextField } from "@mui/material";
+import InvoiceNav from "./InvoiceNav";
 
-export default function ContentSettings3({ footerData, updateFooterData, toggleFooterFieldVisibility }) {
+export default function ContentSettings3({
+  footerData,
+  updateFooterData,
+  toggleFooterFieldVisibility,
+}) {
   return (
     <div className="w-[400px] shadow-lg rounded-lg border p-2">
+      <InvoiceNav />
+
       <Card className="mt-4">
         <CardContent className="p-4">
           <h2 className="font-bold text-lg flex items-center gap-2">Footer</h2>
-          
+
           <p className="text-gray-600">Display</p>
           <div className="flex flex-col gap-2 mb-4">
             {["discounts", "deposit", "estimateSummary"].map((key) => (

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Delete, Add } from "@mui/icons-material";
 
-function InvoiceArticle({ articleData, selectedColor }) {
+function Invoicearticle({ articleData, selectedColor }) {
   const [invoiceItems, setInvoiceItems] = useState(() => {
     const savedItems = localStorage.getItem("invoiceItems");
     return savedItems ? JSON.parse(savedItems) : [
@@ -45,13 +45,14 @@ function InvoiceArticle({ articleData, selectedColor }) {
     );
   };
   
+
   const handleDelete = (id) => {
     setInvoiceItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
   const addRow = () => {
-    setInvoiceItems((prevItems) => [
-      ...prevItems,
+    setInvoiceItems([
+      ...invoiceItems,
       {
         id: Date.now(),
         date: "",
@@ -79,33 +80,45 @@ function InvoiceArticle({ articleData, selectedColor }) {
     }
   };
 
-  if (!articleData?.selectedColumns?.showInvoice) {
+  // Use selectedColumns from articleData or default values
+  const selectedColumns = articleData?.selectedColumns || {
+    showInvoice: true,
+    Date: true,
+    "Product/Services": true,
+    Description: true,
+    Quantity: true,
+    Rate: true,
+    Amount: true,
+    SKU: true,
+  };
+
+  if (!selectedColumns.showInvoice) {
     return null;
   }
 
   return (
     <div
-      className="p-4 border border-gray-300 rounded-md bg-white mt-6 relative"
+      className="p-6 border border-gray-200 rounded-lg bg-white shadow-sm mt-6 relative"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <table className="w-full border-collapse text-sm">
         <thead>
           <tr className="text-left text-gray-700 border-b border-gray-300" style={{ backgroundColor: selectedColor }}>
-            {articleData.selectedColumns.Date && <th className="p-3">Date</th>}
-            {articleData.selectedColumns["Product/Services"] && <th className="p-3">Product/Services</th>}
-            {articleData.selectedColumns.Description && <th className="p-3">Description</th>}
-            {articleData.selectedColumns.Quantity && <th className="p-3">Quantity</th>}
-            {articleData.selectedColumns.Rate && <th className="p-3">Rate</th>}
-            {articleData.selectedColumns.Amount && <th className="p-3">Amount</th>}
-            {articleData.selectedColumns.SKU && <th className="p-3">SKU</th>}
-            <th className="p-2 text-center">Action</th>
+            {selectedColumns.Date && <th className="p-3">Date</th>}
+            {selectedColumns["Product/Services"] && <th className="p-3">Product/Services</th>}
+            {selectedColumns.Description && <th className="p-3">Description</th>}
+            {selectedColumns.Quantity && <th className="p-3">Qty</th>}
+            {selectedColumns.Rate && <th className="p-3">Rate</th>}
+            {selectedColumns.Amount && <th className="p-3">Amount</th>}
+            {selectedColumns.SKU && <th className="p-3">SKU</th>}
+            <th className="p-3 text-center">Action</th>
           </tr>
         </thead>
         <tbody>
           {invoiceItems.map((item) => (
-            <tr key={item.id} className="border-t bg-[#F8F8F8] border-gray-300">
-              {articleData.selectedColumns.Date && (
+            <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-50">
+              {selectedColumns.Date && (
                 <td className="p-3">
                   {editing?.id === item.id && editing.field === "date" ? (
                     <input
@@ -123,7 +136,7 @@ function InvoiceArticle({ articleData, selectedColor }) {
                 </td>
               )}
 
-              {articleData.selectedColumns["Product/Services"] && (
+              {selectedColumns["Product/Services"] && (
                 <td className="p-3">
                   {editing?.id === item.id && editing.field === "item" ? (
                     <input
@@ -143,7 +156,7 @@ function InvoiceArticle({ articleData, selectedColor }) {
                 </td>
               )}
 
-              {articleData.selectedColumns.Description && (
+              {selectedColumns.Description && (
                 <td className="p-3">
                   {editing?.id === item.id && editing.field === "description" ? (
                     <input
@@ -163,7 +176,7 @@ function InvoiceArticle({ articleData, selectedColor }) {
                 </td>
               )}
 
-              {articleData.selectedColumns.Quantity && (
+              {selectedColumns.Quantity && (
                 <td className="p-3">
                   {editing?.id === item.id && editing.field === "quantity" ? (
                     <input
@@ -183,7 +196,7 @@ function InvoiceArticle({ articleData, selectedColor }) {
                 </td>
               )}
 
-              {articleData.selectedColumns.Rate && (
+              {selectedColumns.Rate && (
                 <td className="p-3">
                   {editing?.id === item.id && editing.field === "rate" ? (
                     <input
@@ -203,11 +216,11 @@ function InvoiceArticle({ articleData, selectedColor }) {
                 </td>
               )}
 
-              {articleData.selectedColumns.Amount && (
+              {selectedColumns.Amount && (
                 <td className="p-3">{item.amount}</td>
               )}
 
-              {articleData.selectedColumns.SKU && (
+              {selectedColumns.SKU && (
                 <td className="p-3">
                   {editing?.id === item.id && editing.field === "sku" ? (
                     <input
@@ -251,4 +264,4 @@ function InvoiceArticle({ articleData, selectedColor }) {
   );
 }
 
-export default InvoiceArticle;
+export default Invoicearticle;

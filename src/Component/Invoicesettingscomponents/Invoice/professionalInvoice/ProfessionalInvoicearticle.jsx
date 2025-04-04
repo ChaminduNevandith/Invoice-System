@@ -21,30 +21,6 @@ function ProfessionalInvoicearticle({ articleData, selectedColor }) {
   const [editing, setEditing] = useState(null);
   const [hovered, setHovered] = useState(false);
 
-  // Define columns with their corresponding keys from selectedColumns
-  const columns = [
-    { key: "date", label: "Date", editable: true, settingKey: "Date" },
-    { key: "item", label: "Product/Services", editable: true, settingKey: "Product/Services" },
-    { key: "description", label: "Description", editable: true, settingKey: "Description" },
-    { key: "quantity", label: "Quantity", editable: true, settingKey: "Quantity" },
-    { key: "rate", label: "Rate", editable: true, settingKey: "Rate" },
-    { key: "amount", label: "Amount", editable: false, settingKey: "Amount" },
-    { key: "sku", label: "SKU", editable: true, settingKey: "SKU" },
-  ];
-
-  // Get selectedColumns from articleData or use defaults
-  const selectedColumns = articleData?.selectedColumns || {
-    showInvoice: true,
-    Date: true,
-    "Product/Services": true,
-    Description: true,
-    Quantity: true,
-    Rate: true,
-    Amount: true,
-    SKU: true,
-  };
-
-  // Save invoice items to local storage whenever they change
   useEffect(() => {
     localStorage.setItem("invoiceItems", JSON.stringify(invoiceItems));
   }, [invoiceItems]);
@@ -74,6 +50,22 @@ function ProfessionalInvoicearticle({ articleData, selectedColor }) {
     setInvoiceItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
+  const addRow = () => {
+    setInvoiceItems([
+      ...invoiceItems,
+      {
+        id: Date.now(),
+        date: "",
+        item: "",
+        description: "",
+        quantity: 1,
+        rate: 0,
+        amount: 0,
+        sku: "",
+      },
+    ]);
+  };
+
   const handleEdit = (id, field) => {
     setEditing({ id, field });
   };
@@ -88,75 +80,166 @@ function ProfessionalInvoicearticle({ articleData, selectedColor }) {
     }
   };
 
-  const addRow = () => {
-    const newId = Date.now();
-    setInvoiceItems([
-      ...invoiceItems,
-      {
-        id: newId,
-        date: "2024-01-01",
-        item: "",
-        description: "",
-        quantity: 1,
-        rate: 0,
-        amount: 0,
-        sku: "",
-      },
-    ]);
+  // Use selectedColumns from articleData or default values
+  const selectedColumns = articleData?.selectedColumns || {
+    showInvoice: true,
+    Date: true,
+    "Product/Services": true,
+    Description: true,
+    Quantity: true,
+    Rate: true,
+    Amount: true,
+    SKU: true,
   };
 
-  // Don't render if showInvoice is false
   if (!selectedColumns.showInvoice) {
     return null;
   }
 
   return (
     <div
-      className="p-6 border border-gray-300 rounded-lg bg-gray-50 mt-6 relative"
+      className="p-6 border border-gray-200 rounded-lg bg-white shadow-sm mt-6 relative"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <table className="w-full border-collapse rounded-lg overflow-hidden text-sm">
+      <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="text-left text-gray-800" style={{ backgroundColor: selectedColor }}>
-            {columns.map((col) => (
-              selectedColumns[col.settingKey] && (
-                <th key={col.key} className="p-3">{col.label}</th>
-              )
-            ))}
+          <tr className="text-left text-gray-700 border-b border-gray-300" style={{ backgroundColor: selectedColor }}>
+            {selectedColumns.Date && <th className="p-3">Date</th>}
+            {selectedColumns["Product/Services"] && <th className="p-3">Product/Services</th>}
+            {selectedColumns.Description && <th className="p-3">Description</th>}
+            {selectedColumns.Quantity && <th className="p-3">Qty</th>}
+            {selectedColumns.Rate && <th className="p-3">Rate</th>}
+            {selectedColumns.Amount && <th className="p-3">Amount</th>}
+            {selectedColumns.SKU && <th className="p-3">SKU</th>}
             <th className="p-3 text-center">Action</th>
           </tr>
         </thead>
         <tbody>
           {invoiceItems.map((item) => (
-            <tr key={item.id} className="border-t bg-white hover:bg-gray-100">
-              {columns.map((col) => (
-                selectedColumns[col.settingKey] && (
-                  <td key={col.key} className="p-3">
-                    {editing?.id === item.id && editing.field === col.key ? (
-                      <input
-                        type={col.key === "quantity" || col.key === "rate" ? "number" : "text"}
-                        className="w-full p-1 border rounded"
-                        value={item[col.key] || ""}
-                        onChange={(e) =>
-                          handleInputChange(
-                            item.id,
-                            col.key,
-                            col.key === "quantity" || col.key === "rate" ? Number(e.target.value) : e.target.value
-                          )
-                        }
-                        onBlur={handleBlur}
-                        onKeyPress={handleKeyPress}
-                        autoFocus
-                      />
-                    ) : (
-                      <span onClick={() => col.editable && handleEdit(item.id, col.key)}>
-                        {item[col.key] || "Click to enter"}
-                      </span>
-                    )}
-                  </td>
-                )
-              ))}
+            <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-50">
+              {selectedColumns.Date && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "date" ? (
+                    <input
+                      type="date"
+                      className="w-full p-1 border rounded"
+                      value={item.date}
+                      onChange={(e) => handleInputChange(item.id, "date", e.target.value)}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "date")}>{item.date || "Click to enter"}</span>
+                  )}
+                </td>
+              )}
+
+              {selectedColumns["Product/Services"] && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "item" ? (
+                    <input
+                      type="text"
+                      className="w-full p-1 border rounded"
+                      value={item.item}
+                      onChange={(e) => handleInputChange(item.id, "item", e.target.value)}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "item")}>
+                      {item.item || "Click to enter"}
+                    </span>
+                  )}
+                </td>
+              )}
+
+              {selectedColumns.Description && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "description" ? (
+                    <input
+                      type="text"
+                      className="w-full p-1 border rounded"
+                      value={item.description}
+                      onChange={(e) => handleInputChange(item.id, "description", e.target.value)}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "description")}>
+                      {item.description || "Click to enter"}
+                    </span>
+                  )}
+                </td>
+              )}
+
+              {selectedColumns.Quantity && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "quantity" ? (
+                    <input
+                      type="number"
+                      className="w-full p-1 border rounded"
+                      value={item.quantity}
+                      onChange={(e) => handleInputChange(item.id, "quantity", Number(e.target.value))}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "quantity")}>
+                      {item.quantity || "Click to enter"}
+                    </span>
+                  )}
+                </td>
+              )}
+
+              {selectedColumns.Rate && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "rate" ? (
+                    <input
+                      type="number"
+                      className="w-full p-1 border rounded"
+                      value={item.rate}
+                      onChange={(e) => handleInputChange(item.id, "rate", Number(e.target.value))}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "rate")}>
+                      {item.rate || "Click to enter"}
+                    </span>
+                  )}
+                </td>
+              )}
+
+              {selectedColumns.Amount && (
+                <td className="p-3">{item.amount}</td>
+              )}
+
+              {selectedColumns.SKU && (
+                <td className="p-3">
+                  {editing?.id === item.id && editing.field === "sku" ? (
+                    <input
+                      type="text"
+                      className="w-full p-1 border rounded"
+                      value={item.sku}
+                      onChange={(e) => handleInputChange(item.id, "sku", e.target.value)}
+                      onBlur={handleBlur}
+                      onKeyPress={handleKeyPress}
+                      autoFocus
+                    />
+                  ) : (
+                    <span onClick={() => handleEdit(item.id, "sku")}>
+                      {item.sku || "Click to enter"}
+                    </span>
+                  )}
+                </td>
+              )}
+
               <td className="p-3 text-center">
                 <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
                   <Delete />
