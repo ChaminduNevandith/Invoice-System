@@ -50,17 +50,24 @@ function ProfessionalInvoicearticle({ articleData, selectedColor }) {
 
   const handleInputChange = (id, field, value) => {
     setInvoiceItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              [field]: value,
-              amount: field === "rate" || field === "quantity" ? item.quantity * item.rate : item.amount,
-            }
-          : item
-      )
+      prevItems.map((item) => {
+        if (item.id === id) {
+          const updatedItem = {
+            ...item,
+            [field]: value,
+          };
+  
+          const quantity = field === "quantity" ? Number(value) : item.quantity;
+          const rate = field === "rate" ? Number(value) : item.rate;
+          updatedItem.amount = quantity * rate;
+  
+          return updatedItem;
+        }
+        return item;
+      })
     );
   };
+  
 
   const handleDelete = (id) => {
     setInvoiceItems((prevItems) => prevItems.filter((item) => item.id !== id));
