@@ -12,6 +12,7 @@ export default function ContentSettings2({ articleData, updateArticleData }) {
     Rate: true,
     Amount: true,
     SKU: true,
+    Action: true,
   });
 
   // Sync state with articleData.selectedColumns on mount
@@ -45,7 +46,10 @@ export default function ContentSettings2({ articleData, updateArticleData }) {
             Charges, Total Amount Due.
           </p>
           <div className="flex items-center gap-2 mb-2">
-            <Checkbox checked={selected.showInvoice} onChange={() => toggleSelection("showInvoice")} />
+            <Checkbox
+              checked={selected.showInvoice}
+              onChange={() => toggleSelection("showInvoice")}
+            />
             <label>Show on invoice</label>
           </div>
 
@@ -54,9 +58,21 @@ export default function ContentSettings2({ articleData, updateArticleData }) {
               <h3 className="font-semibold text-md mt-4">Activity table</h3>
               <p className="text-gray-500 text-sm">COLUMNS</p>
 
-              {["Date", "Product/Services", "Description", "Quantity", "Rate", "Amount", "SKU"].map((item) => (
+              {[
+                "Date",
+                "Product/Services",
+                "Description",
+                "Quantity",
+                "Rate",
+                "Amount",
+                "SKU",
+                "Action",
+              ].map((item) => (
                 <div key={item} className="flex items-center gap-2 my-2">
-                  <Checkbox checked={selected[item]} onChange={() => toggleSelection(item)} />
+                  <Checkbox
+                    checked={selected[item]}
+                    onChange={() => toggleSelection(item)}
+                  />
                   <label>{item}</label>
                 </div>
               ))}

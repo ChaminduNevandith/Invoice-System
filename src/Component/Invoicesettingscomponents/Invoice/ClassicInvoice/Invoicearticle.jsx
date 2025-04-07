@@ -112,7 +112,7 @@ function Invoicearticle({ articleData, selectedColor }) {
             {selectedColumns.Rate && <th className="p-3">Rate</th>}
             {selectedColumns.Amount && <th className="p-3">Amount</th>}
             {selectedColumns.SKU && <th className="p-3">SKU</th>}
-            <th className="p-3 text-center">Action</th>
+            {selectedColumns.Action && <th className="p-3 text-center">Action</th>}
           </tr>
         </thead>
         <tbody>
@@ -240,11 +240,17 @@ function Invoicearticle({ articleData, selectedColor }) {
                 </td>
               )}
 
-              <td className="p-3 text-center">
-                <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
-                  <Delete />
-                </button>
-              </td>
+
+
+
+{selectedColumns.Action && (
+  <td className="p-3 text-center">
+    <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
+      <Delete />
+    </button>
+  </td>
+)}
+
             </tr>
           ))}
         </tbody>
