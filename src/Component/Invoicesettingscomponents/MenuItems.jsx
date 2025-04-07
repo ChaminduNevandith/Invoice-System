@@ -11,14 +11,19 @@ const menuItems = [
   { title: "Edit Print Settings", icon: "🖨️" },
 ];
 
-export default function DesignNav({ selectedColor, setSelectedColor, setSelectedTemplate, selectedTemplate }) {
+export default function DesignNav({
+  selectedColor,
+  setSelectedColor,
+  setSelectedTemplate,
+  selectedTemplate,
+}) {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [logos, setLogos] = useState([]);
   const [printSettings, setPrintSettings] = useState({
     top: 10,
     bottom: 10,
     left: 10,
-    right: 10
+    right: 10,
   });
   const colors = ["#A7C7E7", "#FFB3A1", "#B5EAD7", "#C7CEEA", "#FFEBA9"];
   const invoiceRef = useRef();
@@ -26,9 +31,9 @@ export default function DesignNav({ selectedColor, setSelectedColor, setSelected
   // In DesignNav component
   const handleThemeColorChange = (color) => {
     setSelectedColor(color);
-    localStorage.setItem('invoiceColor', color);
+    localStorage.setItem("invoiceColor", color);
   };
-  
+
   const handleLogoUpload = (event) => {
     const files = Array.from(event.target.files);
     const newLogos = files.map((file) => ({
@@ -42,23 +47,21 @@ export default function DesignNav({ selectedColor, setSelectedColor, setSelected
     setLogos((prevLogos) => prevLogos.filter((logo) => logo.id !== id));
   };
 
-
-
-const handleTemplateChange = (template) => {
-  setSelectedTemplate(template);
-  localStorage.setItem('invoiceTemplate', template);
-};
+  const handleTemplateChange = (template) => {
+    setSelectedTemplate(template);
+    localStorage.setItem("invoiceTemplate", template);
+  };
 
   const handlePrintSettingsChange = (field, value) => {
-    setPrintSettings(prev => ({
+    setPrintSettings((prev) => ({
       ...prev,
-      [field]: parseInt(value) || 0
+      [field]: parseInt(value) || 0,
     }));
   };
 
   const handlePrint = () => {
-    const invoiceElement = document.getElementById('invoice-preview');
-    
+    const invoiceElement = document.getElementById("invoice-preview");
+
     if (!invoiceElement) {
       console.error("Invoice element not found");
       return;
@@ -72,34 +75,48 @@ const handleTemplateChange = (template) => {
       scrollX: 0,
       scrollY: 0,
       windowWidth: invoiceElement.scrollWidth,
-      windowHeight: invoiceElement.scrollHeight
-    }).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
+      windowHeight: invoiceElement.scrollHeight,
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm'
+        orientation: "portrait",
+        unit: "mm",
       });
 
       // Calculate dimensions with margins
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
-      
+
       const imgWidth = pageWidth - printSettings.left - printSettings.right;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      
+
       let heightLeft = imgHeight;
       let position = printSettings.top;
-      
-      pdf.addImage(imgData, 'PNG', printSettings.left, position, imgWidth, imgHeight);
+
+      pdf.addImage(
+        imgData,
+        "PNG",
+        printSettings.left,
+        position,
+        imgWidth,
+        imgHeight
+      );
       heightLeft -= pageHeight;
-      
+
       while (heightLeft >= 0) {
         position = heightLeft - imgHeight;
         pdf.addPage();
-        pdf.addImage(imgData, 'PNG', printSettings.left, position, imgWidth, imgHeight);
+        pdf.addImage(
+          imgData,
+          "PNG",
+          printSettings.left,
+          position,
+          imgWidth,
+          imgHeight
+        );
         heightLeft -= pageHeight;
       }
-      
+
       pdf.save(`${selectedTemplate}-invoice.pdf`);
     });
   };
@@ -189,18 +206,20 @@ const handleTemplateChange = (template) => {
                 )}
 
                 {item.title === "Try Another Colours" && (
-                  <div className="flex flex-col md:flex-row items-center md:space-x-4 w-full">
+                  <div className="flex flex-col items-center w-full space-y-4">
+                    {/* Current selected color preview */}
                     <div className="flex flex-col items-center">
                       <div
                         className="w-10 h-10 rounded-full border-2 border-black"
                         style={{ backgroundColor: selectedColor }}
                       />
-                      <div className="mt-2 w-[80px] p-1 bg-[#FFFFE0] rounded-md shadow">
+                      <div className="mt-2 w-[80px] p-1 bg-[#FFFFE0] rounded-md shadow text-center">
                         <span className="text-sm">{selectedColor}</span>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-5 gap-2 mt-4 md:mt-0">
+                    {/* Preset color circles */}
+                    <div className="grid grid-cols-5 gap-2">
                       {colors.map((color) => (
                         <button
                           key={color}
@@ -218,6 +237,18 @@ const handleTemplateChange = (template) => {
                         </button>
                       ))}
                     </div>
+
+                    {/* Custom color circle under the grid */}
+                    <div className="flex flex-row items-center mt-2">
+                      <input
+                        type="color"
+                        value={selectedColor}
+                        onChange={(e) => handleThemeColorChange(e.target.value)}
+                        className="w-8 h-8  border-2 border-gray-300 p-0 cursor-pointer"
+                        style={{ appearance: "none", padding: 0 }}
+                      />
+                      <span className="mt-1 text-xs text-gray-600">Custom</span>
+                    </div>
                   </div>
                 )}
 
@@ -232,7 +263,9 @@ const handleTemplateChange = (template) => {
                         <input
                           type="number"
                           value={printSettings.top}
-                          onChange={(e) => handlePrintSettingsChange('top', e.target.value)}
+                          onChange={(e) =>
+                            handlePrintSettingsChange("top", e.target.value)
+                          }
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
@@ -241,7 +274,9 @@ const handleTemplateChange = (template) => {
                         <input
                           type="number"
                           value={printSettings.bottom}
-                          onChange={(e) => handlePrintSettingsChange('bottom', e.target.value)}
+                          onChange={(e) =>
+                            handlePrintSettingsChange("bottom", e.target.value)
+                          }
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
@@ -250,7 +285,9 @@ const handleTemplateChange = (template) => {
                         <input
                           type="number"
                           value={printSettings.left}
-                          onChange={(e) => handlePrintSettingsChange('left', e.target.value)}
+                          onChange={(e) =>
+                            handlePrintSettingsChange("left", e.target.value)
+                          }
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
@@ -259,12 +296,14 @@ const handleTemplateChange = (template) => {
                         <input
                           type="number"
                           value={printSettings.right}
-                          onChange={(e) => handlePrintSettingsChange('right', e.target.value)}
+                          onChange={(e) =>
+                            handlePrintSettingsChange("right", e.target.value)
+                          }
                           className="p-2 border rounded focus:ring-2 focus:ring-blue-400 focus:outline-none"
                         />
                       </div>
                     </div>
-                    <button 
+                    <button
                       className="mt-4 w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                       onClick={handlePrint}
                     >

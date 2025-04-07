@@ -73,21 +73,29 @@ export default function Contentsettings({
         <div className="mt-4">
           <h2 className="text-lg font-bold">Invoice Details</h2>
           {[
-            { key: "billTo", label: "Bill To", type: "text" },
-            { key: "shipTo", label: "Ship To", type: "text" },
-            { key: "terms", label: "Terms", type: "text" },
-            { key: "dueDate", label: "Date", type: "date" },
-            { key: "paymentMethod", label: "Payment Method", type: "text" },
-          ].map(({ key, label, type }) => (
-            <div key={key} className="mt-2">
-              <label className="text-sm font-medium">{label}</label>
+            { key: "billTo", label: "Bill To", type: "text", showField: "billingAddress" },
+            { key: "shipTo", label: "Ship To", type: "text", showField: "shipping" },
+            { key: "terms", label: "Terms", type: "text", showField: "terms" },
+            { key: "dueDate", label: "Date", type: "date", showField: "dueDate" },
+            { key: "paymentMethod", label: "Payment Method", type: "text", showField: "paymentMethod" },
+          ].map(({ key, label, type, showField }) => (
+            <div key={key} className="flex items-center space-x-2 mt-2">
               <input
-                type={type}
-                className="w-full mt-1 p-2 border rounded"
-                placeholder={label}
-                value={headerData[key]}
-                onChange={(e) => updateHeaderData(key, e.target.value)}
+                type="checkbox"
+                className="h-4 w-4"
+                checked={headerData.showFields[showField]}
+                onChange={() => toggleFieldVisibility(showField)}
               />
+              <div className="flex-1">
+                <label className="text-sm font-medium">{label}</label>
+                <input
+                  type={type}
+                  className="w-full mt-1 p-2 border rounded"
+                  placeholder={label}
+                  value={headerData[key]}
+                  onChange={(e) => updateHeaderData(key, e.target.value)}
+                />
+              </div>
             </div>
           ))}
         </div>
