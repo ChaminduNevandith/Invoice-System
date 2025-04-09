@@ -38,19 +38,19 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
     <div className="p-8 border-t border-gray-300 mt-8 bg-gray-50 rounded-lg shadow-md">
       <div className="grid grid-cols-2 gap-6">
         <div>
-          <p className="text-gray-700 font-medium">{notes}</p>
+          <p className="text-gray-700 font-medium text-sm">{notes}</p>
         </div>
 
         <div className="text-right">
           <div className="space-y-2">
             <div className="flex justify-between border-b pb-2">
-              <p className="text-gray-700 font-medium">SUBTOTAL</p>
-              <span className="font-semibold">LKR {safeTotalAmount.toFixed(2)}</span>
+              <p className="text-gray-700 font-medium text-sm">SUBTOTAL</p>
+              <span className="font-semibold text-sm">LKR {safeTotalAmount.toFixed(2)}</span>
             </div>
 
             {showFields?.discounts && (
               <div className="flex justify-between items-center border-b pb-2">
-                <p className="text-gray-700">DISCOUNT {discount}%</p>
+                <p className="text-gray-700 text-sm">DISCOUNT {discount}%</p>
                 {isEditingDiscount ? (
                   <input
                     type="number"
@@ -58,12 +58,12 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
                     onChange={(e) => setDiscount(Number(e.target.value))}
                     onBlur={() => setIsEditingDiscount(false)}
                     onKeyDown={(e) => e.key === "Enter" && setIsEditingDiscount(false)}
-                    className="w-24 border rounded px-2 py-1 text-right"
+                    className="w-24 border rounded px-2 py-1 text-right text-sm"
                     autoFocus
                   />
                 ) : (
                   <span 
-                    className="text-red-500 cursor-pointer font-semibold"
+                    className="text-red-500 cursor-pointer font-semibold text-sm"
                     onClick={() => setIsEditingDiscount(true)}
                     title="Click to edit"
                   >
@@ -75,7 +75,7 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
 
             {showFields?.deposit && (
               <div className="flex justify-between items-center border-b pb-2">
-                <p className="text-gray-700">DEPOSIT</p>
+                <p className="text-gray-700 text-sm">DEPOSIT</p>
                 {isEditingDeposit ? (
                   <input
                     type="number"
@@ -83,12 +83,12 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
                     onChange={(e) => setDeposit(Number(e.target.value))}
                     onBlur={() => setIsEditingDeposit(false)}
                     onKeyDown={(e) => e.key === "Enter" && setIsEditingDeposit(false)}
-                    className="w-24 border rounded px-2 py-1 text-right"
+                    className="w-24 border rounded px-2 py-1 text-right text-sm"
                     autoFocus
                   />
                 ) : (
                   <span 
-                    className="font-semibold cursor-pointer"
+                    className="font-semibold cursor-pointer text-sm"
                     onClick={() => setIsEditingDeposit(true)}
                     title="Click to edit"
                   >
@@ -98,15 +98,15 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
               </div>
             )}
 
-            <div className="flex justify-between font-semibold pt-2">
+            <div className="flex justify-between font-semibold text-sm pt-2">
               <p className="text-gray-900">TOTAL</p>
-              <span className="text-gray-900">LKR {finalAmount.toFixed(2)}</span>
+              <span className="text-gray-900 text-sm">LKR {finalAmount.toFixed(2)}</span>
             </div>
           </div>
 
           {showFields?.estimateSummary && (
             <div className="mt-6 text-right">
-              <p className="font-semibold text-gray-800 text-lg">Estimate Summary</p>
+              <p className="font-semibold text-gray-800 text-lg text-sm">Estimate Summary</p>
               <div className="border-t mt-3 pt-3 space-y-2">
                 {/* Estimate Row */}
                 <div className="flex justify-between items-center">
@@ -116,12 +116,12 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
                       onChange={(e) => setEstimateLabel(e.target.value)}
                       onBlur={() => setEditEstimateLabel(false)}
                       onKeyDown={(e) => e.key === "Enter" && setEditEstimateLabel(false)}
-                      className="text-left border rounded px-2 py-1 w-48"
+                      className="text-left border rounded px-2 py-1 w-48 text-sm"
                       autoFocus
                     />
                   ) : (
                     <p
-                      className="text-gray-700 cursor-pointer"
+                      className="text-gray-700 cursor-pointer text-sm"
                       onClick={() => setEditEstimateLabel(true)}
                       title="Click to edit"
                     >
@@ -135,12 +135,12 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
                       onChange={(e) => setEstimateAmount(Number(e.target.value))}
                       onBlur={() => setEditEstimateAmount(false)}
                       onKeyDown={(e) => e.key === "Enter" && setEditEstimateAmount(false)}
-                      className="text-right border rounded px-2 py-1 w-24"
+                      className="text-right border rounded px-2 py-1 w-24 text-sm"
                       autoFocus
                     />
                   ) : (
                     <span
-                      className="font-semibold cursor-pointer"
+                      className="font-semibold cursor-pointer text-sm"
                       onClick={() => setEditEstimateAmount(true)}
                       title="Click to edit"
                     >
@@ -157,12 +157,12 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
                       onChange={(e) => setInvoiceLabel(e.target.value)}
                       onBlur={() => setEditInvoiceLabel(false)}
                       onKeyDown={(e) => e.key === "Enter" && setEditInvoiceLabel(false)}
-                      className="text-left border rounded px-2 py-1 w-48"
+                      className="text-left border rounded px-2 py-1 w-48 text-sm"
                       autoFocus
                     />
                   ) : (
                     <p
-                      className="text-gray-700 cursor-pointer"
+                      className="text-gray-700 cursor-pointer text-sm"
                       onClick={() => setEditInvoiceLabel(true)}
                       title="Click to edit"
                     >
@@ -176,12 +176,12 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
                       onChange={(e) => setInvoiceAmount(Number(e.target.value))}
                       onBlur={() => setEditInvoiceAmount(false)}
                       onKeyDown={(e) => e.key === "Enter" && setEditInvoiceAmount(false)}
-                      className="text-right border rounded px-2 py-1 w-24"
+                      className="text-right border rounded px-2 py-1 w-24 text-sm"
                       autoFocus
                     />
                   ) : (
                     <span
-                      className="font-semibold cursor-pointer"
+                      className="font-semibold cursor-pointer text-sm"
                       onClick={() => setEditInvoiceAmount(true)}
                       title="Click to edit"
                     >
@@ -198,12 +198,12 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
                       onChange={(e) => setThisInvoiceLabel(e.target.value)}
                       onBlur={() => setEditThisInvoiceLabel(false)}
                       onKeyDown={(e) => e.key === "Enter" && setEditThisInvoiceLabel(false)}
-                      className="text-left border rounded px-2 py-1 w-48"
+                      className="text-left border rounded px-2 py-1 w-48 text-sm"
                       autoFocus
                     />
                   ) : (
                     <p
-                      className="text-gray-700 cursor-pointer"
+                      className="text-gray-700 cursor-pointer text-sm"
                       onClick={() => setEditThisInvoiceLabel(true)}
                       title="Click to edit"
                     >
@@ -217,12 +217,12 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
                       onChange={(e) => setThisInvoiceAmount(Number(e.target.value))}
                       onBlur={() => setEditThisInvoiceAmount(false)}
                       onKeyDown={(e) => e.key === "Enter" && setEditThisInvoiceAmount(false)}
-                      className="text-right border rounded px-2 py-1 w-24"
+                      className="text-right border rounded px-2 py-1 w-24 text-sm"
                       autoFocus
                     />
                   ) : (
                     <span
-                      className="font-semibold cursor-pointer"
+                      className="font-semibold cursor-pointer text-sm"
                       onClick={() => setEditThisInvoiceAmount(true)}
                       title="Click to edit"
                     >
@@ -232,9 +232,9 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
                 </div>
 
                 {/* Total */}
-                <div className="flex justify-between font-semibold text-lg border-t pt-2">
+                <div className="flex justify-between font-semibold text-lg text-sm border-t pt-2">
                   <p className="text-gray-900">Total Invoiced</p>
-                  <span className="text-gray-900">
+                  <span className="text-gray-900 text-sm">
                     LKR {(estimateAmount + invoiceAmount + thisInvoiceAmount).toFixed(2)}
                   </span>
                 </div>
@@ -245,7 +245,7 @@ function InvoiceFooter({ footerData, selectedColor, totalAmount = 0 }) {
       </div>
 
       <div className="mt-6 p-4 rounded-md" style={{ backgroundColor: selectedColor }}>
-        <div className="text-gray-800 font-semibold">{paymentDetails}</div>
+        <div className="text-gray-800 font-semibold text-sm">{paymentDetails}</div>
         <div className="text-gray-600 text-sm mt-2">{footerText}</div>
       </div>
     </div>

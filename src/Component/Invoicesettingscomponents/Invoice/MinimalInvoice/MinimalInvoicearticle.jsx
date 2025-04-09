@@ -33,18 +33,17 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
             ...item,
             [field]: value,
           };
-  
+
           const quantity = field === "quantity" ? Number(value) : item.quantity;
           const rate = field === "rate" ? Number(value) : item.rate;
           updatedItem.amount = quantity * rate;
-  
+
           return updatedItem;
         }
         return item;
       })
     );
   };
-  
 
   const handleDelete = (id) => {
     setInvoiceItems((prevItems) => prevItems.filter((item) => item.id !== id));
@@ -80,7 +79,6 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
     }
   };
 
-  // Use selectedColumns from articleData or default values
   const selectedColumns = articleData?.selectedColumns || {
     showInvoice: true,
     Date: true,
@@ -92,38 +90,39 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
     SKU: true,
   };
 
-  if (!selectedColumns.showInvoice) {
-    return null;
-  }
+  if (!selectedColumns.showInvoice) return null;
 
   return (
     <div
-      className="p-6 border border-gray-200 rounded-lg bg-white shadow-sm mt-6 relative"
+      className="p-6 border border-gray-200 rounded-lg bg-white shadow-sm mt-6 relative text-sm"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="text-left text-gray-700 border-b border-gray-300" style={{ backgroundColor: selectedColor }}>
-            {selectedColumns.Date && <th className="p-3">Date</th>}
-            {selectedColumns["Product/Services"] && <th className="p-3">Product/Services</th>}
-            {selectedColumns.Description && <th className="p-3">Description</th>}
-            {selectedColumns.Quantity && <th className="p-3">Qty</th>}
-            {selectedColumns.Rate && <th className="p-3">Rate</th>}
-            {selectedColumns.Amount && <th className="p-3">Amount</th>}
-            {selectedColumns.SKU && <th className="p-3">SKU</th>}
-            <th className="p-3 text-center">Action</th>
+          <tr
+            className="text-left text-gray-700 border-b border-gray-300"
+            style={{ backgroundColor: selectedColor }}
+          >
+            {selectedColumns.Date && <th className="p-3 text-xs">Date</th>}
+            {selectedColumns["Product/Services"] && <th className="p-3 text-xs">Product/Services</th>}
+            {selectedColumns.Description && <th className="p-3 text-xs">Description</th>}
+            {selectedColumns.Quantity && <th className="p-3 text-xs">Qty</th>}
+            {selectedColumns.Rate && <th className="p-3 text-xs">Rate</th>}
+            {selectedColumns.Amount && <th className="p-3 text-xs">Amount</th>}
+            {selectedColumns.SKU && <th className="p-3 text-xs">SKU</th>}
+            <th className="p-3 text-xs text-center">Action</th>
           </tr>
         </thead>
         <tbody>
           {invoiceItems.map((item) => (
-            <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-50">
+            <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-50 text-xs">
               {selectedColumns.Date && (
                 <td className="p-3">
                   {editing?.id === item.id && editing.field === "date" ? (
                     <input
                       type="date"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.date}
                       onChange={(e) => handleInputChange(item.id, "date", e.target.value)}
                       onBlur={handleBlur}
@@ -131,7 +130,9 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                       autoFocus
                     />
                   ) : (
-                    <span onClick={() => handleEdit(item.id, "date")}>{item.date || "Click to enter"}</span>
+                    <span onClick={() => handleEdit(item.id, "date")} className="cursor-pointer">
+                      {item.date || "Click to enter"}
+                    </span>
                   )}
                 </td>
               )}
@@ -141,7 +142,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                   {editing?.id === item.id && editing.field === "item" ? (
                     <input
                       type="text"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.item}
                       onChange={(e) => handleInputChange(item.id, "item", e.target.value)}
                       onBlur={handleBlur}
@@ -149,7 +150,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                       autoFocus
                     />
                   ) : (
-                    <span onClick={() => handleEdit(item.id, "item")}>
+                    <span onClick={() => handleEdit(item.id, "item")} className="cursor-pointer">
                       {item.item || "Click to enter"}
                     </span>
                   )}
@@ -161,7 +162,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                   {editing?.id === item.id && editing.field === "description" ? (
                     <input
                       type="text"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.description}
                       onChange={(e) => handleInputChange(item.id, "description", e.target.value)}
                       onBlur={handleBlur}
@@ -169,7 +170,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                       autoFocus
                     />
                   ) : (
-                    <span onClick={() => handleEdit(item.id, "description")}>
+                    <span onClick={() => handleEdit(item.id, "description")} className="cursor-pointer">
                       {item.description || "Click to enter"}
                     </span>
                   )}
@@ -181,7 +182,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                   {editing?.id === item.id && editing.field === "quantity" ? (
                     <input
                       type="number"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.quantity}
                       onChange={(e) => handleInputChange(item.id, "quantity", Number(e.target.value))}
                       onBlur={handleBlur}
@@ -189,7 +190,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                       autoFocus
                     />
                   ) : (
-                    <span onClick={() => handleEdit(item.id, "quantity")}>
+                    <span onClick={() => handleEdit(item.id, "quantity")} className="cursor-pointer">
                       {item.quantity || "Click to enter"}
                     </span>
                   )}
@@ -201,7 +202,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                   {editing?.id === item.id && editing.field === "rate" ? (
                     <input
                       type="number"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.rate}
                       onChange={(e) => handleInputChange(item.id, "rate", Number(e.target.value))}
                       onBlur={handleBlur}
@@ -209,7 +210,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                       autoFocus
                     />
                   ) : (
-                    <span onClick={() => handleEdit(item.id, "rate")}>
+                    <span onClick={() => handleEdit(item.id, "rate")} className="cursor-pointer">
                       {item.rate || "Click to enter"}
                     </span>
                   )}
@@ -217,7 +218,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
               )}
 
               {selectedColumns.Amount && (
-                <td className="p-3">{item.amount}</td>
+                <td className="p-3 text-xs">{item.amount}</td>
               )}
 
               {selectedColumns.SKU && (
@@ -225,7 +226,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                   {editing?.id === item.id && editing.field === "sku" ? (
                     <input
                       type="text"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.sku}
                       onChange={(e) => handleInputChange(item.id, "sku", e.target.value)}
                       onBlur={handleBlur}
@@ -233,7 +234,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
                       autoFocus
                     />
                   ) : (
-                    <span onClick={() => handleEdit(item.id, "sku")}>
+                    <span onClick={() => handleEdit(item.id, "sku")} className="cursor-pointer">
                       {item.sku || "Click to enter"}
                     </span>
                   )}
@@ -242,7 +243,7 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
 
               <td className="p-3 text-center">
                 <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
-                  <Delete />
+                  <Delete fontSize="small" />
                 </button>
               </td>
             </tr>
@@ -254,9 +255,9 @@ function MinimalInvoiceArticle({ articleData, selectedColor }) {
         <div className="flex justify-center mt-2">
           <button
             onClick={addRow}
-            className="p-2 bg-blue-500 text-white rounded flex items-center gap-1"
+            className="p-2 text-xs bg-blue-500 text-white rounded flex items-center gap-1"
           >
-            <Add /> Add Row
+            <Add fontSize="small" /> Add Row
           </button>
         </div>
       )}

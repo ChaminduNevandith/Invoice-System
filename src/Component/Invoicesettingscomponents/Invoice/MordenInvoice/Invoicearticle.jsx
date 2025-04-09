@@ -29,22 +29,16 @@ function Invoicearticle({ articleData, selectedColor }) {
     setInvoiceItems((prevItems) =>
       prevItems.map((item) => {
         if (item.id === id) {
-          const updatedItem = {
-            ...item,
-            [field]: value,
-          };
-  
+          const updatedItem = { ...item, [field]: value };
           const quantity = field === "quantity" ? Number(value) : item.quantity;
           const rate = field === "rate" ? Number(value) : item.rate;
           updatedItem.amount = quantity * rate;
-  
           return updatedItem;
         }
         return item;
       })
     );
   };
-  
 
   const handleDelete = (id) => {
     setInvoiceItems((prevItems) => prevItems.filter((item) => item.id !== id));
@@ -66,21 +60,10 @@ function Invoicearticle({ articleData, selectedColor }) {
     ]);
   };
 
-  const handleEdit = (id, field) => {
-    setEditing({ id, field });
-  };
+  const handleEdit = (id, field) => setEditing({ id, field });
+  const handleBlur = () => setEditing(null);
+  const handleKeyPress = (e) => e.key === "Enter" && setEditing(null);
 
-  const handleBlur = () => {
-    setEditing(null);
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      setEditing(null);
-    }
-  };
-
-  // Use selectedColumns from articleData or default values
   const selectedColumns = articleData?.selectedColumns || {
     showInvoice: true,
     Date: true,
@@ -92,38 +75,39 @@ function Invoicearticle({ articleData, selectedColor }) {
     SKU: true,
   };
 
-  if (!selectedColumns.showInvoice) {
-    return null;
-  }
+  if (!selectedColumns.showInvoice) return null;
 
   return (
     <div
-      className="p-6 border border-gray-200 rounded-lg bg-white shadow-sm mt-6 relative"
+      className="p-4 border border-gray-200 rounded-lg bg-white shadow-sm mt-6 relative text-xs"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <table className="w-full border-collapse text-sm">
+      <table className="w-full border-collapse">
         <thead>
-          <tr className="text-left text-gray-700 border-b border-gray-300" style={{ backgroundColor: selectedColor }}>
-            {selectedColumns.Date && <th className="p-3">Date</th>}
-            {selectedColumns["Product/Services"] && <th className="p-3">Product/Services</th>}
-            {selectedColumns.Description && <th className="p-3">Description</th>}
-            {selectedColumns.Quantity && <th className="p-3">Qty</th>}
-            {selectedColumns.Rate && <th className="p-3">Rate</th>}
-            {selectedColumns.Amount && <th className="p-3">Amount</th>}
-            {selectedColumns.SKU && <th className="p-3">SKU</th>}
-            <th className="p-3 text-center">Action</th>
+          <tr
+            className="text-left text-gray-700 border-b border-gray-300"
+            style={{ backgroundColor: selectedColor }}
+          >
+            {selectedColumns.Date && <th className="p-2">Date</th>}
+            {selectedColumns["Product/Services"] && <th className="p-2">Product/Services</th>}
+            {selectedColumns.Description && <th className="p-2">Description</th>}
+            {selectedColumns.Quantity && <th className="p-2">Qty</th>}
+            {selectedColumns.Rate && <th className="p-2">Rate</th>}
+            {selectedColumns.Amount && <th className="p-2">Amount</th>}
+            {selectedColumns.SKU && <th className="p-2">SKU</th>}
+            <th className="p-2 text-center">Action</th>
           </tr>
         </thead>
         <tbody>
           {invoiceItems.map((item) => (
             <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-50">
               {selectedColumns.Date && (
-                <td className="p-3">
+                <td className="p-2">
                   {editing?.id === item.id && editing.field === "date" ? (
                     <input
                       type="date"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.date}
                       onChange={(e) => handleInputChange(item.id, "date", e.target.value)}
                       onBlur={handleBlur}
@@ -131,17 +115,19 @@ function Invoicearticle({ articleData, selectedColor }) {
                       autoFocus
                     />
                   ) : (
-                    <span onClick={() => handleEdit(item.id, "date")}>{item.date || "Click to enter"}</span>
+                    <span onClick={() => handleEdit(item.id, "date")}>
+                      {item.date || "Click to enter"}
+                    </span>
                   )}
                 </td>
               )}
 
               {selectedColumns["Product/Services"] && (
-                <td className="p-3">
+                <td className="p-2">
                   {editing?.id === item.id && editing.field === "item" ? (
                     <input
                       type="text"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.item}
                       onChange={(e) => handleInputChange(item.id, "item", e.target.value)}
                       onBlur={handleBlur}
@@ -157,11 +143,11 @@ function Invoicearticle({ articleData, selectedColor }) {
               )}
 
               {selectedColumns.Description && (
-                <td className="p-3">
+                <td className="p-2">
                   {editing?.id === item.id && editing.field === "description" ? (
                     <input
                       type="text"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.description}
                       onChange={(e) => handleInputChange(item.id, "description", e.target.value)}
                       onBlur={handleBlur}
@@ -177,11 +163,11 @@ function Invoicearticle({ articleData, selectedColor }) {
               )}
 
               {selectedColumns.Quantity && (
-                <td className="p-3">
+                <td className="p-2">
                   {editing?.id === item.id && editing.field === "quantity" ? (
                     <input
                       type="number"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.quantity}
                       onChange={(e) => handleInputChange(item.id, "quantity", Number(e.target.value))}
                       onBlur={handleBlur}
@@ -197,11 +183,11 @@ function Invoicearticle({ articleData, selectedColor }) {
               )}
 
               {selectedColumns.Rate && (
-                <td className="p-3">
+                <td className="p-2">
                   {editing?.id === item.id && editing.field === "rate" ? (
                     <input
                       type="number"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.rate}
                       onChange={(e) => handleInputChange(item.id, "rate", Number(e.target.value))}
                       onBlur={handleBlur}
@@ -217,15 +203,15 @@ function Invoicearticle({ articleData, selectedColor }) {
               )}
 
               {selectedColumns.Amount && (
-                <td className="p-3">{item.amount}</td>
+                <td className="p-2">{item.amount}</td>
               )}
 
               {selectedColumns.SKU && (
-                <td className="p-3">
+                <td className="p-2">
                   {editing?.id === item.id && editing.field === "sku" ? (
                     <input
                       type="text"
-                      className="w-full p-1 border rounded"
+                      className="w-full p-1 border rounded text-xs"
                       value={item.sku}
                       onChange={(e) => handleInputChange(item.id, "sku", e.target.value)}
                       onBlur={handleBlur}
@@ -240,9 +226,12 @@ function Invoicearticle({ articleData, selectedColor }) {
                 </td>
               )}
 
-              <td className="p-3 text-center">
-                <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(item.id)}>
-                  <Delete />
+              <td className="p-2 text-center">
+                <button
+                  className="text-red-500 hover:text-red-700"
+                  onClick={() => handleDelete(item.id)}
+                >
+                  <Delete fontSize="small" />
                 </button>
               </td>
             </tr>
@@ -254,9 +243,9 @@ function Invoicearticle({ articleData, selectedColor }) {
         <div className="flex justify-center mt-2">
           <button
             onClick={addRow}
-            className="p-2 bg-blue-500 text-white rounded flex items-center gap-1"
+            className="p-1.5 px-3 bg-blue-500 text-white text-xs rounded flex items-center gap-1"
           >
-            <Add /> Add Row
+            <Add fontSize="small" /> Add Row
           </button>
         </div>
       )}
